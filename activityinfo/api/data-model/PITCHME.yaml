@@ -3,7 +3,7 @@ layout: center-left
 
 # Theme
 theme: white
-
+logo: activityinfo/img/activityinfo-logo.png
 
 # Behaviour
 transition: none
