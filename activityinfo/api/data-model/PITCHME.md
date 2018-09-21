@@ -1,5 +1,5 @@
 # ActivityInfo API
-## Data Model
+## @color[#00CF79](Data Model)
 
 ---
 

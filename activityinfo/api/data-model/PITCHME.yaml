@@ -3,8 +3,8 @@ layout: center-left
 
 # Theme
 theme: white
-#theme-override: activityinfo/api/data-model/PITCHME.css
 logo: activityinfo/img/activityinfo-logo.png
+footnote: "ActivityInfo User Conference 2018"
 
 # Behaviour
 transition: none
