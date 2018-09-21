@@ -170,4 +170,11 @@ GET https://activityinfo.org/resources/form/{formId}
         ...
     ]
 }
+
+@[2](Form Id)
+@[3](Form Schema Version)
+@[4](Database Id)
+@[5](Form Label/Name)
+@[6-21](Form Elements/Fields)
+
 ```
