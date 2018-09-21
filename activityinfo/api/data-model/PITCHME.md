@@ -73,7 +73,9 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 - Central source of data
 - All data are entered, maintained and reported on from one or more databases
 
----?image=activityinfo/api/data-model/img/database.png
+---
+
+![](activityinfo/api/data-model/img/database.png)
 
 ---
 
