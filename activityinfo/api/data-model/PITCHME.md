@@ -11,3 +11,14 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 - Install Postman (don't worry about signing up for an account with them...)
 - Download the ActivityInfo API Collection from [here](https://github.com/jamiewhths/talks/activityinfo/api/data-model/resources/collections.api)
 - Add the ActivityInfo API Collection to your Postman installation
+
++++
+
+@fa[download]
+Download the correct version for your system [here](https://www.getpostman.com/apps)
+
++++
+
+@fa[install]
+Install Postman (don't worry about signing up for an account with them...)
+
