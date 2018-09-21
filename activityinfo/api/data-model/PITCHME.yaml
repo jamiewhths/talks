@@ -2,7 +2,7 @@
 layout: center-left
 
 # Theme
-theme: white
+#theme: white
 theme-override: activityinfo/api/data-model/PITCHME.css
 logo: activityinfo/img/activityinfo-logo.png
 
