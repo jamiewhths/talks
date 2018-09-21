@@ -61,6 +61,10 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 ![](activityinfo/api/data-model/img/postman-import-screen.png)
 @snapend
 
++++ 
+
+# Authorization
+
 ---
 
 # Database
@@ -200,7 +204,7 @@ GET https://activityinfo.org/resources/form/{formId}
 
 ## @color[#00CF79](Field)
 
-- A field
+- Represents a specific type of data to be collected
 - A field is...
 
 ---
