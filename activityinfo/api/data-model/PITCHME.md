@@ -123,9 +123,51 @@ GET https://activityinfo.org/resources/database/{databaseId}
 @[8-21](Database Resources show accessible Forms and Folders)
 @[22](Operations User is granted - N/A for owners)
 @[23](Locks set on Database)
+
 ---
 
+# Form
 
+@snap[east]
+@fa[file-text fa-5x]
+@snapend
 
+---
 
+## @color[#00CF79](Form)
 
+- 123
+- 123
+
+---
+
+```
+GET https://activityinfo.org/resources/form/{formId}
+```
+
+---
+
+```json
+{
+    "id": "a2145506925",
+    "schemaVersion": 1,
+    "databaseId": "d0000009699",
+    "label": "Greek Schools Book Provision",
+    "elements": [
+		  {
+            "id": "i1149254388",
+            "code": null,
+            "label": "Serial Number",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": false,
+            "type": "serial",
+            "typeParameters": {
+                "digits": 5
+            }
+        },
+        ...
+    ]
+}
+```
