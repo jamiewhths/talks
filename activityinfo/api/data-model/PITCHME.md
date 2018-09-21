@@ -120,8 +120,8 @@ GET https://activityinfo.org/resources/database/{databaseId}
 @[5](Is this Database visible to User?)
 @[6](Is this User the owner?)
 @[7](The current Database version)
-@[8-21](Database Resources: Forms and Folders User can access)
-@[22](Operations User is granted - N/A/ for owners)
+@[8-21](Database Resources show accessible Forms and Folders)
+@[22](Operations User is granted - N/A for owners)
 @[23](Locks set on Database)
 ---
 
