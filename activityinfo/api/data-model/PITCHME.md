@@ -63,6 +63,16 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 
 ---
 
-### Next slide
+# Database
 
-Text goes here
+@fa[database fa-5x]
+
+---
+
+## @color[#00CF79](Database)
+- Central source of data
+- All data are entered, maintained and reported on from one or more databases
+
+---
+
+
