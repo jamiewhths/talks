@@ -87,6 +87,10 @@ GET https://activityinfo.org/resources/database/{databaseId}
 
 ---
 
+```
+GET https://activityinfo.org/resources/database/{databaseId}
+```
+
 ```json
 {
     "databaseId": "d0000009699",
