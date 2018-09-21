@@ -118,15 +118,15 @@ GET https://activityinfo.org/resources/database/{databaseId}
 }
 ```
 
-@[2](Database Id)
-@[3](Id of Requesting User)
-@[4](Database Label/Name)
-@[5](Is this Database visible to User?)
-@[6](Is this User the owner?)
-@[7](The current Database version)
-@[8-21](Database Resources: Forms and Folders User can access)
-@[22](Operations User is granted - N/A/ for owners)
-@[23](Locks set on Database)
+@[1](Database Id)
+@[2](Id of Requesting User)
+@[3](Database Label/Name)
+@[4](Is this Database visible to User?)
+@[5](Is this User the owner?)
+@[6](The current Database version)
+@[7-20](Database Resources: Forms and Folders User can access)
+@[21](Operations User is granted - N/A/ for owners)
+@[22](Locks set on Database)
 ---
 
 
