@@ -101,24 +101,6 @@ GET https://activityinfo.org/resources/database/{databaseId}
     "version": "1536759623158",
     "resources": [
         {
-            "id": "a2145507510",
-            "parentId": "d0000009699",
-            "type": "FORM",
-            "label": "Book Distribution"
-        },
-        {
-            "id": "a2145506629",
-            "parentId": "d0000009699",
-            "type": "FORM",
-            "label": "Schools in S. Greece - GR"
-        },
-        {
-            "id": "a2145507509",
-            "parentId": "d0000009699",
-            "type": "FORM",
-            "label": "Books Distribution"
-        },
-        {
             "id": "f0000020207",
             "parentId": "d0000009699",
             "type": "FOLDER",
@@ -136,7 +118,17 @@ GET https://activityinfo.org/resources/database/{databaseId}
 }
 ```
 
+@[2](Database Id)
+@[3](Id of Requesting User)
+@[4](Database Label/Name)
+@[5](Is this Database visible to User?)
+@[6](Is this User the owner?)
+@[7](The current Database version)
+@[8-21](Database Resources: Forms and Folders User can access)
+@[22](Operations User is granted - N/A/ for owners)
+@[23](Locks set on Database)
 ---
+
 
 
 
