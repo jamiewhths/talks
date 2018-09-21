@@ -140,8 +140,22 @@ GET https://activityinfo.org/resources/database/{databaseId}
 
 ## @color[#00CF79](Form)
 
-- 123
-- 123
+- Defines the various data to be collected, and how they link together
+- Composed of one or more Fields which represent a type of data to be collected
+
+---
+
+@snap[east]
+![Form in UI - Design](activityinfo/api/data-model/img/form-design.png)
+@snapend
+
+@snap[west]
+![Form in UI - Data Entry](activityinfo/api/data-model/img/form-data-entry.png)
+@snapend
+
+---
+
+![Form in Context](activityinfo/api/data-model/img/form-context.png)
 
 ---
 
@@ -169,7 +183,6 @@ GET https://activityinfo.org/resources/form/{formId}
     ]
 }
 ```
-
 
 @[2](Form Id)
 @[3](Form Schema Version)
