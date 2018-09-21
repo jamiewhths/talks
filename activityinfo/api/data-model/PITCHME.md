@@ -155,17 +155,11 @@ GET https://activityinfo.org/resources/form/{formId}
     "label": "Greek Schools Book Provision",
     "elements": [
 		  {
-            "id": "i1149254388",
-            "code": null,
-            "label": "Serial Number",
-            "description": null,
-            "relevanceCondition": null,
+            "id": "a21455069250000000014",
+            "label": "Comments",
             "visible": true,
             "required": false,
-            "type": "serial",
-            "typeParameters": {
-                "digits": 5
-            }
+            "type": "NARRATIVE"
         },
         ...
     ]
