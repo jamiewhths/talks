@@ -87,8 +87,52 @@ GET https://activityinfo.org/resources/database/{databaseId}
 
 ---
 
+```json
+{
+    "databaseId": "d0000009699",
+    "userId": 21598,
+    "label": "Books Distribution",
+    "visible": true,
+    "owner": true,
+    "version": "1536759623158",
+    "resources": [
+        {
+            "id": "a2145507510",
+            "parentId": "d0000009699",
+            "type": "FORM",
+            "label": "Book Distribution"
+        },
+        {
+            "id": "a2145506629",
+            "parentId": "d0000009699",
+            "type": "FORM",
+            "label": "Schools in S. Greece - GR"
+        },
+        {
+            "id": "a2145507509",
+            "parentId": "d0000009699",
+            "type": "FORM",
+            "label": "Books Distribution"
+        },
+        {
+            "id": "f0000020207",
+            "parentId": "d0000009699",
+            "type": "FOLDER",
+            "label": "Central Macedonia - GR"
+        },
+        {
+            "id": "a2145506925",
+            "parentId": "d0000009699",
+            "type": "FORM",
+            "label": "Greek Schools Book Provision"
+        }
+    ],
+    "grants": [],
+    "locks": []
+}
+```
 
-
+---
 
 
 
