@@ -13,11 +13,11 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 
 ---
 
-@snap[east]
+@snap[north]
 Download the correct version for your system [here]("https://www.getpostman.com/apps")
 @snapend
 
-@snap[west]
+@snap[midpoint]
 ![](activityinfo/api/data-model/img/postman-apps.png)
 @snapend
 
