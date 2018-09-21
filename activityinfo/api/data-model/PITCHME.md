@@ -18,17 +18,17 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 @snapend
 
 @snap[south]
-### Download the correct version for your system [here]("https://www.getpostman.com/apps")
+Download the correct version for your system [here]("https://www.getpostman.com/apps")
 @snapend
 
 +++
 
-@snap[center]
-@fa[hdd-o]
+@snap[midpoint]
+@fa[hdd-o fa-3x]
 @snapend
 
 @snap[south]
-### Install Postman (don't worry about signing up for an account with them...)
+Install Postman (don't worry about signing up for an account with them...)
 @snapend
  
 +++
