@@ -10,7 +10,7 @@ Note:
 ---?title=Introductions
 
 @snap[west]
-![Me](profiler.jpg)
+![Me](testing/profiler.jpg)
 @snapend
 
 @snap[east]
@@ -63,7 +63,7 @@ public class StartPitching {
 
 - I have a _new_ point to make
 
----?image=mistake.png
+---?image=testing/mistake.png
 
 @quote[I've made a huge mistake](GOB)
 
