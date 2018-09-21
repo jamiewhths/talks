@@ -13,8 +13,8 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 
 ---
 
-@snap[south-west]
-Download the correct version for your system [here]("https://www.getpostman.com/apps")
+@snap[north-west]
+<h4>Download the correct version for your system [here]("https://www.getpostman.com/apps")</h4>
 @snapend
 
 @snap[midpoint]
@@ -23,10 +23,12 @@ Download the correct version for your system [here]("https://www.getpostman.com/
 
 ---
 
-@snap[center]
-Download the ActivityInfo API Collection from [here](https://github.com/jamiewhths/talks/activityinfo/api/data-model/resources/collections.api)
+@snap[north-west]
+<h4>Download the ActivityInfo API Collection from [here](https://github.com/jamiewhths/talks/activityinfo/api/data-model/resources/collections.api)</h4>
+@snapend
 
-@fa[download fa-3x]
+@snap[midpoint]
+@fa[download fa-4x]
 @snapend
 
 ---?image=activityinfo/api/data-model/img/postman-installed.png&size=auto 75%
