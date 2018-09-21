@@ -14,7 +14,8 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 
 +++
 
-@fa[download fa-3x](Download the correct version for your system <a href="https://www.getpostman.com/apps">here</a>)
+@fa[download fa-3x]
+## Download the correct version for your system [here]("https://www.getpostman.com/apps")
 
 +++
 
