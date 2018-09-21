@@ -13,8 +13,8 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 
 ---
 
-@snap[north-west]
-<h3>Download the correct version for your system [here]("https://www.getpostman.com/apps")</h3>
+@snap[south-west]
+Download the correct version for your system [here]("https://www.getpostman.com/apps")
 @snapend
 
 @snap[midpoint]
