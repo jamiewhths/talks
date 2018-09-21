@@ -17,27 +17,25 @@ Download the correct version for your system [here]("https://www.getpostman.com/
 ![Postman Apps](activityinfo/api/data-model/img/postman-apps.png)
 
 +++
-@fa[download fa-3x]
-@snap[south]
+
 Download the ActivityInfo API Collection from [here](https://github.com/jamiewhths/talks/activityinfo/api/data-model/resources/collections.api)
-@snapend
+@fa[download fa-3x]
+
 +++
-![Postman Install](activityinfo/api/data-model/img/postman-installed.png)
-@snap[south]
+
 Install Postman (no need to sign up for an account)
-@snapend
+![Postman Install](activityinfo/api/data-model/img/postman-installed.png)
+
 +++
 
-![Import](activityinfo/api/data-model/img/postman-import-button.png)
-@snap[south]
 Select "Import" from the top-left corner
-@snapend
-+++?layout=center
+![Import](activityinfo/api/data-model/img/postman-import-button.png)
 
-![Import](activityinfo/api/data-model/img/postman-import-screen.png)
-@snap[south]
++++
+
 On the Import Screen, select "Browse Files" and find the ActivityInfo API collection
-@snapend
+![Import](activityinfo/api/data-model/img/postman-import-screen.png)
+
 ---
 
 ### Next slide
