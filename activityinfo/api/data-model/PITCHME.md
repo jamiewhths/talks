@@ -145,13 +145,11 @@ GET https://activityinfo.org/resources/database/{databaseId}
 
 ---
 
-@snap[east]
 ![Form in UI - Design](activityinfo/api/data-model/img/form-design.png)
-@snapend
 
-@snap[west]
+---
+
 ![Form in UI - Data Entry](activityinfo/api/data-model/img/form-data-entry.png)
-@snapend
 
 ---
 
