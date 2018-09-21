@@ -13,7 +13,7 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 
 +++
 
-@snap[center]
+@snap[midpoint]
 @fa[download fa-3x]
 @snapend
 
