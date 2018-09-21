@@ -77,11 +77,11 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 
 ---
 
-![](activityinfo/api/data-model/img/database.png)
+![Database in UI](activityinfo/api/data-model/img/database.png)
 
 ---
 
-![](activityinfo/api/data-model/img/database-context.png)
+![Database in Context](activityinfo/api/data-model/img/database-context.png)
 
 ---
 
