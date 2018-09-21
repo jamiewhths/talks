@@ -11,10 +11,14 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 @fa[arrow-down]
 @snapend
 
----?image=activityinfo/api/data-model/img/postman-apps.png&size=auto 75%
+---
 
 @snap[north]
 Download the correct version for your system [here]("https://www.getpostman.com/apps")
+@snapend
+
+@snap[south]
+![](activityinfo/api/data-model/img/postman-apps.png)
 @snapend
 
 ---
