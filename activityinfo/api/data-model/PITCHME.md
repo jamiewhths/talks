@@ -81,6 +81,10 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 
 ---
 
+![](activityinfo/api/data-model/img/database-context.png)
+
+---
+
 ```
 GET https://activityinfo.org/resources/database/{databaseId}
 ```
@@ -171,5 +175,7 @@ GET https://activityinfo.org/resources/form/{formId}
 @[3](Form Schema Version)
 @[4](Database Id)
 @[5](Form Label/Name)
-@[6-15](Form Elements/Fields)
+@[6-15](Form Elements i.e. Fields)
+
+---
 
