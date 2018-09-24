@@ -195,81 +195,14 @@ GET https://activityinfo.org/resources/database/9909
 
 ## Database Schema (1/2)
 
-<table>
-  <tr>
-    <th>Attribute</th>
-    <th>Type</th>
-    <th>Notes</th>
-  </tr>
-  <tr>
-    <td>databaseId</td>
-    <td>string</td>
-    <td>Has form 'L0000000000'</td>
-  </tr>
-  <tr>
-    <td>userId</td>
-    <td>int</td>
-    <td>-</td>
-  </tr>
-  <tr>
-    <td>label</td>
-    <td>string</td>
-    <td>-</td>
-  </tr>
-  <tr>
-    <td>visible</td>
-    <td>boolean</td>
-    <td>-</td>
-  </tr>
-  <tr>
-    <td>owner</td>
-    <td>boolean</td>
-    <td>-</td>
-  </tr>
-</table>
-
-+++
-
-## Database Schema (2/2)
-
-<table>
-	<tr>
-    <th>Attribute</th>
-    <th>Type</th>
-    <th>Notes</th>
-  	</tr>
-	<tr>
-    <td>version</td>
-    <td>string</td>
-    <td>Has form '0+' for database owners, or '0+#0+' for database users</td>
-  </tr>
-  <tr>
-    <td>resources</td>
-    <td>array of Resource objects</td>
-    <td>-</td>
-  </tr>
-  <tr>
-    <td>grants</td>
-    <td>array of GrantModel objects</td>
-    <td>-</td>
-  </tr>
-  <tr>
-    <td>locks</td>
-    <td>array of LockModel objects</td>
-    <td>-</td>
-  </tr>
-</table>
-
-+++
-
 ```json
 Database: {
-    "databaseId": string (with form 'L0000000000'),
+    "databaseId": string, // (with form 'L0000000000')
     "userId": int,
     "label": string,
     "visible": boolean,
     "owner": boolean,
-    "version": string (with form '0+' for database owners, or '0+#0+' for database users),
+    "version": string, // (with form '0+' for database owners, or '0+#0+' for database users)
     "resources": [ Resource ],
     "grants": [ GrantModel ],
     "locks": [ LockModel ]
@@ -280,9 +213,9 @@ Database: {
 
 ```json
 Resource: {
-	"id": string (with form 'L0000000000')
-	"parentId": string (with form 'L0000000000')
-	"type": enum { "FORM", "FOLDER" } 
+	"id": string, // (with form 'L0000000000')
+	"parentId": string, // (with form 'L0000000000')
+	"type": string, // one of { "FORM", "FOLDER" } 
 	"label": string
 }
 ```
