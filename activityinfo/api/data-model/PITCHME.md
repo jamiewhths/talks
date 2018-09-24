@@ -341,6 +341,10 @@ GET https://activityinfo.org/resources/form/{formId}/query/columns
 
 +++
 
+## Row-Format Example
+
++++
+
 For this example, we will send the following request:
 
 ```
@@ -349,7 +353,76 @@ GET https://activityinfo.org/resources/form/a1234567890/query/rows
 
 +++
 
+```json
+{
+    "id": "a2145506925",
+    "schemaVersion": 1,
+    "databaseId": "d0000009699",
+    "label": "Greek Schools Book Provision",
+    "elements": [
+		  {
+            "id": "a21455069250000000014",
+            "label": "Comments",
+            "visible": true,
+            "required": false,
+            "type": "NARRATIVE"
+        },
+        ...
+    ]
+}
+```
 
+@[6-15](Form Elements)
 
++++
+
+## Column-Format Example
+
++++
+
+For this example, we will send the following request:
+
+```
+GET https://activityinfo.org/resources/form/a1234567890/query/column
+```
+
++++
+
+```json
+{
+    "id": "a2145506925",
+    "schemaVersion": 1,
+    "databaseId": "d0000009699",
+    "label": "Greek Schools Book Provision",
+    "elements": [
+		  {
+            "id": "a21455069250000000014",
+            "label": "Comments",
+            "visible": true,
+            "required": false,
+            "type": "NARRATIVE"
+        },
+        ...
+    ]
+}
+```
+
+@[6-15](Form Elements)
+
+---
+
+# Reference Fields
+
+---
+
+# Sub-Forms
+
+---
+
+# Sub-Form Records
+
+---
+
+# Key Fields
 
 
