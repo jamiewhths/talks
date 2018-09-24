@@ -85,7 +85,7 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 
 +++
 
-![Database in UI](activityinfo/api/data-model/img/database.png)
+! Database in UI goes here !
 
 +++
 
@@ -95,6 +95,12 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 
 ```
 GET https://activityinfo.org/resources/database/{databaseId}
+```
+
+For this example, we will send the follwoing request:
+
+```
+GET https://activityinfo.org/resources/database/d1234567890
 ```
 
 +++
@@ -157,11 +163,11 @@ GET https://activityinfo.org/resources/database/{databaseId}
 
 +++
 
-![Form in UI - Design](activityinfo/api/data-model/img/form-design.png)
+! Form in UI (design) goes here !
 
 +++
 
-![Form in UI - Data Entry](activityinfo/api/data-model/img/form-data-entry.png)
+! Form in UI (data entry) goes here !
 
 +++
 
@@ -178,7 +184,13 @@ Forms can be held at the root level within a Database...
 +++
 
 ```
-GET https://activityinfo.org/resources/form/{formId}
+GET https://activityinfo.org/resources/form/{formId}/schema
+```
+
+For this example, we will send the follwoing request:
+
+```
+GET https://activityinfo.org/resources/form/a1234567890/schema
 ```
 
 +++
@@ -225,7 +237,54 @@ GET https://activityinfo.org/resources/form/{formId}
 ## @color[#00CF79](Field)
 
 - Represents a specific type of data to be collected
-- A field is...
+- Have different sets of properties depending on the Field Type
+
++++
+
+! Field in UI goes here !
+
++++
+
+![Field in Context](activityinfo/api/data-model/img/field-in-context.png)
+
++++
+
+```
+GET https://activityinfo.org/resources/form/{formId}/schema
+```
+
+For this example, we will send the follwoing request:
+
+```
+GET https://activityinfo.org/resources/form/a1234567890/schema
+```
+
++++
+
+Let us focus on the "elements" property of the schema:
+
++++
+
+```json
+{
+    "id": "a2145506925",
+    "schemaVersion": 1,
+    "databaseId": "d0000009699",
+    "label": "Greek Schools Book Provision",
+    "elements": [
+		  {
+            "id": "a21455069250000000014",
+            "label": "Comments",
+            "visible": true,
+            "required": false,
+            "type": "NARRATIVE"
+        },
+        ...
+    ]
+}
+```
+
+@[6-15](Form Elements)
 
 ---
 
