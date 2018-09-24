@@ -641,6 +641,8 @@ GET https://activityinfo.org/resources/form/a1234567890/schema
 }
 ```
 
+@[2](Always has id `{formId}0000000012`)
+
 +++
 
 ## Built-in Fields
@@ -658,11 +660,12 @@ GET https://activityinfo.org/resources/form/a1234567890/schema
 	"type": "date"
 }
 ```
+@[2](Always has id `{formId}0000000013`)
 
 +++
 
 ## Built-in Fields
-### Partner
+### Partner (Required)
 
 ```json
 {
@@ -684,7 +687,7 @@ GET https://activityinfo.org/resources/form/a1234567890/schema
 	}
 }
 ```
-This field is **required** and cannot be removed.
+@[2](Always has id `{formId}0000000007`)
 
 +++
 
@@ -711,6 +714,7 @@ This field is **required** and cannot be removed.
 	}
 }
 ```
+@[2](Always has id `{formId}0000000008`)
 
 +++
 
@@ -729,6 +733,7 @@ This field is **required** and cannot be removed.
 	"type": "NARRATIVE"
 }
 ```
+@[2](Always has id `{formId}0000000014`)
 
 +++
 
