@@ -1183,7 +1183,7 @@ GET https://activityinfo.org/resources/form/a1234567890/query/columns
 @[3](`columns` gives the columns returned, with each column as a separate attribute)
 @[4](Just like the `/rows` endpoint, the Query API will return fields by their code, or by their label otherwise)
 @[5](Defines the JSON data type for the given column)
-@[6](Defines how the value has been returned <ul><li>'empty' for an empty column</li><li>'constant' for a constant calue repeated for each row</li><li>'array' for an array of values for each row</li></ul>)
+@[6](Defines the storage method: 'empty' for an empty column, 'constant' for a constant value for all rows, or 'array' for a separate value for each row)
 @[7-11](The returned values for each row)
 
 ---
