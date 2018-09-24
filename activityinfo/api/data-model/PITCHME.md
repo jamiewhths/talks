@@ -165,7 +165,15 @@ GET https://activityinfo.org/resources/database/{databaseId}
 
 +++
 
-![Form in Context](activityinfo/api/data-model/img/form-context.png)
+![Form in Context - Root Folder](activityinfo/api/data-model/img/form-context-1.png)
+
+Forms can be held at the root level within a Database...
+
++++
+
+![Form in Context - Folder](activityinfo/api/data-model/img/form-context-2.png)
+
+...or within a user-created Folder.
 
 +++
 
