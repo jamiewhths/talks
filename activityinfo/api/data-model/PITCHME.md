@@ -621,13 +621,13 @@ GET https://activityinfo.org/resources/form/a1234567890/schema
     ]
 }
 ```
-@[6-15](We will focus on the "elements" property of the Form schema)
+@[6-15](We will focus on the "elements" property of the Form schema...)
 
 +++ 
 
 ## Common Field Attributes
 
-```json
+```
 FormField: {
 	"id": string,
 	"code": string,
@@ -636,11 +636,12 @@ FormField: {
 	"relevanceCondition": string,
 	"visible": boolean,
 	"required": boolean,
-	"type": string
+	"type": string,
+	"typeParameters": { FieldTypeParameter }
 }
 ```
 
-@[2](Form depends on Field Type)
+@[2](Id of Field - exact form depends on Field Type)
 @[3](User defined 'short code' for the Field, if any)
 @[4](Name of the Field as it appears in Data Entry)
 @[5](Description of the Field for Users in Data Entry, if any)
@@ -648,6 +649,7 @@ FormField: {
 @[7](Defines whether Field appears to User in Data Entry)
 @[8](Defines whether Field must have data)
 @[9](Defines the Field Type)
+@[10](Set of parameters which depend on Field Type)
 
 +++
 
@@ -1055,31 +1057,43 @@ GET https://activityinfo.org/resources/form/{formId}/query/columns
 For this example, we will send the following request:
 
 ```
-GET https://activityinfo.org/resources/form/a1234567890/query/rows
+GET https://activityinfo.org/resources/form/a2145507921/query/rows
 ```
 
 +++
 
 ```json
-{
-    "id": "a2145506925",
-    "schemaVersion": 1,
-    "databaseId": "d0000009699",
-    "label": "Greek Schools Book Provision",
-    "elements": [
-		  {
-            "id": "a21455069250000000014",
-            "label": "Comments",
-            "visible": true,
-            "required": false,
-            "type": "NARRATIVE"
-        },
-        ...
-    ]
-}
+[
+    {
+        "comments": "Third Record",
+        "User-Added Field": 3,
+        "partner.label": "Default",
+        "@id": "s0044598181",
+        "date2": "2018-10-31",
+        "date1": "2018-10-01"
+    },
+    {
+        "comments": "Second Record",
+        "User-Added Field": 2,
+        "partner.label": "Default",
+        "@id": "s0517446917",
+        "date2": "2018-09-30",
+        "date1": "2018-09-01"
+    },
+    {
+        "comments": "First Record",
+        "User-Added Field": 1,
+        "partner.label": "Default",
+        "@id": "s1625985119",
+        "date2": "2018-09-25",
+        "date1": "2018-09-24"
+    }
+]
 ```
 
-@[6-15](Form Elements)
+@[6](The '@id' Field gives Form Record Id)
+@[8](The Query API will return fields by their code, if defined...)
+@[12](...or by their full label otherwise.)
 
 +++
 
@@ -1090,31 +1104,87 @@ GET https://activityinfo.org/resources/form/a1234567890/query/rows
 For this example, we will send the following request:
 
 ```
-GET https://activityinfo.org/resources/form/a1234567890/query/column
+GET https://activityinfo.org/resources/form/a1234567890/query/columns
 ```
 
 +++
 
 ```json
 {
-    "id": "a2145506925",
-    "schemaVersion": 1,
-    "databaseId": "d0000009699",
-    "label": "Greek Schools Book Provision",
-    "elements": [
-		  {
-            "id": "a21455069250000000014",
-            "label": "Comments",
-            "visible": true,
-            "required": false,
-            "type": "NARRATIVE"
+    "rows": 3,
+    "columns": {
+        "comments": {
+            "type": "STRING",
+            "storage": "array",
+            "values": [
+                "Third Record",
+                "Second Record",
+                "First Record"
+            ]
         },
-        ...
-    ]
+        "User-Added Field": {
+            "type": "NUMBER",
+            "storage": "array",
+            "values": [
+                3,
+                2,
+                1
+            ]
+        },
+        "project.label": {
+            "type": "STRING",
+            "storage": "empty"
+        },
+        "project.Description": {
+            "type": "STRING",
+            "storage": "empty"
+        },
+        "partner.label": {
+            "type": "STRING",
+            "storage": "constant",
+            "value": "Default"
+        },
+        "@id": {
+            "type": "STRING",
+            "storage": "array",
+            "values": [
+                "s0044598181",
+                "s0517446917",
+                "s1625985119"
+            ]
+        },
+        "date2": {
+            "type": "STRING",
+            "storage": "array",
+            "values": [
+                "2018-10-31",
+                "2018-09-30",
+                "2018-09-25"
+            ]
+        },
+        "date1": {
+            "type": "STRING",
+            "storage": "array",
+            "values": [
+                "2018-10-01",
+                "2018-09-01",
+                "2018-09-24"
+            ]
+        },
+        "partner.Full Name": {
+            "type": "STRING",
+            "storage": "empty"
+        }
+    }
 }
 ```
 
-@[6-15](Form Elements)
+@[2](`rows` gives the number of data rows returned)
+@[3](`columns` gives the array of columns returned)
+@[4](Just like the /rows endpoint, the Query API will return fields by their code, or by their label otherwise)
+@[5](Defines the JSON data type for the given column)
+@[6](Defines how the value has been returned - 'empty' for an empty column, 'constant' for a constant calue repeated for each row, or 'array' for an array of values for each row)
+@[7-11](The returned values for each row)
 
 ---
 
