@@ -147,7 +147,7 @@ GET https://activityinfo.org/resources/database/d1234567890
 # Form
 
 @snap[east]
-@fa[file-text fa-5x]
+@fa[file fa-5x]
 @snapend
 
 @snap[south]
@@ -287,6 +287,20 @@ Let us focus on the "elements" property of the schema:
 @[6-15](Form Elements)
 
 ---
+
+# Form Records
+
+@snap[east]
+@fa[file-text fa-5x]
+@snapend
+
+@snap[south]
+@fa[arrow-down]
+@snapend
+
+---
+
+
 
 
 
