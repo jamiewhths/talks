@@ -15,7 +15,7 @@ From this presentation, you should understand:
 ## Topics
 - Databases
 - Forms
-- Fields
+- Form Fields
 - Form Records
 - Reference Fields
 - Sub Forms
@@ -282,24 +282,27 @@ GET https://activityinfo.org/resources/form/{formId}/schema
 For this example, we will send the following request:
 
 ```
-GET https://activityinfo.org/resources/form/a1234567890/schema
+GET https://activityinfo.org/resources/form/a2145507921/schema
 ```
 
 +++
 
 ```json
 {
-    "id": "a2145506925",
+    "id": "a2145507921",
     "schemaVersion": 1,
-    "databaseId": "d0000009699",
-    "label": "Greek Schools Book Provision",
+    "databaseId": "d0000009909",
+    "label": "Basic Form",
     "elements": [
-		  {
-            "id": "a21455069250000000014",
-            "label": "Comments",
+        {
+            "id": "a21455079210000000012",
+            "code": "date1",
+            "label": "Start Date",
+            "description": null,
+            "relevanceCondition": null,
             "visible": true,
-            "required": false,
-            "type": "NARRATIVE"
+            "required": true,
+            "type": "date"
         },
         ...
     ]
@@ -310,11 +313,28 @@ GET https://activityinfo.org/resources/form/a1234567890/schema
 @[3](Form Schema Version)
 @[4](Database Id)
 @[5](Form Label/Name)
-@[6-15](Form Elements i.e. Fields)
+@[6-16](Form Elements i.e. Fields)
+
++++
+
+## Form Schema
+
+```
+Form: {
+	"id": string,
+	"schemaVersion": int,
+	"databaseId": string,
+	"label": string,
+	"elements": [ FormField ]
+}
+```
+
+@[2](Has form `L0000000000`)
+@[4](Has form `L0000000000`)
 
 ---
 
-# Field 
+# Form Field 
 
 @snap[east]
 @fa[th-list fa-5x]
