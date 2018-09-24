@@ -193,7 +193,7 @@ GET https://activityinfo.org/resources/database/9909
 
 +++
 
-## Database Schema 
+## Database Schema (1/2)
 
 <table>
   <tr>
@@ -226,7 +226,19 @@ GET https://activityinfo.org/resources/database/9909
     <td>boolean</td>
     <td>-</td>
   </tr>
-  <tr>
+</table>
+
++++
+
+## Database Schema (2/2)
+
+<table>
+	<tr>
+    <th>Attribute</th>
+    <th>Type</th>
+    <th>Notes</th>
+  	</tr>
+	<tr>
     <td>version</td>
     <td>string</td>
     <td>Has form '0+' for database owners, or '0+#0+' for database users</td>
