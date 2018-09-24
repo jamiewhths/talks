@@ -3,6 +3,27 @@
 
 ---
 
+## Topics
+- Databases
+- Forms
+- Fields
+- Form Records
+- Reference Fields
+- Sub Forms
+- Sub Form Records
+- Key Fields
+
+---
+
+## Learning Outcomes
+From this presentation, you should understand:
+- The basic objects of the ActivityInfo Data Model, and their structure
+- The relationship between elements of the Data Model
+- How to retrieve data from the ActivityInfo system 
+- The basic concepts needed to construct queries for the ActivityInfo Query API
+
+---
+
 ## @color[#00CF79](Set-up)
 
 Before we start, we need to set up our REST Client [Postman](https://www.getpostman.com/)
