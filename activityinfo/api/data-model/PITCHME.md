@@ -361,7 +361,7 @@ Form: {
 
 +++
 
-Field is defined within a Form Schema. Therefore we use a generic request for Form Schema:
+Form Field is defined within a Form Schema. Therefore we use a generic request for Form Schema:
 
 ```
 GET https://activityinfo.org/resources/form/{formId}/schema
@@ -377,30 +377,520 @@ GET https://activityinfo.org/resources/form/a1234567890/schema
 
 +++
 
-Let us focus on the "elements" property of the schema:
-
-+++
-
 ```json
 {
-    "id": "a2145506925",
+    "id": "a2145507922",
     "schemaVersion": 1,
-    "databaseId": "d0000009699",
-    "label": "Greek Schools Book Provision",
+    "databaseId": "d0000009909",
+    "label": "Field Types",
     "elements": [
-		  {
-            "id": "a21455069250000000014",
+        {
+            "id": "a21455079220000000012",
+            "code": "date1",
+            "label": "Start Date",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": true,
+            "type": "date"
+        },
+        {
+            "id": "a21455079220000000013",
+            "code": "date2",
+            "label": "End Date",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": true,
+            "type": "date"
+        },
+        {
+            "id": "a21455079220000000007",
+            "code": "partner",
+            "label": "Partner",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": true,
+            "type": "reference",
+            "typeParameters": {
+                "cardinality": "single",
+                "range": [
+                    {
+                        "formId": "P0000009909"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "a21455079220000000008",
+            "code": "project",
+            "label": "Project",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": false,
+            "required": false,
+            "type": "reference",
+            "typeParameters": {
+                "cardinality": "single",
+                "range": [
+                    {
+                        "formId": "R0000009909"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "a21455079220000000014",
+            "code": "comments",
             "label": "Comments",
+            "description": null,
+            "relevanceCondition": null,
             "visible": true,
             "required": false,
             "type": "NARRATIVE"
         },
-        ...
+        {
+            "id": "i0596827260",
+            "code": null,
+            "label": "Serial Number",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": false,
+            "type": "serial",
+            "typeParameters": {
+                "prefixFormula": "LLL000",
+                "digits": 5
+            }
+        },
+        {
+            "id": "i1628839564",
+            "code": null,
+            "label": "Quantity",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": false,
+            "type": "quantity",
+            "typeParameters": {
+                "units": "households",
+                "aggregation": "SUM"
+            }
+        },
+        {
+            "id": "i2010895222",
+            "code": null,
+            "label": "Text",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": false,
+            "type": "FREE_TEXT",
+            "typeParameters": {}
+        },
+        {
+            "id": "i2003200244",
+            "code": null,
+            "label": "Multi-line text",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": false,
+            "type": "NARRATIVE"
+        },
+        {
+            "id": "i0747756921",
+            "code": null,
+            "label": "Date",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": false,
+            "type": "date"
+        },
+        {
+            "id": "Q0290875264",
+            "code": null,
+            "label": "Which options apply?",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": false,
+            "type": "enumerated",
+            "typeParameters": {
+                "cardinality": "multiple",
+                "presentation": "automatic",
+                "values": [
+                    {
+                        "id": "t0290490515",
+                        "label": "Option 1"
+                    },
+                    {
+                        "id": "t0291067638",
+                        "label": "Option 2"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "Q0225083202",
+            "code": null,
+            "label": "Which choice would you choose?",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": false,
+            "type": "enumerated",
+            "typeParameters": {
+                "cardinality": "single",
+                "presentation": "automatic",
+                "values": [
+                    {
+                        "id": "t0226237449",
+                        "label": "Option 1"
+                    },
+                    {
+                        "id": "t0225275577",
+                        "label": "Option 2"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "i0583669177",
+            "code": null,
+            "label": "Geographic point",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": false,
+            "type": "geopoint"
+        },
+        {
+            "id": "i0405530436",
+            "code": null,
+            "label": "Barcode",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": false,
+            "type": "barcode"
+        },
+        {
+            "id": "i0856840896",
+            "code": null,
+            "label": "Image",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": false,
+            "type": "attachment",
+            "typeParameters": {
+                "cardinality": "single",
+                "kind": "image"
+            }
+        },
+        {
+            "id": "i0795281072",
+            "code": null,
+            "label": "Attachments",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": false,
+            "type": "attachment",
+            "typeParameters": {
+                "cardinality": "single",
+                "kind": "attachment"
+            }
+        },
+        {
+            "id": "i1380676524",
+            "code": null,
+            "label": "Calculated",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": false,
+            "type": "calculated",
+            "typeParameters": {
+                "formula": "[Quantity] * 2"
+            }
+        }
     ]
 }
 ```
+@[6-15](We will focus on the "elements" property of the Form schema)
 
-@[6-15](Form Elements)
++++ 
+
+## Built-in Fields
+```json
+"elements": [
+	{
+		"id": "a21455079220000000012",
+		"code": "date1",
+		"label": "Start Date",
+		"description": null,
+		"relevanceCondition": null,
+		"visible": true,
+		"required": true,
+		"type": "date"
+	},
+	{
+		"id": "a21455079220000000013",
+		"code": "date2",
+		"label": "End Date",
+		"description": null,
+		"relevanceCondition": null,
+		"visible": true,
+		"required": true,
+		"type": "date"
+	},
+	{
+		"id": "a21455079220000000007",
+		"code": "partner",
+		"label": "Partner",
+		"description": null,
+		"relevanceCondition": null,
+		"visible": true,
+		"required": true,
+		"type": "reference",
+		"typeParameters": {
+		    "cardinality": "single",
+		    "range": [
+		        {
+		            "formId": "P0000009909"
+		        }
+		    ]
+		}
+	},
+	{
+		"id": "a21455079220000000008",
+		"code": "project",
+		"label": "Project",
+		"description": null,
+		"relevanceCondition": null,
+		"visible": false,
+		"required": false,
+		"type": "reference",
+		"typeParameters": {
+		    "cardinality": "single",
+		    "range": [
+		        {
+		            "formId": "R0000009909"
+		        }
+		    ]
+		}
+	},
+	{
+		"id": "a21455079220000000014",
+		"code": "comments",
+		"label": "Comments",
+		"description": null,
+		"relevanceCondition": null,
+		"visible": true,
+		"required": false,
+		"type": "NARRATIVE"
+	}
+]
+```
+
+@[2-11](Built-in Start Date Field)
+@[12-21](Built-in End Date Field)
+@[22-39](Built-in Partner Field **Required**)
+@[40-57](Built-in Project Field)
+@[58-67](Built-in Comments Field)
+
++++
+
+## Field Types
+```json
+"elements": [
+	{
+		"id": "i0596827260",
+		"code": null,
+		"label": "Serial Number",
+		"description": null,
+		"relevanceCondition": null,
+		"visible": true,
+		"required": false,
+		"type": "serial",
+		"typeParameters": {
+		    "prefixFormula": "LLL000",
+		    "digits": 5
+		}
+	},
+	{
+		"id": "i1628839564",
+		"code": null,
+		"label": "Quantity",
+		"description": null,
+		"relevanceCondition": null,
+		"visible": true,
+		"required": false,
+		"type": "quantity",
+		"typeParameters": {
+		    "units": "households",
+		    "aggregation": "SUM"
+		}
+	},
+	{
+		"id": "i2010895222",
+		"code": null,
+		"label": "Text",
+		"description": null,
+		"relevanceCondition": null,
+		"visible": true,
+		"required": false,
+		"type": "FREE_TEXT",
+		"typeParameters": {}
+	},
+	{
+		"id": "i2003200244",
+		"code": null,
+		"label": "Multi-line text",
+		"description": null,
+		"relevanceCondition": null,
+		"visible": true,
+		"required": false,
+		"type": "NARRATIVE"
+	},
+	{
+		"id": "i0747756921",
+		"code": null,
+		"label": "Date",
+		"description": null,
+		"relevanceCondition": null,
+		"visible": true,
+		"required": false,
+		"type": "date"
+	},
+	{
+		"id": "Q0290875264",
+		"code": null,
+		"label": "Which options apply?",
+		"description": null,
+		"relevanceCondition": null,
+		"visible": true,
+		"required": false,
+		"type": "enumerated",
+		"typeParameters": {
+		    "cardinality": "multiple",
+		    "presentation": "automatic",
+		    "values": [
+		        {
+		            "id": "t0290490515",
+		            "label": "Option 1"
+		        },
+		        {
+		            "id": "t0291067638",
+		            "label": "Option 2"
+		        }
+		    ]
+		}
+	},
+	{
+		"id": "Q0225083202",
+		"code": null,
+		"label": "Which choice would you choose?",
+		"description": null,
+		"relevanceCondition": null,
+		"visible": true,
+		"required": false,
+		"type": "enumerated",
+		"typeParameters": {
+		    "cardinality": "single",
+		    "presentation": "automatic",
+		    "values": [
+		        {
+		            "id": "t0226237449",
+		            "label": "Option 1"
+		        },
+		        {
+		            "id": "t0225275577",
+		            "label": "Option 2"
+		        }
+		    ]
+		}
+	},
+	{
+		"id": "i0583669177",
+		"code": null,
+		"label": "Geographic point",
+		"description": null,
+		"relevanceCondition": null,
+		"visible": true,
+		"required": false,
+		"type": "geopoint"
+	},
+	{
+		"id": "i0405530436",
+		"code": null,
+		"label": "Barcode",
+		"description": null,
+		"relevanceCondition": null,
+		"visible": true,
+		"required": false,
+		"type": "barcode"
+	},
+	{
+		"id": "i0856840896",
+		"code": null,
+		"label": "Image",
+		"description": null,
+		"relevanceCondition": null,
+		"visible": true,
+		"required": false,
+		"type": "attachment",
+		"typeParameters": {
+		    "cardinality": "single",
+		    "kind": "image"
+		}
+	},
+	{
+		"id": "i0795281072",
+		"code": null,
+		"label": "Attachments",
+		"description": null,
+		"relevanceCondition": null,
+		"visible": true,
+		"required": false,
+		"type": "attachment",
+		"typeParameters": {
+		    "cardinality": "single",
+		    "kind": "attachment"
+		}
+	},
+	{
+		"id": "i1380676524",
+		"code": null,
+		"label": "Calculated",
+		"description": null,
+		"relevanceCondition": null,
+		"visible": true,
+		"required": false,
+		"type": "calculated",
+		"typeParameters": {
+		    "formula": "[Quantity] * 2"
+		}
+	}
+]
+```
+
+@[2-15](Serial Number Field)
+@[16-29](Quantity Field)
+@[30-40](Text Field)
+@[41-50](Multi-Line Text Field)
+@[51-60](Date Field)
+@[61-84](Multiple Selection Field)
+@[85-108](Single Selection Field)
+@[109-118](Geographic Point Field)
+@[119-128](Barcode Field)
+@[129-142](Image Field)
+@[143-156](Attachments Field)
+@[157-169](Calculated Field)
 
 ---
 
