@@ -1319,6 +1319,22 @@ GET https://activityinfo.org/resources/form/a2145507921/query/rows?record=commen
 
 # Sub-Forms
 
+@snap[east]
+@fa[file fa-5x]
+@snapend
+
+@snap[south]
+@fa[arrow-down]
+@snapend
+
++++
+
+## @color[#00CF79](Sub-Form)
+
+- Defines the various data to be collected, and how they link together
+- Composed of one or more Fields which represent a type of data to be collected
+
+
 ---
 
 # Sub-Form Records
