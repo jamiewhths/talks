@@ -93,11 +93,15 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 
 +++
 
+Generic Request for Database Schema:
+
 ```
 GET https://activityinfo.org/resources/database/{databaseId}
 ```
 
-For this example, we will send the follwoing request:
++++
+
+For this example, we will send the following request:
 
 ```
 GET https://activityinfo.org/resources/database/d1234567890
@@ -183,11 +187,15 @@ Forms can be held at the root level within a Database...
 
 +++
 
+Generic Request for Form Schema:
+
 ```
 GET https://activityinfo.org/resources/form/{formId}/schema
 ```
 
-For this example, we will send the follwoing request:
++++
+
+For this example, we will send the following request:
 
 ```
 GET https://activityinfo.org/resources/form/a1234567890/schema
@@ -249,11 +257,15 @@ GET https://activityinfo.org/resources/form/a1234567890/schema
 
 +++
 
+Field is defined within a Form Scham. Therefore we use a generic request for Form Schema:
+
 ```
 GET https://activityinfo.org/resources/form/{formId}/schema
 ```
 
-For this example, we will send the follwoing request:
++++
+
+For this example, we will send the following request:
 
 ```
 GET https://activityinfo.org/resources/form/a1234567890/schema
@@ -298,10 +310,44 @@ Let us focus on the "elements" property of the schema:
 @fa[arrow-down]
 @snapend
 
----
++++
 
+## @color[#00CF79](Form Records)
 
+- Created when a User submits an entry to a Form
+- Data which can be entered by User defined by the Form and Field Types
 
++++
+
+! Form Record in UI goes here !
+
++++
+
+![Form Record in Context](activityinfo/api/data-model/img/form-record-context.png)
+
++++
+
+Generic Request for Form Records (in row-format):
+
+```
+GET https://activityinfo.org/resources/form/{formId}/schema
+```
+
+Generic Request for Form Records (in column-format):
+
+```
+GET https://activityinfo.org/resources/form/{formId}/schema
+```
+
++++
+
+For this example, we will send the following request:
+
+```
+GET https://activityinfo.org/resources/form/a1234567890/query/rows
+```
+
++++
 
 
 
