@@ -330,13 +330,13 @@ Let us focus on the "elements" property of the schema:
 Generic Request for Form Records (in row-format):
 
 ```
-GET https://activityinfo.org/resources/form/{formId}/schema
+GET https://activityinfo.org/resources/form/{formId}/query/rows
 ```
 
 Generic Request for Form Records (in column-format):
 
 ```
-GET https://activityinfo.org/resources/form/{formId}/schema
+GET https://activityinfo.org/resources/form/{formId}/query/columns
 ```
 
 +++
