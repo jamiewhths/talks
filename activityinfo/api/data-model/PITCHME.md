@@ -278,7 +278,7 @@ GET https://activityinfo.org/resources/form/a1234567890/schema
 
 +++
 
-Field is defined within a Form Scham. Therefore we use a generic request for Form Schema:
+Field is defined within a Form Schema. Therefore we use a generic request for Form Schema:
 
 ```
 GET https://activityinfo.org/resources/form/{formId}/schema
