@@ -227,7 +227,7 @@ Resource: {
 
 @[2](Has form 'L0000000000')
 @[3](Has form 'L0000000000')
-@[4](Enum choice of { "FORM", "FOLDER" })
+@[4](Enum choice of `{"FORM", "FOLDER"}`)
 
 ---
 
