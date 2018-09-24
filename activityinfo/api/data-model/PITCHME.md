@@ -1188,7 +1188,7 @@ GET https://activityinfo.org/resources/form/a1234567890/query/columns
 
 ---
 
-# Reference Fields
+# References
 
 @snap[east]
 @fa[link fa-5x]
@@ -1202,9 +1202,9 @@ GET https://activityinfo.org/resources/form/a1234567890/query/columns
 
 ## @color[#00CF79](Reference Fields)
 
-- A particular Field Type which allows for soft linking of one Form to another
-- Allows Users to select a Form Record from another Form (e.g. a Location, Partner, etc.)
-- Using this link, Users can construct queries to obtain data from a referenced Form
+- A particular Field Type which allows one Form to reference another Form
+- Users can select a Form Record from another Form (e.g. a Location, Partner, etc.)
+- Can then construct queries to obtain data from a referenced Form
 
 +++
 
@@ -1279,47 +1279,41 @@ GET https://activityinfo.org/resources/form/a2145507921/query/columns?referenceF
 
 Now that we have established a link from our form to the Partner Form, we can get further data from the Partner Form by creating a query formula.
 
++++
+
+## Using References in Query API
+
 A Field from another Form can be referenced by:
-- Getting the code/label of the Reference Field in your Form (e.g. 'partner')
-- Getting the Field you wish to extract data from on the referenced Form (e.g. 'label' for the Partner's Name Field)
+- Finding the code/label of the Reference Field in your Form (e.g. 'partner')
+- Finding the Field you wish to extract data from on the referenced Form (e.g. 'label' for the Partner's Name Field)
+- Creating a query formula via dot '.' notation (i.e. "partner.label")
 
 +++
 
 Let's get the Partner's Name for each record on our Form:
 
 ```
-GET https://activityinfo.org/resources/form/a2145507921/query/columns?record=comments&partnerName=partner.label
+GET https://activityinfo.org/resources/form/a2145507921/query/rows?record=comments&partnerName=partner.label
 ```
 
 +++
 
 ```json
-{
-    "rows": 3,
-    "columns": {
-        "partnerName": {
-            "type": "STRING",
-            "storage": "array",
-            "values": [
-                "Default",
-                "BeDataDriven",
-                "Default"
-            ]
-        },
-        "record": {
-            "type": "STRING",
-            "storage": "array",
-            "values": [
-                "Third Record",
-                "Second Record",
-                "First Record"
-            ]
-        }
+[
+    {
+        "partnerName": "Default",
+        "record": "Third Record"
+    },
+    {
+        "partnerName": "BeDataDriven",
+        "record": "Second Record"
+    },
+    {
+        "partnerName": "Default",
+        "record": "First Record"
     }
-}
+]
 ```
-
-@[7-11](The returned values for each row gives the Partner's Name, which is only defined on the Partner Form 'P0000009909')
 
 ---
 
