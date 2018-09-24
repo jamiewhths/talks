@@ -1190,6 +1190,137 @@ GET https://activityinfo.org/resources/form/a1234567890/query/columns
 
 # Reference Fields
 
+@snap[east]
+@fa[link fa-5x]
+@snapend
+
+@snap[south]
+@fa[arrow-down]
+@snapend
+
++++
+
+## @color[#00CF79](Reference Fields)
+
+- A particular Field Type which allows for soft linking of one Form to another
+- Allows Users to select a Form Record from another Form (e.g. a Location, Partner, etc.)
+- Using this link, Users can construct queries to obtain data from a referenced Form
+
++++
+
+## Reference Field Schema
+
+Let's get the schema of an already created Reference Field - the built-in Partner Field:
+
+```
+GET https://activityinfo.org/resources/form/a2145507921/schema
+```
+
++++
+
+```
+{
+   "id": "a21455079210000000007",
+   "code": "partner",
+   "label": "Partner",
+   "description": null,
+   "relevanceCondition": null,
+   "visible": true,
+   "required": true,
+   "type": "reference",
+   "typeParameters": {
+       "cardinality": "single",
+       "range": [
+           {
+               "formId": "P0000009909"
+           }
+       ]
+   }
+}
+```
+@[9](Has type `reference`)
+@[11](Defines the cardinality of the selection - either 'single' or 'multiple')
+@[12-16](Defines the range of Forms from which a User can select a Form Record)
+@[14](We see that the Partner Field references the Partner Form 'P0000009909')
+
++++
+
+## Reference Field Value
+
+Let's find the selected records from our Partner Reference Field:
+
+```
+GET https://activityinfo.org/resources/form/a2145507921/query/columns?referenceField=partner
+```
+
++++
+
+```
+{
+    "rows": 3,
+    "columns": {
+        "referenceField": {
+            "type": "STRING",
+            "storage": "array",
+            "values": [
+                "p0000019616",
+                "p0000019619",
+                "p0000019616"
+            ]
+        }
+    }
+}
+```
+@[7-11](The returned values for each row give the selected Form Records on the Partner Form 'P0000009909')
+
++++
+
+## Using References in Query API
+
+Now that we have established a link from our form to the Partner Form, we can get further data from the Partner Form by creating a query formula.
+
+A Field from another Form can be referenced by:
+- Getting the code/label of the Reference Field in your Form (e.g. 'partner')
+- Getting the Field you wish to extract data from on the referenced Form (e.g. 'label' for the Partner's Name Field)
+
++++
+
+Let's get the Partner's Name for each record on our Form:
+
+```
+GET https://activityinfo.org/resources/form/a2145507921/query/columns?record=comments&partnerName=partner.label
+```
+
++++
+
+```json
+{
+    "rows": 3,
+    "columns": {
+        "partnerName": {
+            "type": "STRING",
+            "storage": "array",
+            "values": [
+                "Default",
+                "BeDataDriven",
+                "Default"
+            ]
+        },
+        "record": {
+            "type": "STRING",
+            "storage": "array",
+            "values": [
+                "Third Record",
+                "Second Record",
+                "First Record"
+            ]
+        }
+    }
+}
+```
+
+@[7-11](The returned values for each row gives the Partner's Name, which is only defined on the Partner Form 'P0000009909')
+
 ---
 
 # Sub-Forms
