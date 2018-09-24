@@ -209,8 +209,8 @@ Database: {
 }
 ```
 
-@[2](Has form 'L0000000000')
-@[7](Has form '0+' for database owners, or '0+#0+' for database users)
+@[2](Has form `L0000000000`)
+@[7](Has form `0+` for database owners, or `0+#0+` for database users)
 
 +++
 
@@ -225,9 +225,9 @@ Resource: {
 }
 ```
 
-@[2](Has form 'L0000000000')
-@[3](Has form 'L0000000000')
-@[4](Enum choice of `{"FORM", "FOLDER"}`)
+@[2](Has form `L0000000000`)
+@[3](Has form `L0000000000`)
+@[4](Enum choice of `{"FORM","FOLDER"}`)
 
 ---
 
