@@ -193,16 +193,16 @@ GET https://activityinfo.org/resources/database/9909
 
 +++
 
-## Database Schema (1/2)
+## Database Schema
 
 ```
 Database: {
-    "databaseId": string, // (with form 'L0000000000')
+    "databaseId": string, # (with form 'L0000000000')
     "userId": int,
     "label": string,
     "visible": boolean,
     "owner": boolean,
-    "version": string, // (with form '0+' for database owners, or '0+#0+' for database users)
+    "version": string, # (with form '0+' for database owners, or '0+#0+' for database users)
     "resources": [ Resource ],
     "grants": [ GrantModel ],
     "locks": [ LockModel ]
@@ -213,9 +213,9 @@ Database: {
 
 ```
 Resource: {
-	"id": string, // (with form 'L0000000000')
-	"parentId": string, // (with form 'L0000000000')
-	"type": string, // one of { "FORM", "FOLDER" } 
+	"id": string, # (with form 'L0000000000')
+	"parentId": string, # (with form 'L0000000000')
+	"type": string, # one of { "FORM", "FOLDER" } 
 	"label": string
 }
 ```
