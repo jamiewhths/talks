@@ -73,27 +73,31 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 @fa[database fa-5x]
 @snapend
 
----
+@snap[south]
+@fa[arrow-down]
+@snapend
+
++++
 
 ## @color[#00CF79](Database)
 - Central source of data
 - All data are entered, maintained and reported on from one or more databases
 
----
++++
 
 ![Database in UI](activityinfo/api/data-model/img/database.png)
 
----
++++
 
 ![Database in Context](activityinfo/api/data-model/img/database-context.png)
 
----
++++
 
 ```
 GET https://activityinfo.org/resources/database/{databaseId}
 ```
 
----
++++
 
 ```json
 {
@@ -140,32 +144,36 @@ GET https://activityinfo.org/resources/database/{databaseId}
 @fa[file-text fa-5x]
 @snapend
 
----
+@snap[south]
+@fa[arrow-down]
+@snapend
+
++++
 
 ## @color[#00CF79](Form)
 
 - Defines the various data to be collected, and how they link together
 - Composed of one or more Fields which represent a type of data to be collected
 
----
++++
 
 ![Form in UI - Design](activityinfo/api/data-model/img/form-design.png)
 
----
++++
 
 ![Form in UI - Data Entry](activityinfo/api/data-model/img/form-data-entry.png)
 
----
++++
 
 ![Form in Context](activityinfo/api/data-model/img/form-context.png)
 
----
++++
 
 ```
 GET https://activityinfo.org/resources/form/{formId}
 ```
 
----
++++
 
 ```json
 {
@@ -200,7 +208,11 @@ GET https://activityinfo.org/resources/form/{formId}
 @fa[th-list fa-5x]
 @snapend
 
----
+@snap[south]
+@fa[arrow-down]
+@snapend
+
++++
 
 ## @color[#00CF79](Field)
 
