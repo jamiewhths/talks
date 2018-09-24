@@ -187,9 +187,9 @@ GET https://activityinfo.org/resources/database/9909
 @[5](Is this Database visible to User?)
 @[6](Is this User the owner?)
 @[7](The current Database version)
-@[8-46](Database Resources show accessible Forms and Folders)
-@[47](Operations User is granted - N/A for owners)
-@[48](Locks set on Database)
+@[8-14](Database Resources show accessible Forms and Folders)
+@[46](Operations User is granted - N/A for owners)
+@[47](Locks set on Database)
 
 +++
 
