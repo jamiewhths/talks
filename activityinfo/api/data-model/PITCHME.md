@@ -195,7 +195,7 @@ GET https://activityinfo.org/resources/database/9909
 
 ## Database Schema (1/2)
 
-```json
+```
 Database: {
     "databaseId": string, // (with form 'L0000000000')
     "userId": int,
@@ -211,7 +211,7 @@ Database: {
 
 +++
 
-```json
+```
 Resource: {
 	"id": string, // (with form 'L0000000000')
 	"parentId": string, // (with form 'L0000000000')
