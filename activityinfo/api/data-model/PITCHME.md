@@ -125,31 +125,55 @@ GET https://activityinfo.org/resources/database/{databaseId}
 For this example, we will send the following request:
 
 ```
-GET https://activityinfo.org/resources/database/d1234567890
+GET https://activityinfo.org/resources/database/9909
 ```
 
 +++
 
 ```json
 {
-    "databaseId": "d0000009699",
+    "databaseId": "d0000009909",
     "userId": 21598,
-    "label": "Books Distribution",
+    "label": "ActivityInfo API Demo",
     "visible": true,
     "owner": true,
-    "version": "1536759623158",
+    "version": "1537789333111",
     "resources": [
         {
-            "id": "f0000020207",
-            "parentId": "d0000009699",
-            "type": "FOLDER",
-            "label": "Central Macedonia - GR"
+            "id": "a2145507923",
+            "parentId": "d0000009909",
+            "type": "FORM",
+            "label": "Reference Form"
         },
         {
-            "id": "a2145506925",
-            "parentId": "d0000009699",
+            "id": "a2145507922",
+            "parentId": "d0000009909",
             "type": "FORM",
-            "label": "Greek Schools Book Provision"
+            "label": "Field Types"
+        },
+        {
+            "id": "a2145507921",
+            "parentId": "d0000009909",
+            "type": "FORM",
+            "label": "Basic Form"
+        },
+        {
+            "id": "f0000020524",
+            "parentId": "d0000009909",
+            "type": "FOLDER",
+            "label": "Folder Example"
+        },
+        {
+            "id": "a2145507925",
+            "parentId": "f0000020524",
+            "type": "FORM",
+            "label": "Form-in-Folder Example"
+        },
+        {
+            "id": "a2145507924",
+            "parentId": "d0000009909",
+            "type": "FORM",
+            "label": "Sub-Forms"
         }
     ],
     "grants": [],
@@ -166,6 +190,37 @@ GET https://activityinfo.org/resources/database/d1234567890
 @[8-21](Database Resources show accessible Forms and Folders)
 @[22](Operations User is granted - N/A for owners)
 @[23](Locks set on Database)
+
++++
+
+# Database Schema Definiton
+
++++
+
+```json
+Database: {
+    "databaseId": string (with form 'L0000000000')
+    "userId": int
+    "label": string
+    "visible": boolean
+    "owner": boolean
+    "version": string (with form '0+' for database owners, or '0+#0+' for database users)
+    "resources": [ Resource ]
+    "grants": [ GrantModel ]
+    "locks": [ LockModel ]
+}
+```
+
++++
+
+```json
+Resource: {
+	"id": string (with form 'L0000000000')
+	"parentId": string (with form 'L0000000000')
+	"type": enum { "FORM", "FOLDER" } 
+	"label": string
+}
+```
 
 ---
 
@@ -336,7 +391,7 @@ Let us focus on the "elements" property of the schema:
 ## @color[#00CF79](Form Records)
 
 - Created when a User submits an entry to a Form
-- Data which can be entered by User defined by the Form and Field Types
+- Data which can be entered defined by the Form and Field Types
 
 +++
 
