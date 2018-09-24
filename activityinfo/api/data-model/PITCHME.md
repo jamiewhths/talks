@@ -625,8 +625,39 @@ GET https://activityinfo.org/resources/form/a1234567890/schema
 
 +++ 
 
-## Built-in Fields
-### Start Date
+## Common Field Attributes
+
+```json
+FormField: {
+	"id": string,
+	"code": string,
+	"label": string,
+	"description": string,
+	"relevanceCondition": string,
+	"visible": boolean,
+	"required": boolean,
+	"type": string
+}
+```
+
+@[2](Form depends on Field Type)
+@[3](User defined 'short code' for the Field, if any)
+@[4](Name of the Field as it appears in Data Entry)
+@[5](Description of the Field for Users in Data Entry, if any)
+@[6](Relevance Condition formula shows/hides Field depending on data entered in other Fields, if any)
+@[7](Defines whether Field appears to User in Data Entry)
+@[8](Defines whether Field must have data)
+@[9](Defines the Field Type)
+
++++
+
+## Built-In Fields
+
+Automatically created Fields when a new Form is created.
+
++++
+
+### Built-in Fields: Start Date
 
 ```json
 {
@@ -645,8 +676,7 @@ GET https://activityinfo.org/resources/form/a1234567890/schema
 
 +++
 
-## Built-in Fields
-### End Date
+### Built-in Fields: End Date
 
 ```json
 {
@@ -664,8 +694,7 @@ GET https://activityinfo.org/resources/form/a1234567890/schema
 
 +++
 
-## Built-in Fields
-### Partner (Required)
+### Built-in Fields: Partner (Required)
 
 ```json
 {
@@ -691,8 +720,7 @@ GET https://activityinfo.org/resources/form/a1234567890/schema
 
 +++
 
-## Built-in Fields
-### Project
+### Built-in Fields: Project
 
 ```json
 {
@@ -718,8 +746,7 @@ GET https://activityinfo.org/resources/form/a1234567890/schema
 
 +++
 
-## Built-in Fields
-### Comments
+### Built-in Fields: Comments
 
 ```json
 {
@@ -738,191 +765,245 @@ GET https://activityinfo.org/resources/form/a1234567890/schema
 +++
 
 ## Field Types
+
++++
+
+### Field Type: Serial Number
+
 ```json
-"elements": [
-	{
-		"id": "i0596827260",
-		"code": null,
-		"label": "Serial Number",
-		"description": null,
-		"relevanceCondition": null,
-		"visible": true,
-		"required": false,
-		"type": "serial",
-		"typeParameters": {
-		    "prefixFormula": "LLL000",
-		    "digits": 5
-		}
-	},
-	{
-		"id": "i1628839564",
-		"code": null,
-		"label": "Quantity",
-		"description": null,
-		"relevanceCondition": null,
-		"visible": true,
-		"required": false,
-		"type": "quantity",
-		"typeParameters": {
-		    "units": "households",
-		    "aggregation": "SUM"
-		}
-	},
-	{
-		"id": "i2010895222",
-		"code": null,
-		"label": "Text",
-		"description": null,
-		"relevanceCondition": null,
-		"visible": true,
-		"required": false,
-		"type": "FREE_TEXT",
-		"typeParameters": {}
-	},
-	{
-		"id": "i2003200244",
-		"code": null,
-		"label": "Multi-line text",
-		"description": null,
-		"relevanceCondition": null,
-		"visible": true,
-		"required": false,
-		"type": "NARRATIVE"
-	},
-	{
-		"id": "i0747756921",
-		"code": null,
-		"label": "Date",
-		"description": null,
-		"relevanceCondition": null,
-		"visible": true,
-		"required": false,
-		"type": "date"
-	},
-	{
-		"id": "Q0290875264",
-		"code": null,
-		"label": "Which options apply?",
-		"description": null,
-		"relevanceCondition": null,
-		"visible": true,
-		"required": false,
-		"type": "enumerated",
-		"typeParameters": {
-		    "cardinality": "multiple",
-		    "presentation": "automatic",
-		    "values": [
-		        {
-		            "id": "t0290490515",
-		            "label": "Option 1"
-		        },
-		        {
-		            "id": "t0291067638",
-		            "label": "Option 2"
-		        }
-		    ]
-		}
-	},
-	{
-		"id": "Q0225083202",
-		"code": null,
-		"label": "Which choice would you choose?",
-		"description": null,
-		"relevanceCondition": null,
-		"visible": true,
-		"required": false,
-		"type": "enumerated",
-		"typeParameters": {
-		    "cardinality": "single",
-		    "presentation": "automatic",
-		    "values": [
-		        {
-		            "id": "t0226237449",
-		            "label": "Option 1"
-		        },
-		        {
-		            "id": "t0225275577",
-		            "label": "Option 2"
-		        }
-		    ]
-		}
-	},
-	{
-		"id": "i0583669177",
-		"code": null,
-		"label": "Geographic point",
-		"description": null,
-		"relevanceCondition": null,
-		"visible": true,
-		"required": false,
-		"type": "geopoint"
-	},
-	{
-		"id": "i0405530436",
-		"code": null,
-		"label": "Barcode",
-		"description": null,
-		"relevanceCondition": null,
-		"visible": true,
-		"required": false,
-		"type": "barcode"
-	},
-	{
-		"id": "i0856840896",
-		"code": null,
-		"label": "Image",
-		"description": null,
-		"relevanceCondition": null,
-		"visible": true,
-		"required": false,
-		"type": "attachment",
-		"typeParameters": {
-		    "cardinality": "single",
-		    "kind": "image"
-		}
-	},
-	{
-		"id": "i0795281072",
-		"code": null,
-		"label": "Attachments",
-		"description": null,
-		"relevanceCondition": null,
-		"visible": true,
-		"required": false,
-		"type": "attachment",
-		"typeParameters": {
-		    "cardinality": "single",
-		    "kind": "attachment"
-		}
-	},
-	{
-		"id": "i1380676524",
-		"code": null,
-		"label": "Calculated",
-		"description": null,
-		"relevanceCondition": null,
-		"visible": true,
-		"required": false,
-		"type": "calculated",
-		"typeParameters": {
-		    "formula": "[Quantity] * 2"
-		}
+{
+	"id": "i0596827260",
+	"code": null,
+	"label": "Serial Number",
+	"description": null,
+	"relevanceCondition": null,
+	"visible": true,
+	"required": false,
+	"type": "serial",
+	"typeParameters": {
+	    "prefixFormula": "LLL000",
+	    "digits": 5
 	}
-]
+}
 ```
 
-@[2-15](Serial Number Field)
-@[16-29](Quantity Field)
-@[30-40](Text Field)
-@[41-50](Multi-Line Text Field)
-@[51-60](Date Field)
-@[61-84](Multiple Selection Field)
-@[85-108](Single Selection Field)
-@[109-118](Geographic Point Field)
-@[119-128](Barcode Field)
-@[129-142](Image Field)
-@[143-156](Attachments Field)
-@[157-169](Calculated Field)
+@[2](Has form `i0000000000`)
+@[9](Has type `serial`)
+@[11](Defines the input mask, if any)
+
++++
+
+### Field Type: Quantity
+
+```json
+{
+	"id": "i1628839564",
+	"code": null,
+	"label": "Quantity",
+	"description": null,
+	"relevanceCondition": null,
+	"visible": true,
+	"required": false,
+	"type": "quantity",
+	"typeParameters": {
+	    "units": "households",
+	    "aggregation": "SUM"
+	}
+}
+```
+
+@[2](Has form `i0000000000`)
+@[9](Has type `quantity`)
+@[11](Defines the quantity units)
+@[12](Defines the aggregation method - always set to SUM)
+
++++
+
+### Field Type: Text
+
+```json
+{
+   "id": "i2010895222",
+   "code": null,
+   "label": "Text",
+   "description": null,
+   "relevanceCondition": null,
+   "visible": true,
+   "required": false,
+   "type": "FREE_TEXT",
+   "typeParameters": {}
+}
+```
+
+@[2](Has form `i0000000000`)
+@[9](Has type `FREE_TEXT`)
+
++++
+
+### Field Type: Multi-Line Text
+
+```json
+{
+	"id": "i2003200244",
+	"code": null,
+	"label": "Multi-line text",
+	"description": null,
+	"relevanceCondition": null,
+	"visible": true,
+	"required": false,
+	"type": "NARRATIVE"
+}
+```
+
+@[2](Has form `i0000000000`)
+@[9](Has type `NARRATIVE`)
+
++++
+
+### Field Type: Date
+
+```json
+{
+	"id": "i0747756921",
+	"code": null,
+	"label": "Date",
+	"description": null,
+	"relevanceCondition": null,
+	"visible": true,
+	"required": false,
+	"type": "date"
+}
+```
+
+@[2](Has form `i0000000000`)
+@[9](Has type `date`)
+
++++
+
+### Field Type: Single/Multiple Selection
+
+```json
+{
+	"id": "Q0290875264",
+	"code": null,
+	"label": "Which options apply?",
+	"description": null,
+	"relevanceCondition": null,
+	"visible": true,
+	"required": false,
+	"type": "enumerated",
+	"typeParameters": {
+	    "cardinality": "multiple",
+	    "presentation": "automatic",
+	    "values": [
+	        {
+	            "id": "t0290490515",
+	            "label": "Option 1"
+	        },
+	        {
+	            "id": "t0291067638",
+	            "label": "Option 2"
+	        }
+	    ]
+	}
+}
+```
+
+@[2](Has form `Q0000000000`)
+@[9](Has type `enumerated`)
+@[11](Defines the cardinality of the selection - either 'single' or 'multiple')
+@[13-22](Defines the selection options a User can choose from)
+@[15](Selection option always has id with form `t0000000000`)
+@[16](Selection option label)
+
++++
+
+### Field Type: Geographic Point
+
+```json
+{
+	"id": "i0583669177",
+	"code": null,
+	"label": "Geographic point",
+	"description": null,
+	"relevanceCondition": null,
+	"visible": true,
+	"required": false,
+	"type": "geopoint"
+}
+```
+
+@[2](Has form `i0000000000`)
+@[9](Has type `geopoint`)
+
++++
+
+### Field Type: Barcode
+
+```json
+{
+   "id": "i0405530436",
+   "code": null,
+   "label": "Barcode",
+   "description": null,
+   "relevanceCondition": null,
+   "visible": true,
+   "required": false,
+   "type": "barcode"
+}
+```
+
+@[2](Has form `i0000000000`)
+@[9](Has type `barcode`)
+
++++
+
+### Field Type: Image/Attachment
+
+```json
+{
+	"id": "i0856840896",
+	"code": null,
+	"label": "Image",
+	"description": null,
+	"relevanceCondition": null,
+	"visible": true,
+	"required": false,
+	"type": "attachment",
+	"typeParameters": {
+	    "cardinality": "single",
+	    "kind": "image"
+	}
+}
+```
+
+@[2](Has form `i0000000000`)
+@[9](Has type `attachment`)
+@[12](Defines the upload type - either 'image' or 'attachment')
+
++++
+
+### Field Type: Calculated
+
+```json
+{
+	"id": "i1380676524",
+	"code": null,
+	"label": "Calculated",
+	"description": null,
+	"relevanceCondition": null,
+	"visible": true,
+	"required": false,
+	"type": "calculated",
+	"typeParameters": {
+	    "formula": "[Quantity] * 2"
+	}
+}
+```
+
+@[2](Has form `i0000000000`)
+@[9](Has type `calculated`)
+@[11](Defines the calculation formula)
 
 ---
 
