@@ -197,28 +197,37 @@ GET https://activityinfo.org/resources/database/9909
 
 ```
 Database: {
-    "databaseId": string, # (with form 'L0000000000')
+    "databaseId": string,
     "userId": int,
     "label": string,
     "visible": boolean,
     "owner": boolean,
-    "version": string, # (with form '0+' for database owners, or '0+#0+' for database users)
+    "version": string,
     "resources": [ Resource ],
     "grants": [ GrantModel ],
     "locks": [ LockModel ]
 }
 ```
 
+@[2](Has form 'L0000000000')
+@[7](Has form '0+' for database owners, or '0+#0+' for database users)
+
 +++
+
+## Resource Schema
 
 ```
 Resource: {
-	"id": string, # (with form 'L0000000000')
-	"parentId": string, # (with form 'L0000000000')
-	"type": string, # one of { "FORM", "FOLDER" } 
+	"id": string, 
+	"parentId": string, 
+	"type": string,
 	"label": string
 }
 ```
+
+@[2](Has form 'L0000000000')
+@[3](Has form 'L0000000000')
+@[4](Enum choice of { "FORM", "FOLDER" })
 
 ---
 
