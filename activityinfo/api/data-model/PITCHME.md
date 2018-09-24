@@ -188,6 +188,7 @@ GET https://activityinfo.org/resources/database/9909
 @[6](Is this User the owner?)
 @[7](The current Database version)
 @[8-14](Database Resources show accessible Forms and Folders)
+@[33-38](Resources can be caontained within the database, or within a folder)
 @[46](Operations User is granted - N/A for owners)
 @[47](Locks set on Database)
 
