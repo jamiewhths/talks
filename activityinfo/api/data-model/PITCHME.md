@@ -1180,10 +1180,10 @@ GET https://activityinfo.org/resources/form/a1234567890/query/columns
 ```
 
 @[2](`rows` gives the number of data rows returned)
-@[3](`columns` gives the array of columns returned)
-@[4](Just like the /rows endpoint, the Query API will return fields by their code, or by their label otherwise)
+@[3](`columns` gives the columns returned, with each column as a separate attribute)
+@[4](Just like the `/rows` endpoint, the Query API will return fields by their code, or by their label otherwise)
 @[5](Defines the JSON data type for the given column)
-@[6](Defines how the value has been returned - 'empty' for an empty column, 'constant' for a constant calue repeated for each row, or 'array' for an array of values for each row)
+@[6](Defines how the value has been returned <ul><li>'empty' for an empty column</li><li>'constant' for a constant calue repeated for each row</li><li>'array' for an array of values for each row</li></ul>)
 @[7-11](The returned values for each row)
 
 ---
