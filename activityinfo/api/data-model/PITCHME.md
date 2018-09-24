@@ -3,6 +3,15 @@
 
 ---
 
+## Learning Outcomes
+From this presentation, you should understand:
+- The basic objects of the ActivityInfo Data Model, and their structure
+- The relationship between elements of the Data Model
+- How to retrieve data from the ActivityInfo system 
+- The basic concepts needed to construct queries for the ActivityInfo Query API
+
+---
+
 ## Topics
 - Databases
 - Forms
@@ -12,15 +21,6 @@
 - Sub Forms
 - Sub Form Records
 - Key Fields
-
----
-
-## Learning Outcomes
-From this presentation, you should understand:
-- The basic objects of the ActivityInfo Data Model, and their structure
-- The relationship between elements of the Data Model
-- How to retrieve data from the ActivityInfo system 
-- The basic concepts needed to construct queries for the ActivityInfo Query API
 
 ---
 
