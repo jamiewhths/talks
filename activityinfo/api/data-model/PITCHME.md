@@ -237,7 +237,7 @@ GET https://activityinfo.org/resources/form/a1234567890/schema
 ## @color[#00CF79](Field)
 
 - Represents a specific type of data to be collected
-- Have different sets of properties depending on the Field Type
+- Different sets of properties depending on the Field Type
 
 +++
 
@@ -245,7 +245,7 @@ GET https://activityinfo.org/resources/form/a1234567890/schema
 
 +++
 
-![Field in Context](activityinfo/api/data-model/img/field-in-context.png)
+![Field in Context](activityinfo/api/data-model/img/field-context.png)
 
 +++
 
