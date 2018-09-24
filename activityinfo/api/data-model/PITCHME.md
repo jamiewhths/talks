@@ -626,82 +626,109 @@ GET https://activityinfo.org/resources/form/a1234567890/schema
 +++ 
 
 ## Built-in Fields
+### Start Date
+
 ```json
-"elements": [
-	{
-		"id": "a21455079220000000012",
-		"code": "date1",
-		"label": "Start Date",
-		"description": null,
-		"relevanceCondition": null,
-		"visible": true,
-		"required": true,
-		"type": "date"
-	},
-	{
-		"id": "a21455079220000000013",
-		"code": "date2",
-		"label": "End Date",
-		"description": null,
-		"relevanceCondition": null,
-		"visible": true,
-		"required": true,
-		"type": "date"
-	},
-	{
-		"id": "a21455079220000000007",
-		"code": "partner",
-		"label": "Partner",
-		"description": null,
-		"relevanceCondition": null,
-		"visible": true,
-		"required": true,
-		"type": "reference",
-		"typeParameters": {
-		    "cardinality": "single",
-		    "range": [
-		        {
-		            "formId": "P0000009909"
-		        }
-		    ]
-		}
-	},
-	{
-		"id": "a21455079220000000008",
-		"code": "project",
-		"label": "Project",
-		"description": null,
-		"relevanceCondition": null,
-		"visible": false,
-		"required": false,
-		"type": "reference",
-		"typeParameters": {
-		    "cardinality": "single",
-		    "range": [
-		        {
-		            "formId": "R0000009909"
-		        }
-		    ]
-		}
-	},
-	{
-		"id": "a21455079220000000014",
-		"code": "comments",
-		"label": "Comments",
-		"description": null,
-		"relevanceCondition": null,
-		"visible": true,
-		"required": false,
-		"type": "NARRATIVE"
-	}
-]
+{
+	"id": "a21455079220000000012",
+	"code": "date1",
+	"label": "Start Date",
+	"description": null,
+	"relevanceCondition": null,
+	"visible": true,
+	"required": true,
+	"type": "date"
+}
 ```
 
-@[2-11](Built-in Start Date Field)
-@[12-21](Built-in End Date Field)
-@[22-39](Built-in Partner Field **Required**)
-@[40-57](Built-in Project Field)
-@[58-67](Built-in Comments Field)
++++
+
+## Built-in Fields
+### End Date
+
+```json
+{
+	"id": "a21455079220000000013",
+	"code": "date2",
+	"label": "End Date",
+	"description": null,
+	"relevanceCondition": null,
+	"visible": true,
+	"required": true,
+	"type": "date"
+}
+```
+
++++
+
+## Built-in Fields
+### Partner
+
+```json
+{
+	"id": "a21455079220000000007",
+	"code": "partner",
+	"label": "Partner",
+	"description": null,
+	"relevanceCondition": null,
+	"visible": true,
+	"required": true,
+	"type": "reference",
+	"typeParameters": {
+	    "cardinality": "single",
+	    "range": [
+	        {
+	            "formId": "P0000009909"
+	        }
+	    ]
+	}
+}
+```
+This field is **required** and cannot be removed.
+
++++
+
+## Built-in Fields
+### Project
+
+```json
+{
+	"id": "a21455079220000000008",
+	"code": "project",
+	"label": "Project",
+	"description": null,
+	"relevanceCondition": null,
+	"visible": false,
+	"required": false,
+	"type": "reference",
+	"typeParameters": {
+	    "cardinality": "single",
+	    "range": [
+	        {
+	            "formId": "R0000009909"
+	        }
+	    ]
+	}
+}
+```
+
++++
+
+## Built-in Fields
+### Comments
+
+```json
+{
+	"id": "a21455079220000000014",
+	"code": "comments",
+	"label": "Comments",
+	"description": null,
+	"relevanceCondition": null,
+	"visible": true,
+	"required": false,
+	"type": "NARRATIVE"
+}
+```
 
 +++
 
