@@ -1331,8 +1331,181 @@ GET https://activityinfo.org/resources/form/a2145507921/query/rows?record=commen
 
 ## @color[#00CF79](Sub-Form)
 
-- Defines the various data to be collected, and how they link together
-- Composed of one or more Fields which represent a type of data to be collected
+- Contained within a Parent Form
+- Allows Users to submit multiple entries on a single Form Record (e.g. Monthly)
+- Reference Fields establish a connection between the Parent Form and Sub-Form
+
++++
+
+! Sub-Form in UI !
+
++++
+
+![Sub-Form in Context](activityinfo/api/data-model/subform-context.png)
+
++++
+
+We can use the same endpoint for retrieving a Sub-Form Schema:
+
+```
+GET https://activityinfo.org/resources/form/{subFormId}/schema
+```
+
++++
+
+To find our Sub-Form Id, we retrieve the Parent Form's schema first:
+
+```
+GET https://activityinfo.org/resources/form/a2145507924/schema
+```
+
++++
+
+## Parent Form
+
+```json
+{
+    "id": "a2145507924",
+    "schemaVersion": 1,
+    "databaseId": "d0000009909",
+    "label": "Sub-Forms",
+    "elements": [
+        {
+            "id": "a21455079240000000012",
+            "code": "date1",
+            "label": "Start Date",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": true,
+            "type": "date"
+        },
+        {
+            "id": "a21455079240000000013",
+            "code": "date2",
+            "label": "End Date",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": true,
+            "type": "date"
+        },
+        {
+            "id": "a21455079240000000007",
+            "code": "partner",
+            "label": "Partner",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": true,
+            "type": "reference",
+            "typeParameters": {
+                "cardinality": "single",
+                "range": [
+                    {
+                        "formId": "P0000009909"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "a21455079240000000008",
+            "code": "project",
+            "label": "Project",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": false,
+            "required": false,
+            "type": "reference",
+            "typeParameters": {
+                "cardinality": "single",
+                "range": [
+                    {
+                        "formId": "R0000009909"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "a21455079240000000014",
+            "code": "comments",
+            "label": "Comments",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": false,
+            "type": "NARRATIVE"
+        },
+        {
+            "id": "i2093438408",
+            "code": null,
+            "label": "Repeating Sub-Form",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": false,
+            "type": "subform",
+            "typeParameters": {
+                "formId": "cjmhib4oy1"
+            }
+        }
+    ]
+}
+```
+
+@[73-85](Our Sub-Form Reference Field)
+@[81](Has type `subform`)
+@[83](Our Sub-Form Id is `cjmhib4oy1`)
+
++++
+
+
+We can use the same endpoint for retrieving a Sub-Form Schema:
+
+```
+GET https://activityinfo.org/resources/form/{subFormId}/schema
+```
+
++++
+
+Using our Sub-Form Id, we will send the following request to find our Sub-Form Schema:
+
+```
+GET https://activityinfo.org/resources/form/cjmhib4oy1/schema
+```
+
++++
+
+## Sub-Form
+
+```json
+{
+    "id": "cjmhib4oy1",
+    "schemaVersion": 0,
+    "databaseId": "d0000009909",
+    "label": "Repeating Sub-Form",
+    "parentFormId": "a2145507924",
+    "subFormKind": "repeating",
+    "elements": [
+        {
+            "id": "i0701024476",
+            "code": null,
+            "label": "Quantity",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": false,
+            "type": "quantity",
+            "typeParameters": {
+                "units": "households",
+                "aggregation": "SUM"
+            }
+        }
+    ]
+}
+```
+
+@[]
 
 
 ---
