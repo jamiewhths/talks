@@ -1534,6 +1534,184 @@ Form: {
 
 # Sub-Form Records
 
+@snap[east]
+@fa[file-text fa-5x]
+@snapend
+
+@snap[south]
+@fa[arrow-down]
+@snapend
+
++++
+
+## @color[#00CF79](Sub-Form Records)
+
+- Same structure as a Form Record, with one key difference: all Sub-Form Records are explicitly associated with a Parent Form Record
+- Each Sub-Form Record references a Parent Form Record in a `parent` field
+
++++
+
+! Sub-Form Records in UI goes here !
+
++++
+
+![Sub-Form Record in Context](activityinfo/api/data-model/img/form-record-context.png)
+
++++
+
+Generic Request for Form Records (in row-format):
+
+```
+GET https://activityinfo.org/resources/form/{formId}/query/rows
+```
+
+Generic Request for Form Records (in column-format):
+
+```
+GET https://activityinfo.org/resources/form/{formId}/query/columns
+```
+
++++
+
+## Row-Format Example
+
++++
+
+For this example, we will send the following request:
+
+```
+GET https://activityinfo.org/resources/form/a2145507921/query/rows
+```
+
++++
+
+```json
+[
+    {
+        "comments": "Third Record",
+        "User-Added Field": 3,
+        "partner.label": "Default",
+        "@id": "s0044598181",
+        "date2": "2018-10-31",
+        "date1": "2018-10-01"
+    },
+    {
+        "comments": "Second Record",
+        "User-Added Field": 2,
+        "partner.label": "Default",
+        "@id": "s0517446917",
+        "date2": "2018-09-30",
+        "date1": "2018-09-01"
+    },
+    {
+        "comments": "First Record",
+        "User-Added Field": 1,
+        "partner.label": "Default",
+        "@id": "s1625985119",
+        "date2": "2018-09-25",
+        "date1": "2018-09-24"
+    }
+]
+```
+
+@[6](The '@id' Field gives Form Record Id)
+@[8](The Query API will return fields by their code, if defined...)
+@[12](...or by their full label otherwise.)
+
++++
+
+## Column-Format Example
+
++++
+
+For this example, we will send the following request:
+
+```
+GET https://activityinfo.org/resources/form/a1234567890/query/columns
+```
+
++++
+
+```json
+{
+    "rows": 3,
+    "columns": {
+        "comments": {
+            "type": "STRING",
+            "storage": "array",
+            "values": [
+                "Third Record",
+                "Second Record",
+                "First Record"
+            ]
+        },
+        "User-Added Field": {
+            "type": "NUMBER",
+            "storage": "array",
+            "values": [
+                3,
+                2,
+                1
+            ]
+        },
+        "project.label": {
+            "type": "STRING",
+            "storage": "empty"
+        },
+        "project.Description": {
+            "type": "STRING",
+            "storage": "empty"
+        },
+        "partner.label": {
+            "type": "STRING",
+            "storage": "constant",
+            "value": "Default"
+        },
+        "@id": {
+            "type": "STRING",
+            "storage": "array",
+            "values": [
+                "s0044598181",
+                "s0517446917",
+                "s1625985119"
+            ]
+        },
+        "date2": {
+            "type": "STRING",
+            "storage": "array",
+            "values": [
+                "2018-10-31",
+                "2018-09-30",
+                "2018-09-25"
+            ]
+        },
+        "date1": {
+            "type": "STRING",
+            "storage": "array",
+            "values": [
+                "2018-10-01",
+                "2018-09-01",
+                "2018-09-24"
+            ]
+        },
+        "partner.Full Name": {
+            "type": "STRING",
+            "storage": "empty"
+        }
+    }
+}
+```
+
+@[2](`rows` gives the number of data rows returned)
+@[3](`columns` gives the columns returned, with each column as a separate attribute)
+@[4](Just like the `/rows` endpoint, the Query API will return fields by their code, or by their label otherwise)
+@[5](Defines the JSON data type for the given column)
+@[6](Defines the storage method: 'empty' for an empty column, 'constant' for a constant value for all rows, or 'array' for a separate value for each row)
+@[7-11](The returned values for each row)
+
+---
+
+
 ---
 
 # Key Fields
