@@ -1341,7 +1341,7 @@ GET https://activityinfo.org/resources/form/a2145507921/query/rows?record=commen
 
 +++
 
-![Sub-Form in Context](activityinfo/api/data-model/subform-context.png)
+![Sub-Form in Context](activityinfo/api/data-model/img/subform-context.png)
 
 +++
 
