@@ -1520,7 +1520,7 @@ GET https://activityinfo.org/resources/form/cjmhib4oy1/schema
 @[7](And an extra 'subFormKind`, which specifies the reporting interval of the Sub-Form entries)
 @[8](Form Fields appear as `elements` in the same way as Forms)
 
----
++++
 
 ## Sub-Form Schema
 
