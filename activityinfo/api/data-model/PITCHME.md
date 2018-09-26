@@ -7,7 +7,7 @@
 From this presentation, you should understand:
 - The basic objects of the ActivityInfo Data Model, and their structure
 - The relationship between elements of the Data Model
-- How to retrieve data from the ActivityInfo system 
+- How to retrieve data from the ActivityInfo system
 - The basic concepts needed to construct queries for the ActivityInfo Query API
 
 ---
@@ -18,8 +18,8 @@ From this presentation, you should understand:
 - Form Fields
 - Form Records
 - Reference Fields
-- Sub Forms
-- Sub Form Records
+- Sub-Forms
+- Sub-Form Records
 - Key Fields
 
 ---
@@ -106,7 +106,7 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 
 +++
 
-! Database in UI goes here !
+![Database in UI](activityinfo/api/data-model/img/database.png)
 
 +++
 
@@ -121,6 +121,8 @@ GET https://activityinfo.org/resources/database/{databaseId}
 ```
 
 +++
+
+## Example 1
 
 For this example, we will send the following request:
 
@@ -1560,8 +1562,8 @@ Form: {
 ## @color[#00CF79](Sub-Form Records)
 
 - Same structure as a Form Record
-- **EXCEPT** all Sub-Form Records are explicitly associated with a Parent Form Record
-- All Sub-Form Records reference a Parent Form Record in a `parent` field
+- **EXCEPT** all Sub-Form Records reference a Parent Form Record
+-  in a `parent` field
 
 +++
 
