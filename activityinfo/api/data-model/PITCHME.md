@@ -1010,7 +1010,7 @@ Automatically created Fields when a new Form is created.
 ---
 
 # Form 
-# Records
+# Record
 
 @snap[east]
 @fa[file-text fa-5x]
@@ -1189,7 +1189,8 @@ GET https://activityinfo.org/resources/form/a1234567890/query/columns
 
 ---
 
-# References
+# Reference 
+# Field
 
 @snap[east]
 @fa[link fa-5x]
@@ -1318,7 +1319,7 @@ GET https://activityinfo.org/resources/form/a2145507921/query/rows?record=commen
 
 ---
 
-# Sub-Forms
+# Sub-Form
 
 @snap[east]
 @fa[level-down fa-5x] @fa[file fa-5x]
@@ -1544,7 +1545,7 @@ Form: {
 ---
 
 # Sub-Form 
-# Records
+# Record
 
 @snap[east]
 @fa[level-down fa-5x] @fa[file-text fa-5x]
@@ -1660,7 +1661,7 @@ GET https://activityinfo.org/resources/form/cjmhib4oy1/query/rows?subFormRecord=
 
 ---
 
-# Key Fields
+# Key Field
 
 @snap[east]
 @fa[key fa-5x]
