@@ -1542,10 +1542,11 @@ Form: {
 
 ---
 
-# Sub-Form Records
+# Sub-Form 
+# Records
 
 @snap[east]
-@fa[file-text fa-5x]
+@fa[chevron-left fa-5x] @fa[file-text fa-5x] @fa[chevron-right fa-5x]
 @snapend
 
 @snap[south]
