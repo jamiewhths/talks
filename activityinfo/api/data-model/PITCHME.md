@@ -1505,8 +1505,30 @@ GET https://activityinfo.org/resources/form/cjmhib4oy1/schema
 }
 ```
 
-@[]
+@[2-5](Sub-Forms share the same basic attributes as Forms)
+@[6](Includes an extra `parentFormId` attribute...)
+@[7](And an extra 'subFormKind`, which specifies the reporting interval of the Sub-Form entries)
+@[8](Form Fields appear as `elements` in the same way as Forms)
 
+---
+
+## Sub-Form Schema
+
+```
+Form: {
+	"id": string,
+	"schemaVersion": int,
+	"databaseId": string,
+	"label": string,
+	"parentFormId": string,
+	"subFormKind": string,
+	"elements": [ FormField ]
+}
+```
+
+@[2](Has form `L0000000000`)
+@[4](Has form `L0000000000`)
+@[7](Enum choice of `{ 'repeating', 'daily', 'weekly', 'biweekly' 'monthly' })
 
 ---
 
