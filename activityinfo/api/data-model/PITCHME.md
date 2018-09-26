@@ -1500,6 +1500,16 @@ GET https://activityinfo.org/resources/form/cjmhib4oy1/schema
                 "units": "households",
                 "aggregation": "SUM"
             }
+        },
+        {
+            "id": "i0337573943",
+            "code": "rec",
+            "label": "Sub-Form Record",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": false,
+            "type": "NARRATIVE"
         }
     ]
 }
@@ -1562,13 +1572,13 @@ Form: {
 Generic Request for Form Records (in row-format):
 
 ```
-GET https://activityinfo.org/resources/form/{formId}/query/rows
+GET https://activityinfo.org/resources/form/{subFormId}/query/rows
 ```
 
 Generic Request for Form Records (in column-format):
 
 ```
-GET https://activityinfo.org/resources/form/{formId}/query/columns
+GET https://activityinfo.org/resources/form/{subFormId}/query/columns
 ```
 
 +++
@@ -1580,7 +1590,7 @@ GET https://activityinfo.org/resources/form/{formId}/query/columns
 For this example, we will send the following request:
 
 ```
-GET https://activityinfo.org/resources/form/a2145507921/query/rows
+GET https://activityinfo.org/resources/form/cjmhib4oy1/query/rows
 ```
 
 +++
@@ -1588,129 +1598,63 @@ GET https://activityinfo.org/resources/form/a2145507921/query/rows
 ```json
 [
     {
-        "comments": "Third Record",
-        "User-Added Field": 3,
-        "partner.label": "Default",
-        "@id": "s0044598181",
-        "date2": "2018-10-31",
-        "date1": "2018-10-01"
+        "Parent.date2": "2018-09-26",
+        "Parent.comments": "Parent Form Record 1",
+        "rec": "Sub-Form Record 1",
+        "Quantity": 1,
+        "@id": "cjmj77kkx1",
+        "Parent.date1": "2018-09-26",
+        "Parent.partner.label": "Default"
     },
     {
-        "comments": "Second Record",
-        "User-Added Field": 2,
-        "partner.label": "Default",
-        "@id": "s0517446917",
-        "date2": "2018-09-30",
-        "date1": "2018-09-01"
+        "Parent.date2": "2018-09-26",
+        "Parent.comments": "Parent Form Record 1",
+        "rec": "Sub-Form Record 2",
+        "Quantity": 2,
+        "@id": "cjmj7882f4g",
+        "Parent.date1": "2018-09-26",
+        "Parent.partner.label": "Default"
     },
     {
-        "comments": "First Record",
-        "User-Added Field": 1,
-        "partner.label": "Default",
-        "@id": "s1625985119",
-        "date2": "2018-09-25",
-        "date1": "2018-09-24"
+        "Parent.date2": "2018-10-31",
+        "Parent.comments": "Parent Form Record 2",
+        "rec": "Sub-Form Record 1",
+        "Quantity": 1,
+        "@id": "cjmj78nid8b",
+        "Parent.date1": "2018-10-01",
+        "Parent.partner.label": "BeDataDriven"
     }
 ]
 ```
 
-@[6](The '@id' Field gives Form Record Id)
-@[8](The Query API will return fields by their code, if defined...)
-@[12](...or by their full label otherwise.)
-
 +++
 
-## Column-Format Example
+## Information from Parent Form
 
-+++
-
-For this example, we will send the following request:
+Just as we used Reference Fields to query for information from another Form, we can query for information from a Parent Form Record:
 
 ```
-GET https://activityinfo.org/resources/form/a1234567890/query/columns
+GET https://activityinfo.org/resources/form/cjmhib4oy1/query/rows?subFormRecord=rec&parentFormRecord=parent.comments
 ```
 
 +++
 
 ```json
-{
-    "rows": 3,
-    "columns": {
-        "comments": {
-            "type": "STRING",
-            "storage": "array",
-            "values": [
-                "Third Record",
-                "Second Record",
-                "First Record"
-            ]
-        },
-        "User-Added Field": {
-            "type": "NUMBER",
-            "storage": "array",
-            "values": [
-                3,
-                2,
-                1
-            ]
-        },
-        "project.label": {
-            "type": "STRING",
-            "storage": "empty"
-        },
-        "project.Description": {
-            "type": "STRING",
-            "storage": "empty"
-        },
-        "partner.label": {
-            "type": "STRING",
-            "storage": "constant",
-            "value": "Default"
-        },
-        "@id": {
-            "type": "STRING",
-            "storage": "array",
-            "values": [
-                "s0044598181",
-                "s0517446917",
-                "s1625985119"
-            ]
-        },
-        "date2": {
-            "type": "STRING",
-            "storage": "array",
-            "values": [
-                "2018-10-31",
-                "2018-09-30",
-                "2018-09-25"
-            ]
-        },
-        "date1": {
-            "type": "STRING",
-            "storage": "array",
-            "values": [
-                "2018-10-01",
-                "2018-09-01",
-                "2018-09-24"
-            ]
-        },
-        "partner.Full Name": {
-            "type": "STRING",
-            "storage": "empty"
-        }
+[
+    {
+        "parentFormRecord": "Parent Form Record 1",
+        "subFormRecord": "Sub-Form Record 1"
+    },
+    {
+        "parentFormRecord": "Parent Form Record 1",
+        "subFormRecord": "Sub-Form Record 2"
+    },
+    {
+        "parentFormRecord": "Parent Form Record 2",
+        "subFormRecord": "Sub-Form Record 1"
     }
-}
+]
 ```
-
-@[2](`rows` gives the number of data rows returned)
-@[3](`columns` gives the columns returned, with each column as a separate attribute)
-@[4](Just like the `/rows` endpoint, the Query API will return fields by their code, or by their label otherwise)
-@[5](Defines the JSON data type for the given column)
-@[6](Defines the storage method: 'empty' for an empty column, 'constant' for a constant value for all rows, or 'array' for a separate value for each row)
-@[7-11](The returned values for each row)
-
----
-
 
 ---
 
