@@ -116,7 +116,7 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 
 Generic Request for Database Schema:
 
-```
+```http
 GET https://activityinfo.org/resources/database/{databaseId}
 ```
 
