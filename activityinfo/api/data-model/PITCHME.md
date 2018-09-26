@@ -1320,7 +1320,7 @@ GET https://activityinfo.org/resources/form/a2145507921/query/rows?record=commen
 # Sub-Forms
 
 @snap[east]
-@fa[file fa-5x]
+@fa[level-down fa-5x] @fa[file fa-5x]
 @snapend
 
 @snap[south]
@@ -1660,5 +1660,14 @@ GET https://activityinfo.org/resources/form/cjmhib4oy1/query/rows?subFormRecord=
 ---
 
 # Key Fields
+
+@snap[east]
+@fa[key fa-5x]
+@snapend
+
+@snap[south]
+@fa[arrow-down]
+@snapend
+
 
 
