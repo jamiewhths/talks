@@ -1334,8 +1334,8 @@ GET https://activityinfo.org/resources/form/a2145507921/query/rows?record=commen
 ## @color[#00CF79](Sub-Form)
 
 - Contained within a Parent Form
-- Allows Users to submit multiple entries on a single Form Record (e.g. Monthly)
-- Reference Fields establish a connection between the Parent Form and Sub-Form
+- Submit multiple entries within a single Form Record (e.g. Monthly)
+- Reference Fields connect the Parent Form and Sub-Form
 
 +++
 
@@ -1559,8 +1559,9 @@ Form: {
 
 ## @color[#00CF79](Sub-Form Records)
 
-- Same structure as a Form Record, with one key difference: all Sub-Form Records are explicitly associated with a Parent Form Record
-- Each Sub-Form Record references a Parent Form Record in a `parent` field
+- Same structure as a Form Record
+- **EXCEPT** all Sub-Form Records are explicitly associated with a Parent Form Record
+- All Sub-Form Records reference a Parent Form Record in a `parent` field
 
 +++
 
