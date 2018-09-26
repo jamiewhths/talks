@@ -1566,7 +1566,7 @@ Form: {
 
 +++
 
-![Sub-Form Record in Context](activityinfo/api/data-model/img/form-record-context.png)
+![Sub-Form Record in Context](activityinfo/api/data-model/img/subform-record-context.png)
 
 +++
 
