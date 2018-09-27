@@ -45,7 +45,7 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 +++
 @title[Download API Collection]
 @snap[north-west]
-<h4>Download the ActivityInfo API Collection from [here](https://github.com/jamiewhths/talks/activityinfo/api/data-model/resources/ActivityInfo API.postman_collection.json)</h4>
+<h4>Download the ActivityInfo API Collection from [here](https://github.com/jamiewhths/talks/activityinfo/api/data-model/resources/ActivityInfo_API.postman_collection.json)</h4>
 @snapend
 
 @snap[midpoint]
