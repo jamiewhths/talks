@@ -1366,7 +1366,7 @@ GET .../query/rows?discussion=Discussion&contactFirstName=Contact.[First Name]&c
 ## Query for Sub-Form Schema
 We can use the same endpoint for retrieving a Sub-Form Schema:
 
-```
+```http
 GET https://activityinfo.org/resources/form/{subFormId}/schema
 ```
 +++
@@ -1447,8 +1447,8 @@ GET https://activityinfo.org/resources/form/a2145507924/schema
 ```
 
 @[47-59](Our Sub-Form Reference Field)
-@[81](Has type `subform`)
-@[83](Our Expenses Sub-Form Id is `cjmhib4oy1`)
+@[55](Has type `subform`)
+@[57](Our Expenses Sub-Form Id is `cjmhib4oy1`)
 
 +++
 @title[Example 8.2: Sub-Form Schema]
@@ -1503,7 +1503,7 @@ GET https://activityinfo.org/resources/form/cjmhib4oy1/schema
 
 @[2-5](Sub-Forms share the same basic attributes as Forms)
 @[6](Includes an extra `parentFormId` attribute...)
-@[7](And an extra 'subFormKind`, which specifies the reporting interval of the Sub-Form entries)
+@[7](Also includes `subFormKind` giving the reporting interval of the Sub-Form entries)
 @[8](Form Fields appear as `elements` in the same way as Forms)
 
 +++
@@ -1522,7 +1522,7 @@ Form: {
 }
 ```
 
-@[7](Enum choice of `{ 'repeating', 'daily', 'weekly', 'biweekly' 'monthly' })
+@[7](Enum choice of `{ 'repeating', 'daily', 'weekly', 'biweekly' 'monthly' }`)
 
 ---
 @title[Sub-Form Record]
@@ -1538,106 +1538,104 @@ Form: {
 @snapend
 
 +++
-
+@title[Sub-Form Records]
 ## @color[#00CF79](Sub-Form Records)
 
 - Same structure as a Form Record
-- **EXCEPT** all Sub-Form Records reference a Parent Form Record
--  in a `parent` field
+- **EXCEPT** all Sub-Form Records reference a Parent Form Record via a `parent` field
 
 +++
-
-! Sub-Form Records in UI goes here !
+@title[Sub-Form Record in UI]
+![Sub-Form Record in UI](activityinfo/api/data-model/img/subform-records.png)
 
 +++
-
+@title[Sub-Form Record in Context]
 ![Sub-Form Record in Context](activityinfo/api/data-model/img/subform-record-context.png)
 
 +++
+@title[Query for Sub-Form Records]
+## Query for Sub-Form Records
+Generic Request for Sub-Form Records (in row-format):
 
-Generic Request for Form Records (in row-format):
-
-```
+```http
 GET https://activityinfo.org/resources/form/{subFormId}/query/rows
 ```
 
-Generic Request for Form Records (in column-format):
+Generic Request for Sub-Form Records (in column-format):
 
-```
+```http
 GET https://activityinfo.org/resources/form/{subFormId}/query/columns
 ```
 
 +++
-
-## Row-Format Example
-
-+++
+@title[Example 9: Sub-Form Records]
+## Example 9: Sub-Form Records
 
 For this example, we will send the following request:
 
-```
+```http
 GET https://activityinfo.org/resources/form/cjmhib4oy1/query/rows
 ```
 
 +++
-
+@title[Sub-Form Records Response]
 ```json
 [
     {
-        "Parent.date2": "2018-09-26",
-        "Parent.comments": "Parent Form Record 1",
-        "rec": "Sub-Form Record 1",
-        "Quantity": 1,
-        "@id": "cjmj77kkx1",
-        "Parent.date1": "2018-09-26",
-        "Parent.partner.label": "Default"
-    },
-    {
-        "Parent.date2": "2018-09-26",
-        "Parent.comments": "Parent Form Record 1",
-        "rec": "Sub-Form Record 2",
-        "Quantity": 2,
-        "@id": "cjmj7882f4g",
-        "Parent.date1": "2018-09-26",
-        "Parent.partner.label": "Default"
-    },
-    {
-        "Parent.date2": "2018-10-31",
-        "Parent.comments": "Parent Form Record 2",
-        "rec": "Sub-Form Record 1",
-        "Quantity": 1,
+        "Parent.code": "UC2018",
+        "descrip": "Room Rental",
+        "cost": 1000,
+        "Parent.proj": "User Conference 2018",
         "@id": "cjmj78nid8b",
-        "Parent.date1": "2018-10-01",
+        "Parent.partner.label": "BeDataDriven"
+    },
+    {
+        "Parent.code": "UC2018",
+        "descrip": "Stationary Supplies",
+        "cost": 50,
+        "Parent.proj": "User Conference 2018",
+        "@id": "cjmk2jfu95n",
+        "Parent.partner.label": "BeDataDriven"
+    },
+    {
+        "Parent.code": "DEV001",
+        "descrip": "Initial Proposal",
+        "cost": 100,
+        "Parent.proj": "New Field Development",
+        "@id": "cjmk2kinrd7",
         "Parent.partner.label": "BeDataDriven"
     }
 ]
 ```
 
-+++
+@[4-5](We have each of the fields on the Sub-Form)
+@[6](As well as information from Parent From via `parent` reference)
 
-## Information from Parent Form
++++
+@title[Information from Parent Forms]
+## Example 10: Query for Parent Form Information
 
 Just as we used Reference Fields to query for information from another Form, we can query for information from a Parent Form Record:
 
-```
-GET https://activityinfo.org/resources/form/cjmhib4oy1/query/rows?subFormRecord=rec&parentFormRecord=parent.comments
+```http
+.../query/rows?subFormRecord=descrip&parentFormRecord=parent.proj
 ```
 
 +++
-
+@title[Parent Form Information Response]
 ```json
 [
     {
-        "parentFormRecord": "Parent Form Record 1",
-        "subFormRecord": "Sub-Form Record 1"
+        "parentFormRecord": "User Conference 2018",
+        "subFormRecord": "Room Rental"
     },
     {
-        "parentFormRecord": "Parent Form Record 1",
-        "subFormRecord": "Sub-Form Record 2"
+        "parentFormRecord": "User Conference 2018",
+        "subFormRecord": "Stationary Supplies"
     },
     {
-        "parentFormRecord": "Parent Form Record 2",
-        "subFormRecord": "Sub-Form Record 1"
+        "parentFormRecord": "New Field Development",
+        "subFormRecord": "Initial Proposal"
     }
 ]
 ```
@@ -1653,6 +1651,10 @@ GET https://activityinfo.org/resources/form/cjmhib4oy1/query/rows?subFormRecord=
 @snap[south]
 @fa[arrow-down]
 @snapend
+
++++
+@title[Key Field Definition]
+
 
 
 
