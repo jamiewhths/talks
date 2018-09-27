@@ -1152,6 +1152,14 @@ GET https://activityinfo.org/resources/form/a1234567890/query/columns?project=[P
 - Can then construct queries to obtain data from a referenced Form
 
 +++
+@title[Reference Field in UI - Correspondence Form]
+![Reference Field in UI - Correspondence Form](activityinfo/api/data-model/img/ref-field-data-entry-1.png)
+
++++
+@title[Reference Field in UI - Contact Form]
+![Reference Field in UI - Contact Form](activityinfo/api/data-model/img/ref-field-data-entry-2.png)
+
++++
 @title[Reference Field in Context]
 ![Reference Field in Context](activityinfo/api/data-model/img/ref-field.png)
 
@@ -1264,7 +1272,7 @@ GET https://activityinfo.org/resources/form/a2145507921/schema
 
 Let's find the selected records from our Partner Reference Field:
 
-```
+```http
 GET https://activityinfo.org/resources/form/a2145507921/query/rows?referenceField=partner
 ```
 
@@ -1297,7 +1305,7 @@ GET https://activityinfo.org/resources/form/a2145507921/query/rows?referenceFiel
 A Field from another Form can be referenced by:
 - Finding the code/label of the Reference Field in your Form (e.g. 'Contact')
 - Finding the Field you wish to extract data from on the referenced Form (e.g. 'First Name' for the Contact's Name Field)
-- Creating a query formula via dot '.' notation (i.e. "Contact.[First Name]")
+- Creating a query formula via dot '.' notation to make a path to the field (i.e. "Contact.[First Name]")
 
 +++
 @title[Example 7.3]
