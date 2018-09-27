@@ -1093,7 +1093,7 @@ We can specify a query parameter in our request:
 ```
 
 - Can use any valid string for `desiredName` 
-- A `formula` gives a path to a feild, or a method to calculate the desired value
+- A `formula` gives a path to a field, or a method to calculate the desired value
 - `formula` is often a `fieldCode`, `fieldName`, or `fieldId`. 
 - If the field has a space, surround it with `[...]` brackets.
 
@@ -1131,7 +1131,7 @@ GET https://activityinfo.org/resources/form/a1234567890/query/columns?project=[P
 @[4](Column name is now our specified name from the query parameter)
 
 ---
-
+@title[Reference Fields]
 # Reference 
 # Field
 
@@ -1144,7 +1144,7 @@ GET https://activityinfo.org/resources/form/a1234567890/query/columns?project=[P
 @snapend
 
 +++
-
+@title[Reference Field Definition]
 ## @color[#00CF79](Reference Fields)
 
 - A particular Field Type which allows one Form to reference another Form
@@ -1152,110 +1152,175 @@ GET https://activityinfo.org/resources/form/a1234567890/query/columns?project=[P
 - Can then construct queries to obtain data from a referenced Form
 
 +++
+@title[Reference Field in Context]
+![Reference Field in Context](activityinfo/api/data-model/img/ref-field.png)
 
-## Reference Field Schema
++++
+@title[Example 7.1: Form Schema with Reference Field]
+## Example 7.1: Form Schema with Reference Field 
 
-Let's get the schema of an already created Reference Field - the built-in Partner Field:
+Let's get the schema of a form with a Reference Field:
 
-```
+```http
 GET https://activityinfo.org/resources/form/a2145507921/schema
 ```
 
 +++
+@title[Reference Field Schema Response]
 
-```
+```json
 {
-   "id": "a21455079210000000007",
-   "code": "partner",
-   "label": "Partner",
-   "description": null,
-   "relevanceCondition": null,
-   "visible": true,
-   "required": true,
-   "type": "reference",
-   "typeParameters": {
-       "cardinality": "single",
-       "range": [
-           {
-               "formId": "P0000009909"
-           }
-       ]
-   }
+    "id": "a2145508135",
+    "schemaVersion": 1,
+    "databaseId": "d0000009909",
+    "label": "Correspondence Form",
+    "elements": [
+        {
+            "id": "a21455081350000000007",
+            "code": "partner",
+            "label": "Partner",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": true,
+            "type": "reference",
+            "typeParameters": {
+                "cardinality": "single",
+                "range": [
+                    {
+                        "formId": "P0000009909"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "i1962994487",
+            "code": null,
+            "label": "Contact",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": false,
+            "type": "reference",
+            "typeParameters": {
+                "cardinality": "single",
+                "range": [
+                    {
+                        "formId": "a2145508134"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "Q1293339027",
+            "code": null,
+            "label": "Discussion",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": false,
+            "type": "enumerated",
+            "typeParameters": {
+                "cardinality": "single",
+                "presentation": "automatic",
+                "values": [
+                    {
+                        "id": "t1292954278",
+                        "label": "Support"
+                    },
+                    {
+                        "id": "t1293531401",
+                        "label": "Training"
+                    },
+                    {
+                        "id": "t0862657783",
+                        "label": "Follow-up"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "a21455081350000000014",
+            "code": "comments",
+            "label": "Comments",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": false,
+            "type": "NARRATIVE"
+        }
+    ]
 }
 ```
-@[9](Has type `reference`)
-@[11](Defines the cardinality of the selection - either 'single' or 'multiple')
-@[12-16](Defines the range of Forms from which a User can select a Form Record)
-@[14](We see that the Partner Field references the Partner Form 'P0000009909')
+@[25-42](Our Corresponsdence Form contains a Reference Field "Contact")
+@[33](Has type `reference`)
+@[35](Defines the cardinality of the selection - either 'single' or 'multiple')
+@[36-39](Defines the Forms from which a User can select a Form Record)
+@[38](We see that the Contact Reference Field references the Form 'a2145508134')
 
 +++
-
-## Reference Field Value
+@title[Example 7.2: Reference Field Value]
+## Example 7.2: Reference Field Value
 
 Let's find the selected records from our Partner Reference Field:
 
 ```
-GET https://activityinfo.org/resources/form/a2145507921/query/columns?referenceField=partner
+GET https://activityinfo.org/resources/form/a2145507921/query/rows?referenceField=partner
 ```
 
 +++
-
+@title[Reference Field Value Response]
 ```
-{
-    "rows": 3,
-    "columns": {
-        "referenceField": {
-            "type": "STRING",
-            "storage": "array",
-            "values": [
-                "p0000019616",
-                "p0000019619",
-                "p0000019616"
-            ]
-        }
+[
+    {
+        "contactRefValue": "s1846376438"
+    },
+    {
+        "contactRefValue": "s1695023718"
     }
-}
+]
 ```
-@[7-11](The returned values for each row give the selected Form Records on the Partner Form 'P0000009909')
+@[3](This Record in the Correspondance Form references record `s1846376438` on our Contact Form)
+@[5](This Record in the Correspondance Form references record `s1695023718` on our Contact Form)
 
 +++
-
+@title[Using References in Query API]
 ## Using References in Query API
 
-Now that we have established a link from our form to the Partner Form, we can get further data from the Partner Form by creating a query formula.
+- We know what a link looks like form Correspondance Form -> Contact Form
+- Now we can get further data from the Contact Form by creating a query formula.
 
 +++
-
+@title[Creating References for Query API]
 ## Using References in Query API
 
 A Field from another Form can be referenced by:
-- Finding the code/label of the Reference Field in your Form (e.g. 'partner')
-- Finding the Field you wish to extract data from on the referenced Form (e.g. 'label' for the Partner's Name Field)
-- Creating a query formula via dot '.' notation (i.e. "partner.label")
+- Finding the code/label of the Reference Field in your Form (e.g. 'Contact')
+- Finding the Field you wish to extract data from on the referenced Form (e.g. 'First Name' for the Contact's Name Field)
+- Creating a query formula via dot '.' notation (i.e. "Contact.[First Name]")
 
 +++
+@title[Example 7.3]
+## Example 7.3: References in Query API
+Let's get the Contact's First and Last Name for each record on our Correspondance Form:
 
-Let's get the Partner's Name for each record on our Form:
-
-```
-GET https://activityinfo.org/resources/form/a2145507921/query/rows?record=comments&partnerName=partner.label
+```http
+GET .../query/rows?discussion=Discussion&contactFirstName=Contact.[First Name]&contactLastName=Contact.[Last Name]
 ```
 
 +++
-
+@title[Example 7.3 Response]
 ```json
 [
     {
-        "partnerName": "Default",
-        "record": "Third Record"
+        "contactFirstName": "Lucy",
+        "contactLastName": "Brinks",
+        "discussion": "Support"
     },
     {
-        "partnerName": "BeDataDriven",
-        "record": "Second Record"
-    },
-    {
-        "partnerName": "Default",
-        "record": "First Record"
+        "contactFirstName": "Jamie",
+        "contactLastName": "Whitehouse",
+        "discussion": "Training"
     }
 ]
 ```
@@ -1273,7 +1338,7 @@ GET https://activityinfo.org/resources/form/a2145507921/query/rows?record=commen
 @snapend
 
 +++
-
+@title[Sub-Form Definition]
 ## @color[#00CF79](Sub-Form)
 
 - Contained within a Parent Form
