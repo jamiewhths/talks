@@ -1,0 +1,11 @@
+# Layout
+layout: center-left
+
+# Theme
+theme: white
+logo: activityinfo/img/activityinfo-logo.png
+footnote: "ActivityInfo User Conference 2018"
+
+# Behaviour
+transition: none
+
