@@ -598,7 +598,7 @@ FormField: {
 	"visible": boolean,
 	"required": boolean,
 	"type": string,
-	"key: boolean,
+	"key": boolean,
 	"typeParameters": { FieldTypeParameter }
 }
 ```
@@ -644,6 +644,7 @@ FormField: {
 @[2](Has form `i0000000000`)
 @[9](Has type `serial`)
 @[11](Defines the input mask, if any)
+@[12](Defines the number of digits to generate)
 
 +++
 @title[Field Type: Quantity Field]
@@ -833,6 +834,7 @@ FormField: {
 
 @[2](Has form `i0000000000`)
 @[9](Has type `attachment`)
+@[11](Defines the cardinality of the upload - either 'single' or 'multiple')
 @[12](Defines the upload type - either 'image' or 'attachment')
 
 +++
@@ -867,7 +869,7 @@ FormField: {
 
 +++
 @title[Built-In Fields: Partner Example]
-## Built-In Field Example: Partner
+## Example: Partner
 ```json
 {
    "id": "a21455079220000000007",
@@ -892,9 +894,9 @@ FormField: {
 @[2](However `id` is "built-in" value of `a21455079220000000007`, where `a2145507922` is the `fieldId`)
 
 ---
-
+@title[Form Records]
 # Form 
-# Record
+# Records
 
 @snap[east]
 @fa[file-text fa-5x]
@@ -905,129 +907,134 @@ FormField: {
 @snapend
 
 +++
-
+@title[Form Records Definition]
 ## @color[#00CF79](Form Records)
 
 - Created when a User submits an entry to a Form
 - Data which can be entered defined by the Form and Field Types
 
 +++
-
-! Form Record in UI goes here !
+@title[Form Record in UI]
+![Form Record in UI](activityinfo/api/data-model/img/form-data-entry.png)
 
 +++
-
+@title[Form Record in Context]
 ![Form Record in Context](activityinfo/api/data-model/img/form-record-context.png)
 
 +++
-
+@title[Form Records Request]
+## Query for Form Records
 Generic Request for Form Records (in row-format):
 
-```
+```http
 GET https://activityinfo.org/resources/form/{formId}/query/rows
 ```
 
 Generic Request for Form Records (in column-format):
 
-```
+```http
 GET https://activityinfo.org/resources/form/{formId}/query/columns
 ```
 
 +++
-
-## Row-Format Example
-
-+++
+@title[Example 4 - Row Format]
+## Example 4: Row-Format Query
 
 For this example, we will send the following request:
 
-```
+```http
 GET https://activityinfo.org/resources/form/a2145507921/query/rows
 ```
 
 +++
-
+@title[Row Format Response]
 ```json
 [
     {
-        "comments": "Third Record",
-        "User-Added Field": 3,
+        "Project Name": "Documentation",
+        "Funding": 0,
+        "Project Code": "DOC001",
         "partner.label": "Default",
         "@id": "s0044598181",
+        "date2": "2018-09-30",
+        "date1": "2018-07-01"
+    },
+    {
+        "Project Name": "New Field Development",
+        "Funding": 5000,
+        "Project Code": "DEV001",
+        "partner.label": "BeDataDriven",
+        "@id": "s0517446917",
         "date2": "2018-10-31",
         "date1": "2018-10-01"
     },
     {
-        "comments": "Second Record",
-        "User-Added Field": 2,
-        "partner.label": "Default",
-        "@id": "s0517446917",
-        "date2": "2018-09-30",
-        "date1": "2018-09-01"
-    },
-    {
-        "comments": "First Record",
-        "User-Added Field": 1,
+        "Project Name": "User Conference",
+        "Funding": 1000,
+        "Project Code": "UC2018",
         "partner.label": "Default",
         "@id": "s1625985119",
-        "date2": "2018-09-25",
-        "date1": "2018-09-24"
+        "date2": "2018-09-27",
+        "date1": "2018-09-26"
     }
 ]
 ```
 
-@[6](The '@id' Field gives Form Record Id)
+@[7](The '@id' Field gives Form Record Id)
 @[8](The Query API will return fields by their code, if defined...)
 @[12](...or by their full label otherwise.)
 
 +++
-
-## Column-Format Example
-
-+++
+@title[Example 5 - Column Format]
+## Example 5: Column-Format Query
 
 For this example, we will send the following request:
 
-```
+```http
 GET https://activityinfo.org/resources/form/a1234567890/query/columns
 ```
 
 +++
-
+@title[Column Format Response]
 ```json
 {
     "rows": 3,
     "columns": {
-        "comments": {
+        "Project Name": {
             "type": "STRING",
             "storage": "array",
             "values": [
-                "Third Record",
-                "Second Record",
-                "First Record"
+                "Documentation",
+                "New Field Development",
+                "User Conference"
             ]
         },
-        "User-Added Field": {
+        "Funding": {
             "type": "NUMBER",
             "storage": "array",
             "values": [
-                3,
-                2,
-                1
+                0,
+                5000,
+                1000
             ]
         },
-        "project.label": {
+        "Project Code": {
             "type": "STRING",
-            "storage": "empty"
-        },
-        "project.Description": {
-            "type": "STRING",
-            "storage": "empty"
+            "storage": "array",
+            "values": [
+                "DOC001",
+                "DEV001",
+                "UC2018"
+            ]
         },
         "partner.label": {
             "type": "STRING",
-            "storage": "constant",
-            "value": "Default"
+            "storage": "array",
+            "values": [
+                "Default",
+                "BeDataDriven",
+                "Default"
+            ]
         },
         "@id": {
             "type": "STRING",
@@ -1042,18 +1049,18 @@ GET https://activityinfo.org/resources/form/a1234567890/query/columns
             "type": "STRING",
             "storage": "array",
             "values": [
-                "2018-10-31",
                 "2018-09-30",
-                "2018-09-25"
+                "2018-10-31",
+                "2018-09-27"
             ]
         },
         "date1": {
             "type": "STRING",
             "storage": "array",
             "values": [
+                "2018-07-01",
                 "2018-10-01",
-                "2018-09-01",
-                "2018-09-24"
+                "2018-09-26"
             ]
         },
         "partner.Full Name": {
@@ -1070,6 +1077,55 @@ GET https://activityinfo.org/resources/form/a1234567890/query/columns
 @[5](Defines the JSON data type for the given column)
 @[6](Defines the storage method: 'empty' for an empty column, 'constant' for a constant value for all rows, or 'array' for a separate value for each row)
 @[7-11](The returned values for each row)
+
+
++++
+
+What if we just want a specific field? 
+
++++
+@title[Query Parameters]
+## Query Parameters
+We can specify the Fields we want by specifying a query parameter in our request:
+
+```http
+.../form/{formId}/query/columns?{desiredName}={fieldCode/fieldName/fieldId}
+```
+- Can use any valid string for `desiredName` 
+- `fieldCode`, `fieldName`, or `fieldId` specify the field you wish to query. If the field has a space, surround it with `[...]` brackets
+
++++
+@title[Example 6]
+## Example 6
+
+For this example, we will send the following request:
+
+```http
+GET https://activityinfo.org/resources/form/a1234567890/query/columns?projectName=[Project Name]
+```
+
++++
+@title[Query Parameter Response]
+```json
+{
+    "rows": 3,
+    "columns": {
+        "parentName": {
+            "type": "STRING",
+            "storage": "array",
+            "values": [
+                "Documentation",
+                "New Field Development",
+                "User Conference"
+            ]
+        }
+    }
+}
+```
+
+@[2](Still have 3 rows returned)
+@[3-13](But we only have a single column returned - our Project Name field)
+@[4](Column name is now our specified name from the query parameter)
 
 ---
 
