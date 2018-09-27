@@ -1289,14 +1289,14 @@ GET https://activityinfo.org/resources/form/a2145507921/query/rows?referenceFiel
 ]
 ```
 @[3](This Record in the Correspondance Form references record `s1846376438` on our Contact Form)
-@[5](This Record in the Correspondance Form references record `s1695023718` on our Contact Form)
+@[6](This Record in the Correspondance Form references record `s1695023718` on our Contact Form)
 
 +++
 @title[Using References in Query API]
 ## Using References in Query API
 
-- We know what a link looks like form Correspondance Form -> Contact Form
-- Now we can get further data from the Contact Form by creating a query formula.
+- We have seen a from Correspondance Form -> Contact Form
+- Now we can get further data from the Contact Form by creating a query formula
 
 +++
 @title[Creating References for Query API]
@@ -1354,31 +1354,32 @@ GET .../query/rows?discussion=Discussion&contactFirstName=Contact.[First Name]&c
 - Reference Fields connect the Parent Form and Sub-Form
 
 +++
-
-! Sub-Form in UI !
+@title[Sub-Form in UI]
+![Sub-Form in UI](activityinfo/api/data-model/img/subform.png)
 
 +++
-
+@title[Sub-Form in Context]
 ![Sub-Form in Context](activityinfo/api/data-model/img/subform-context.png)
 
 +++
-
+@title[Query for Sub-Form Schema]
+## Query for Sub-Form Schema
 We can use the same endpoint for retrieving a Sub-Form Schema:
 
 ```
 GET https://activityinfo.org/resources/form/{subFormId}/schema
 ```
-
 +++
-
+@title[Example 8.1: Parent Form Schema Request]
+## Example 8.1: Parent Form Schema
 To find our Sub-Form Id, we retrieve the Parent Form's schema first:
 
-```
+```http
 GET https://activityinfo.org/resources/form/a2145507924/schema
 ```
 
 +++
-
+@title[Parent Form Schema Response]
 ## Parent Form
 
 ```json
@@ -1386,27 +1387,29 @@ GET https://activityinfo.org/resources/form/a2145507924/schema
     "id": "a2145507924",
     "schemaVersion": 1,
     "databaseId": "d0000009909",
-    "label": "Sub-Forms",
+    "label": "Project Expenses",
     "elements": [
         {
-            "id": "a21455079240000000012",
-            "code": "date1",
-            "label": "Start Date",
+            "id": "i0649125506",
+            "code": "proj",
+            "label": "Project Name",
             "description": null,
             "relevanceCondition": null,
             "visible": true,
-            "required": true,
-            "type": "date"
+            "required": false,
+            "type": "FREE_TEXT",
+            "typeParameters": {}
         },
         {
-            "id": "a21455079240000000013",
-            "code": "date2",
-            "label": "End Date",
+            "id": "i0908831014",
+            "code": "code",
+            "label": "Project Code",
             "description": null,
             "relevanceCondition": null,
             "visible": true,
-            "required": true,
-            "type": "date"
+            "required": false,
+            "type": "FREE_TEXT",
+            "typeParameters": {}
         },
         {
             "id": "a21455079240000000007",
@@ -1427,37 +1430,9 @@ GET https://activityinfo.org/resources/form/a2145507924/schema
             }
         },
         {
-            "id": "a21455079240000000008",
-            "code": "project",
-            "label": "Project",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": false,
-            "required": false,
-            "type": "reference",
-            "typeParameters": {
-                "cardinality": "single",
-                "range": [
-                    {
-                        "formId": "R0000009909"
-                    }
-                ]
-            }
-        },
-        {
-            "id": "a21455079240000000014",
-            "code": "comments",
-            "label": "Comments",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": true,
-            "required": false,
-            "type": "NARRATIVE"
-        },
-        {
             "id": "i2093438408",
             "code": null,
-            "label": "Repeating Sub-Form",
+            "label": "Expenses",
             "description": null,
             "relevanceCondition": null,
             "visible": true,
@@ -1471,29 +1446,22 @@ GET https://activityinfo.org/resources/form/a2145507924/schema
 }
 ```
 
-@[73-85](Our Sub-Form Reference Field)
+@[47-59](Our Sub-Form Reference Field)
 @[81](Has type `subform`)
-@[83](Our Sub-Form Id is `cjmhib4oy1`)
+@[83](Our Expenses Sub-Form Id is `cjmhib4oy1`)
 
 +++
-
-
-We can use the same endpoint for retrieving a Sub-Form Schema:
-
-```
-GET https://activityinfo.org/resources/form/{subFormId}/schema
-```
-
-+++
+@title[Example 8.2: Sub-Form Schema]
+## Example 8.2: Sub-Form Schema
 
 Using our Sub-Form Id, we will send the following request to find our Sub-Form Schema:
 
-```
+```http
 GET https://activityinfo.org/resources/form/cjmhib4oy1/schema
 ```
 
 +++
-
+@title[Sub-Form Schema Response]
 ## Sub-Form
 
 ```json
@@ -1501,33 +1469,33 @@ GET https://activityinfo.org/resources/form/cjmhib4oy1/schema
     "id": "cjmhib4oy1",
     "schemaVersion": 0,
     "databaseId": "d0000009909",
-    "label": "Repeating Sub-Form",
+    "label": "Expenses",
     "parentFormId": "a2145507924",
     "subFormKind": "repeating",
     "elements": [
         {
+            "id": "i0337573943",
+            "code": "descrip",
+            "label": "Description of Expense",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": false,
+            "type": "NARRATIVE"
+        },
+        {
             "id": "i0701024476",
-            "code": null,
-            "label": "Quantity",
+            "code": "cost",
+            "label": "Cost",
             "description": null,
             "relevanceCondition": null,
             "visible": true,
             "required": false,
             "type": "quantity",
             "typeParameters": {
-                "units": "households",
+                "units": "$",
                 "aggregation": "SUM"
             }
-        },
-        {
-            "id": "i0337573943",
-            "code": "rec",
-            "label": "Sub-Form Record",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": true,
-            "required": false,
-            "type": "NARRATIVE"
         }
     ]
 }
@@ -1539,7 +1507,7 @@ GET https://activityinfo.org/resources/form/cjmhib4oy1/schema
 @[8](Form Fields appear as `elements` in the same way as Forms)
 
 +++
-
+@title[Sub-Form Schema Definition]
 ## Sub-Form Schema
 
 ```
@@ -1554,12 +1522,10 @@ Form: {
 }
 ```
 
-@[2](Has form `L0000000000`)
-@[4](Has form `L0000000000`)
 @[7](Enum choice of `{ 'repeating', 'daily', 'weekly', 'biweekly' 'monthly' })
 
 ---
-
+@title[Sub-Form Record]
 # Sub-Form 
 # Record
 
