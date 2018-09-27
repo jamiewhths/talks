@@ -2,7 +2,7 @@
 ## @color[#00CF79](Data Model)
 
 ---
-
+@title[Learning Outcomes]
 ## Learning Outcomes
 From this presentation, you should understand:
 - The basic objects of the ActivityInfo Data Model, and their structure
@@ -11,7 +11,7 @@ From this presentation, you should understand:
 - The basic concepts needed to construct queries for the ActivityInfo Query API
 
 ---
-
+@title[Topics]
 ## Topics
 - Databases
 - Forms
@@ -23,7 +23,7 @@ From this presentation, you should understand:
 - Key Fields
 
 ---
-
+@title[Set-Up]
 ## @color[#00CF79](Set-up)
 
 Before we start, we need to set up our REST Client [Postman](https://www.getpostman.com/)
@@ -33,7 +33,7 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 @snapend
 
 +++
-
+@title[Download Postman]
 @snap[north-west]
 <h4>Download the correct version for your system [here]("https://www.getpostman.com/apps")</h4>
 @snapend
@@ -43,7 +43,7 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 @snapend
 
 +++
-
+@title[Download API Collection]
 @snap[north-west]
 <h4>Download the ActivityInfo API Collection from [here](https://github.com/jamiewhths/talks/activityinfo/api/data-model/resources/collections.api)</h4>
 @snapend
@@ -53,7 +53,7 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 @snapend
 
 +++
-
+@title[Install Postman]
 @snap[north-west]
 <h4>Install Postman - no need to create account</h4>
 @snapend
@@ -63,7 +63,7 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 @snapend
 
 +++
-
+@title[Select Import]
 @snap[north-west]
 <h4>Select "Import" from the top-left corner</h4>
 @snapend
@@ -73,7 +73,7 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 @snapend
 
 +++
-
+@title[Select API Collection to Import]
 @snap[north-west]
 <h4>On the Import Screen, select "Browse Files" and find the ActivityInfo API collection</h4>
 @snapend
@@ -99,21 +99,21 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 @snapend
 
 +++
-
+@title[Database Definition]
 ## @color[#00CF79](Database)
 - Central source of data
 - All data are entered, maintained and reported on from one or more databases
 
 +++
-
+@title[Database in UI]
 ![Database in UI](activityinfo/api/data-model/img/database.png)
 
 +++
-
+@title[Database in Context]
 ![Database in Context](activityinfo/api/data-model/img/database-context.png)
 
 +++
-
+@title[Database Schema Request]
 Generic Request for Database Schema:
 
 ```http
@@ -121,7 +121,7 @@ GET https://activityinfo.org/resources/database/{databaseId}
 ```
 
 +++
-
+@title[Example 1]
 ## Example 1
 
 For this example, we will send the following request:
@@ -131,7 +131,7 @@ GET https://activityinfo.org/resources/database/9909
 ```
 
 +++
-
+@title[Database Schema Response]
 ```json
 {
     "databaseId": "d0000009909",
@@ -202,7 +202,7 @@ GET https://activityinfo.org/resources/database/9909
 @[47](Locks set on Database)
 
 +++
-
+@title[Database Schema Definition]
 ## Database Schema
 
 ```
@@ -220,7 +220,7 @@ Database: {
 ```
 
 +++
-
+@title[Resource Schema Definition]
 ## Resource Schema
 
 ```
