@@ -1656,7 +1656,7 @@ Just as we used Reference Fields to query for information from another Form, we 
 @title[Key Field Definition]
 ## @color[#00CF79](Key Fields)
 
-- Identifies fields which identify a **unique** record in a Form in a user-friendly way
+- Fields which identify a **unique** record in a Form in a user-friendly way
 - Can be a set of keys (e.g. Last Name, First Name)
 
 +++
