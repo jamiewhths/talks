@@ -126,7 +126,7 @@ GET https://activityinfo.org/resources/database/{databaseId}
 
 For this example, we will send the following request:
 
-```
+```http
 GET https://activityinfo.org/resources/database/9909
 ```
 
@@ -139,14 +139,8 @@ GET https://activityinfo.org/resources/database/9909
     "label": "ActivityInfo API Demo",
     "visible": true,
     "owner": true,
-    "version": "1537789333111",
+    "version": "1538005213421",
     "resources": [
-        {
-            "id": "a2145507923",
-            "parentId": "d0000009909",
-            "type": "FORM",
-            "label": "Reference Form"
-        },
         {
             "id": "a2145507922",
             "parentId": "d0000009909",
@@ -164,6 +158,18 @@ GET https://activityinfo.org/resources/database/9909
             "parentId": "d0000009909",
             "type": "FOLDER",
             "label": "Folder Example"
+        },
+        {
+            "id": "a2145508135",
+            "parentId": "d0000009909",
+            "type": "FORM",
+            "label": "Correspondence Form"
+        },
+        {
+            "id": "a2145508134",
+            "parentId": "d0000009909",
+            "type": "FORM",
+            "label": "Contact Form"
         },
         {
             "id": "a2145507925",
@@ -190,7 +196,8 @@ GET https://activityinfo.org/resources/database/9909
 @[6](Is this User the owner?)
 @[7](The current Database version)
 @[8-14](Database Resources show accessible Forms and Folders)
-@[33-38](Resources can be caontained within the database, or within a folder)
+@[33-38](Resources can be contained within the database...)
+@[39-44](...or contained within a folder)
 @[46](Operations User is granted - N/A for owners)
 @[47](Locks set on Database)
 
@@ -212,9 +219,6 @@ Database: {
 }
 ```
 
-@[2](Has form `L0000000000`)
-@[7](Has form `0+` for database owners, or `0+#0+` for database users)
-
 +++
 
 ## Resource Schema
@@ -228,8 +232,6 @@ Resource: {
 }
 ```
 
-@[2](Has form `L0000000000`)
-@[3](Has form `L0000000000`)
 @[4](Enum choice of `{"FORM","FOLDER"}`)
 
 ---
