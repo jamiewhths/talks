@@ -1654,7 +1654,111 @@ Just as we used Reference Fields to query for information from another Form, we 
 
 +++
 @title[Key Field Definition]
+## @color[#00CF79](Key Fields)
 
+- Identifies fields which identify a **unique** record in a Form in a user-friendly way
+- Can be a set of keys (e.g. Last Name, First Name)
+
++++
+@title[Key Field in UI]
+![Reference Field in UI - Correspondence Form](activityinfo/api/data-model/img/key-field.png)
+
++++
+@title[Example 11: Key Fields on Form Schema]
+## Example 11: Key Fields on Form Schema
+
+Let's get the schema of a form with a Key Field:
+
+```http
+GET https://activityinfo.org/resources/form/a2145508134/schema
+```
+
++++
+@title[Key Field Schema Response]
+
+```json
+{
+    "id": "a2145508134",
+    "schemaVersion": 1,
+    "databaseId": "d0000009909",
+    "label": "Contact Form",
+    "elements": [
+        {
+            "id": "a21455081340000000007",
+            "code": "partner",
+            "label": "Partner",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": true,
+            "type": "reference",
+            "typeParameters": {
+                "cardinality": "single",
+                "range": [
+                    {
+                        "formId": "P0000009909"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "i0213240773",
+            "code": null,
+            "label": "Last Name",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": false,
+            "type": "FREE_TEXT",
+            "key": true,
+            "typeParameters": {}
+        },
+        {
+            "id": "i1744487760",
+            "code": null,
+            "label": "First Name",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": false,
+            "type": "FREE_TEXT",
+            "key": true,
+            "typeParameters": {}
+        },
+        {
+            "id": "i1592527269",
+            "code": null,
+            "label": "Country Code",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": false,
+            "type": "quantity",
+            "typeParameters": {
+                "units": "",
+                "aggregation": "SUM"
+            }
+        },
+        {
+            "id": "i1624653802",
+            "code": null,
+            "label": "Phone Number",
+            "description": null,
+            "relevanceCondition": null,
+            "visible": true,
+            "required": false,
+            "type": "quantity",
+            "typeParameters": {
+                "units": "",
+                "aggregation": "SUM"
+            }
+        }
+    ]
+}
+```
+@[25-36](We have a Text Key Field 'Last Name')
+@[37-48](And a Text Key Field 'First Name')
+@[46](Key Fields are spcified by the `key` attribute on the Form Field Schema)
 
 
 
