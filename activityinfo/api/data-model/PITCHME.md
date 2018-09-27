@@ -195,11 +195,12 @@ GET https://activityinfo.org/resources/database/9909
 @[5](Is this Database visible to User?)
 @[6](Is this User the owner?)
 @[7](The current Database version)
-@[8-14](Database Resources show accessible Forms and Folders)
+@[8-14](Database `resources` show accessible Forms...)
+@[21-26](...and Folders)
 @[33-38](Resources can be contained within the database...)
 @[39-44](...or contained within a folder)
-@[46](Operations User is granted - N/A for owners)
-@[47](Locks set on Database)
+@[52](Operations User is granted - N/A for owners)
+@[53](Locks set on Database)
 
 +++
 @title[Database Schema Definition]
