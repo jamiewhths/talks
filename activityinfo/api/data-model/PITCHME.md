@@ -322,7 +322,7 @@ GET https://activityinfo.org/resources/form/a2145507921/schema
 @[3](Form Schema Version)
 @[4](Database Id)
 @[5](Form Label/Name)
-@[6-17](Form Elements i.e. Fields)
+@[6-19](Form Elements i.e. Fields)
 
 +++
 @title[Form Schema Definition]
@@ -351,38 +351,41 @@ Form: {
 @snapend
 
 +++
-
+@title[Form Field Definition]
 ## @color[#00CF79](Field)
 
 - Represents a specific type of data to be collected
-- Different sets of properties depending on the Field Type
+- Different set of properties depending on the Field Type
 
 +++
-
-! Field in UI goes here !
-
-+++
-
-![Field in Context](activityinfo/api/data-model/img/field-context.png)
+@title[Form Field in UI - Design]
+![Form Field in UI - Design](activityinfo/api/data-model/img/field.png)
 
 +++
+@title[Form Field in Context]
+![Form Field in Context](activityinfo/api/data-model/img/field-context.png)
 
++++
+@title[Form Field Request]
+## Query for Form Field
 Form Field is defined within a Form Schema. Therefore we use a generic request for Form Schema:
 
-```
+```http
 GET https://activityinfo.org/resources/form/{formId}/schema
 ```
 
 +++
+@title[Example 3]
+## Example 3
 
 For this example, we will send the following request:
 
-```
+```http
 GET https://activityinfo.org/resources/form/a1234567890/schema
 ```
 
 +++
-
+@title[Form Field Response]
 ```json
 {
     "id": "a2145507922",
@@ -390,26 +393,6 @@ GET https://activityinfo.org/resources/form/a1234567890/schema
     "databaseId": "d0000009909",
     "label": "Field Types",
     "elements": [
-        {
-            "id": "a21455079220000000012",
-            "code": "date1",
-            "label": "Start Date",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": true,
-            "required": true,
-            "type": "date"
-        },
-        {
-            "id": "a21455079220000000013",
-            "code": "date2",
-            "label": "End Date",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": true,
-            "required": true,
-            "type": "date"
-        },
         {
             "id": "a21455079220000000007",
             "code": "partner",
@@ -427,34 +410,6 @@ GET https://activityinfo.org/resources/form/a1234567890/schema
                     }
                 ]
             }
-        },
-        {
-            "id": "a21455079220000000008",
-            "code": "project",
-            "label": "Project",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": false,
-            "required": false,
-            "type": "reference",
-            "typeParameters": {
-                "cardinality": "single",
-                "range": [
-                    {
-                        "formId": "R0000009909"
-                    }
-                ]
-            }
-        },
-        {
-            "id": "a21455079220000000014",
-            "code": "comments",
-            "label": "Comments",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": true,
-            "required": false,
-            "type": "NARRATIVE"
         },
         {
             "id": "i0596827260",
@@ -627,10 +582,10 @@ GET https://activityinfo.org/resources/form/a1234567890/schema
     ]
 }
 ```
-@[6-15](We will focus on the "elements" property of the Form schema...)
+@[6-15](We will focus on the `elements` property of the Form schema...)
 
 +++ 
-
+@title[Common Field Attributes]
 ## Common Field Attributes
 
 ```
@@ -643,6 +598,7 @@ FormField: {
 	"visible": boolean,
 	"required": boolean,
 	"type": string,
+	"key: boolean,
 	"typeParameters": { FieldTypeParameter }
 }
 ```
@@ -655,127 +611,17 @@ FormField: {
 @[7](Defines whether Field appears to User in Data Entry)
 @[8](Defines whether Field must have data)
 @[9](Defines the Field Type)
-@[10](Set of parameters which depend on Field Type)
+@[10](Defines whether it is a 'key' Field)
+@[11](Set of parameters which depend on Field Type)
 
 +++
-
-## Built-In Fields
-
-Automatically created Fields when a new Form is created.
-
-+++
-
-### Built-in Fields: Start Date
-
-```json
-{
-	"id": "a21455079220000000012",
-	"code": "date1",
-	"label": "Start Date",
-	"description": null,
-	"relevanceCondition": null,
-	"visible": true,
-	"required": true,
-	"type": "date"
-}
-```
-
-@[2](Always has id `{formId}0000000012`)
-
-+++
-
-### Built-in Fields: End Date
-
-```json
-{
-	"id": "a21455079220000000013",
-	"code": "date2",
-	"label": "End Date",
-	"description": null,
-	"relevanceCondition": null,
-	"visible": true,
-	"required": true,
-	"type": "date"
-}
-```
-@[2](Always has id `{formId}0000000013`)
-
-+++
-
-### Built-in Fields: Partner (Required)
-
-```json
-{
-	"id": "a21455079220000000007",
-	"code": "partner",
-	"label": "Partner",
-	"description": null,
-	"relevanceCondition": null,
-	"visible": true,
-	"required": true,
-	"type": "reference",
-	"typeParameters": {
-	    "cardinality": "single",
-	    "range": [
-	        {
-	            "formId": "P0000009909"
-	        }
-	    ]
-	}
-}
-```
-@[2](Always has id `{formId}0000000007`)
-
-+++
-
-### Built-in Fields: Project
-
-```json
-{
-	"id": "a21455079220000000008",
-	"code": "project",
-	"label": "Project",
-	"description": null,
-	"relevanceCondition": null,
-	"visible": false,
-	"required": false,
-	"type": "reference",
-	"typeParameters": {
-	    "cardinality": "single",
-	    "range": [
-	        {
-	            "formId": "R0000009909"
-	        }
-	    ]
-	}
-}
-```
-@[2](Always has id `{formId}0000000008`)
-
-+++
-
-### Built-in Fields: Comments
-
-```json
-{
-	"id": "a21455079220000000014",
-	"code": "comments",
-	"label": "Comments",
-	"description": null,
-	"relevanceCondition": null,
-	"visible": true,
-	"required": false,
-	"type": "NARRATIVE"
-}
-```
-@[2](Always has id `{formId}0000000014`)
-
-+++
-
+@title[Field Types]
 ## Field Types
+- Field Type is defined in Field Schema (`type`)
+- Field Type may also have a specific set of parameters (`typeParameters`)
 
 +++
-
+@title[Field Type: Serial Number]
 ### Field Type: Serial Number
 
 ```json
@@ -800,7 +646,7 @@ Automatically created Fields when a new Form is created.
 @[11](Defines the input mask, if any)
 
 +++
-
+@title[Field Type: Quantity Field]
 ### Field Type: Quantity
 
 ```json
@@ -823,10 +669,10 @@ Automatically created Fields when a new Form is created.
 @[2](Has form `i0000000000`)
 @[9](Has type `quantity`)
 @[11](Defines the quantity units)
-@[12](Defines the aggregation method - always set to SUM)
+@[12](Defines the aggregation method)
 
 +++
-
+@title[Field Type: Text]
 ### Field Type: Text
 
 ```json
@@ -847,7 +693,7 @@ Automatically created Fields when a new Form is created.
 @[9](Has type `FREE_TEXT`)
 
 +++
-
+@title[Field Type: Multi-line Text]
 ### Field Type: Multi-Line Text
 
 ```json
@@ -867,7 +713,7 @@ Automatically created Fields when a new Form is created.
 @[9](Has type `NARRATIVE`)
 
 +++
-
+@title[Field Type: Date]
 ### Field Type: Date
 
 ```json
@@ -887,7 +733,7 @@ Automatically created Fields when a new Form is created.
 @[9](Has type `date`)
 
 +++
-
+@title[Field Type: Single/Multi Selection]
 ### Field Type: Single/Multiple Selection
 
 ```json
@@ -925,7 +771,7 @@ Automatically created Fields when a new Form is created.
 @[16](Selection option label)
 
 +++
-
+@title[Field Type: Geographic Point]
 ### Field Type: Geographic Point
 
 ```json
@@ -945,7 +791,7 @@ Automatically created Fields when a new Form is created.
 @[9](Has type `geopoint`)
 
 +++
-
+@title[Field Type: Barcode]
 ### Field Type: Barcode
 
 ```json
@@ -965,7 +811,7 @@ Automatically created Fields when a new Form is created.
 @[9](Has type `barcode`)
 
 +++
-
+@title[Field Type: Image/Attachment]
 ### Field Type: Image/Attachment
 
 ```json
@@ -990,7 +836,7 @@ Automatically created Fields when a new Form is created.
 @[12](Defines the upload type - either 'image' or 'attachment')
 
 +++
-
+@title[Field Type: Calculated]
 ### Field Type: Calculated
 
 ```json
@@ -1012,6 +858,38 @@ Automatically created Fields when a new Form is created.
 @[2](Has form `i0000000000`)
 @[9](Has type `calculated`)
 @[11](Defines the calculation formula)
+
++++
+@[Side Note: Built-in Fields]
+## Side-Note: Built-in Fields
+- Generated for compatibility with Classic ActivityInfo Data Model
+- `id` is a concatenation of Form Id and Built-in Field Type 
+
++++
+@title[Built-In Fields: Partner Example]
+## Built-In Field Example: Partner
+```json
+{
+   "id": "a21455079220000000007",
+   "code": "partner",
+   "label": "Partner",
+   "description": null,
+   "relevanceCondition": null,
+   "visible": true,
+   "required": true,
+   "type": "reference",
+   "typeParameters": {
+       "cardinality": "single",
+       "range": [
+           {
+               "formId": "P0000009909"
+           }
+       ]
+   }
+}
+```
+@[2-10](Still a normal Field Schema)
+@[2](However `id` is "built-in" value of `a21455079220000000007`, where `a2145507922` is the `fieldId`)
 
 ---
 
