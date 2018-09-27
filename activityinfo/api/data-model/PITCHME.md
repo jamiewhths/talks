@@ -980,7 +980,7 @@ GET https://activityinfo.org/resources/form/a2145507921/query/rows
 ]
 ```
 
-@[7](The '@id' Field gives Form Record Id)
+@[7](The `@id` Field gives Form Record Id)
 @[8](The Query API will return fields by their code, if defined...)
 @[12](...or by their full label otherwise.)
 
@@ -1081,18 +1081,21 @@ GET https://activityinfo.org/resources/form/a1234567890/query/columns
 
 +++
 
-What if we just want a specific field? 
+What if we just want a _specific_ field? 
 
 +++
 @title[Query Parameters]
 ## Query Parameters
-We can specify the Fields we want by specifying a query parameter in our request:
+We can specify a query parameter in our request:
 
 ```http
-.../form/{formId}/query/columns?{desiredName}={fieldCode/fieldName/fieldId}
+.../query/columns?{desiredName}={formula}
 ```
+
 - Can use any valid string for `desiredName` 
-- `fieldCode`, `fieldName`, or `fieldId` specify the field you wish to query. If the field has a space, surround it with `[...]` brackets
+- A `formula` gives a path to a feild, or a method to calculate the desired value
+- `formula` is often a `fieldCode`, `fieldName`, or `fieldId`. 
+- If the field has a space, surround it with `[...]` brackets.
 
 +++
 @title[Example 6]
@@ -1101,7 +1104,7 @@ We can specify the Fields we want by specifying a query parameter in our request
 For this example, we will send the following request:
 
 ```http
-GET https://activityinfo.org/resources/form/a1234567890/query/columns?projectName=[Project Name]
+GET https://activityinfo.org/resources/form/a1234567890/query/columns?project=[Project Name]
 ```
 
 +++
@@ -1110,7 +1113,7 @@ GET https://activityinfo.org/resources/form/a1234567890/query/columns?projectNam
 {
     "rows": 3,
     "columns": {
-        "parentName": {
+        "project": {
             "type": "STRING",
             "storage": "array",
             "values": [
