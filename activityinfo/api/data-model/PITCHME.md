@@ -35,7 +35,7 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 +++
 @title[Download Postman]
 @snap[north-west]
-<h4>Download the correct version for your system [here]("https://www.getpostman.com/apps")</h4>
+<h4>Download the correct version for your system [here](https://www.getpostman.com/apps)</h4>
 @snapend
 
 @snap[midpoint]
