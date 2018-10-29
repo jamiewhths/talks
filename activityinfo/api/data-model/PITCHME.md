@@ -45,7 +45,6 @@ From this presentation, you should understand:
 - Reference Fields
 - Sub-Forms
 - Sub-Form Records
-- Key Fields
 
 ---
 @title[Set-Up]
@@ -715,7 +714,6 @@ FormField: {
 }
 ```
 
-@[2](Has form `i0000000000`)
 @[9](Has type `serial`)
 @[11](Defines the input mask, if any)
 @[12](Defines the number of digits to generate)
@@ -741,7 +739,6 @@ FormField: {
 }
 ```
 
-@[2](Has form `i0000000000`)
 @[9](Has type `quantity`)
 @[11](Defines the quantity units)
 @[12](Defines the aggregation method)
@@ -764,7 +761,6 @@ FormField: {
 }
 ```
 
-@[2](Has form `i0000000000`)
 @[9](Has type `FREE_TEXT`)
 
 +++
@@ -784,7 +780,6 @@ FormField: {
 }
 ```
 
-@[2](Has form `i0000000000`)
 @[9](Has type `NARRATIVE`)
 
 +++
@@ -804,7 +799,6 @@ FormField: {
 }
 ```
 
-@[2](Has form `i0000000000`)
 @[9](Has type `date`)
 
 +++
@@ -838,12 +832,12 @@ FormField: {
 }
 ```
 
-@[2](Has form `Q0000000000`)
 @[9](Has type `enumerated`)
 @[11](Defines the cardinality of the selection - either 'single' or 'multiple')
+@[12](Defines the presentation of the selection)
 @[13-22](Defines the selection options a User can choose from)
-@[15](Selection option always has id with form `t0000000000`)
-@[16](Selection option label)
+@[15](Selection option always has an id)
+@[16](Selection option label always has a label)
 
 +++
 @title[Field Type: Geographic Point]
@@ -862,7 +856,6 @@ FormField: {
 }
 ```
 
-@[2](Has form `i0000000000`)
 @[9](Has type `geopoint`)
 
 +++
@@ -882,7 +875,6 @@ FormField: {
 }
 ```
 
-@[2](Has form `i0000000000`)
 @[9](Has type `barcode`)
 
 +++
@@ -906,7 +898,6 @@ FormField: {
 }
 ```
 
-@[2](Has form `i0000000000`)
 @[9](Has type `attachment`)
 @[11](Defines the cardinality of the upload - either 'single' or 'multiple')
 @[12](Defines the upload type - either 'image' or 'attachment')
@@ -931,41 +922,8 @@ FormField: {
 }
 ```
 
-@[2](Has form `i0000000000`)
 @[9](Has type `calculated`)
 @[11](Defines the calculation formula)
-
-+++
-@[Side Note: Built-in Fields]
-## Side-Note: Built-in Fields
-- Generated for compatibility with Classic ActivityInfo Data Model
-- `id` is a concatenation of Form Id and Built-in Field Type 
-
-+++
-@title[Built-In Fields: Partner Example]
-## Example: Partner
-```json
-{
-   "id": "a21455079220000000007",
-   "code": "partner",
-   "label": "Partner",
-   "description": null,
-   "relevanceCondition": null,
-   "visible": true,
-   "required": true,
-   "type": "reference",
-   "typeParameters": {
-       "cardinality": "single",
-       "range": [
-           {
-               "formId": "P0000009909"
-           }
-       ]
-   }
-}
-```
-@[2-10](Still a normal Field Schema)
-@[2](However `id` is "built-in" value of `a21455079220000000007`, where `a2145507922` is the `fieldId`)
 
 ---
 @title[Form Records]
@@ -1169,7 +1127,7 @@ We can specify a query parameter in our request:
 - Can use any valid string for `desiredName` 
 - A `formula` gives a path to a field, or a method to calculate the desired value
 - `formula` is often a `fieldCode`, `fieldName`, or `fieldId`. 
-- If the field has a space, surround it with `[...]` brackets.
+- If the field name has a space, surround it with `[...]` brackets.
 
 +++
 @title[Example 6]
@@ -1369,7 +1327,7 @@ GET https://activityinfo.org/resources/form/a2145507921/query/rows?referenceFiel
 @title[Using References in Query API]
 ## Using References in Query API
 
-- We have seen a from Correspondance Form -> Contact Form
+- We have seen a reference from Correspondance Form -> Contact Form
 - Now we can get further data from the Contact Form by creating a query formula
 
 +++
@@ -1713,126 +1671,5 @@ Just as we used Reference Fields to query for information from another Form, we 
     }
 ]
 ```
-
----
-
-# Key Field
-
-@snap[east]
-@fa[key fa-5x]
-@snapend
-
-@snap[south]
-@fa[arrow-down]
-@snapend
-
-+++
-@title[Key Field Definition]
-## @color[#00CF79](Key Fields)
-
-- Fields which identify a **unique** record in a Form in a user-friendly way
-- Can be a set of keys (e.g. Last Name, First Name)
-
-+++
-@title[Key Field in UI]
-![Reference Field in UI - Correspondence Form](activityinfo/api/data-model/img/key-field.png)
-
-+++
-@title[Example 11: Key Fields on Form Schema]
-## Example 11: Key Fields on Form Schema
-
-Let's get the schema of a form with a Key Field:
-
-```http
-GET https://activityinfo.org/resources/form/a2145508134/schema
-```
-
-+++
-@title[Key Field Schema Response]
-
-```json
-{
-    "id": "a2145508134",
-    "schemaVersion": 1,
-    "databaseId": "d0000009909",
-    "label": "Contact Form",
-    "elements": [
-        {
-            "id": "a21455081340000000007",
-            "code": "partner",
-            "label": "Partner",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": true,
-            "required": true,
-            "type": "reference",
-            "typeParameters": {
-                "cardinality": "single",
-                "range": [
-                    {
-                        "formId": "P0000009909"
-                    }
-                ]
-            }
-        },
-        {
-            "id": "i0213240773",
-            "code": null,
-            "label": "Last Name",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": true,
-            "required": false,
-            "type": "FREE_TEXT",
-            "key": true,
-            "typeParameters": {}
-        },
-        {
-            "id": "i1744487760",
-            "code": null,
-            "label": "First Name",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": true,
-            "required": false,
-            "type": "FREE_TEXT",
-            "key": true,
-            "typeParameters": {}
-        },
-        {
-            "id": "i1592527269",
-            "code": null,
-            "label": "Country Code",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": true,
-            "required": false,
-            "type": "quantity",
-            "typeParameters": {
-                "units": "",
-                "aggregation": "SUM"
-            }
-        },
-        {
-            "id": "i1624653802",
-            "code": null,
-            "label": "Phone Number",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": true,
-            "required": false,
-            "type": "quantity",
-            "typeParameters": {
-                "units": "",
-                "aggregation": "SUM"
-            }
-        }
-    ]
-}
-```
-@[25-36](We have a Text Key Field 'Last Name')
-@[37-48](And a Text Key Field 'First Name')
-@[46](Key Fields are spcified by the `key` attribute on the Form Field Schema)
-
 
 
