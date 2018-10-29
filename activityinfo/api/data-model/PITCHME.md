@@ -1,5 +1,5 @@
-# ActivityInfo API
-## @color[#00CF79](Data Model)
+# Introduction to ActivityInfo API
+## @color[#00CF79](Data Model and Query API)
 
 ---
 
