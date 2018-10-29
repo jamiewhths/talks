@@ -106,6 +106,16 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 ![](activityinfo/api/data-model/img/postman-import-screen.png)
 @snapend
 
++++
+@title[Navigate to Collection]
+@snap[north-west]
+<h4>Once imported, select the "Collections" tab and find the ActivityInfo API collection</h4>
+@snapend
+
+@snap[midpoint]
+![](activityinfo/api/data-model/img/collections-tab.png)
+@snapend
+
 +++ 
 
 @title[Add Auth to Request Header]
