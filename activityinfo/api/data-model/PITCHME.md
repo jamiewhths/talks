@@ -2,6 +2,26 @@
 ## @color[#00CF79](Data Model)
 
 ---
+
+@title[Who is this talk for?]
+## Who is this talk for?
+This is not a general talk on APIs. It will go technical detail on the _ActivityInfo_ API. 
+
+This talk is intended for:
+- Developers in organisations using ActivityInfo
+- Members of organisations with developers capable of utilising REST APIs
+
+However, anyone with some technical background should be able to follow along.
+
+---
+
+@title[What is the aim of this talk?]
+## What is the aim of this talk?
+
+- Know how to use the ActivityInfo Data Model to extend your own applicaitons
+- Use data from ActivityInfo in your own applications
+
+---
 @title[Learning Outcomes]
 ## Learning Outcomes
 From this presentation, you should understand:
