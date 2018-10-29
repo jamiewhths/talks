@@ -3,15 +3,19 @@
 
 ---
 
-@title[Who is this talk for?]
+@title[Who is this talk for? - 1/2]
 ## Who is this talk for?
 This is not a general talk on APIs. It will go technical detail on the _ActivityInfo_ API. 
+
+However, anyone with some technical background should be able to follow along.
+
+___
+@title[Who is this talk for? - 2/2]
+## Who is this talk for?
 
 This talk is intended for:
 - Developers in organisations using ActivityInfo
 - Members of organisations with developers capable of utilising REST APIs
-
-However, anyone with some technical background should be able to follow along.
 
 ---
 
