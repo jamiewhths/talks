@@ -149,6 +149,17 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 @snap[midpoint]
 ![](activityinfo/api/data-model/img/auth.png)
 @snapend
+
++++
+
+@title[Add Auth to Request Header]
+@snap[north-west]
+<h4>Finally, click "Update" in the bottom-right corner</h4>
+@snapend
+
+@snap[midpoint]
+![](activityinfo/api/data-model/img/update.png)
+@snapend
 ---
 
 # Database
