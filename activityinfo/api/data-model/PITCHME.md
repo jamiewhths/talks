@@ -5,7 +5,7 @@
 
 @title[Who is this talk for? - 1/2]
 ## Who is this talk for?
-This is not a general talk on APIs. It will go technical detail on the _ActivityInfo_ API. 
+This is not a general talk on APIs. It will go into technical detail on the _ActivityInfo_ API. 
 
 However, anyone with some technical background should be able to follow along.
 
@@ -23,7 +23,7 @@ This talk is intended for:
 @title[What is the aim of this talk?]
 ## What is the aim of this talk?
 
-- Know how to use the ActivityInfo Data Model to extend your own applicaitons
+- Know how to use the ActivityInfo Data Model to extend your own applications
 - Use data from ActivityInfo in your own applications
 
 ---
@@ -70,7 +70,7 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 +++
 @title[Download API Collection]
 @snap[north-west]
-<h4>Download the ActivityInfo API Collection from [here](https://github.com/jamiewhths/talks/tree/present/activityinfo/api/data-model/resources)</h4>
+<h4>Download the ActivityInfo API Collection from [here](https://drive.google.com/open?id=1rSFoTVYSboDG58iSh4ge2FCKQQEHvH9j)</h4>
 @snapend
 
 @snap[midpoint]
