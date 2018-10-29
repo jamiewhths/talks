@@ -111,7 +111,7 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 
 @title[Add Auth to Request Header]
 @snap[north-west]
-<h4>Once imported, we need to add our user details to authenticate our requests. Select the "..." button on the imported ActivityInfo collection</h4>
+<h4>On the imported "ActivityInfo API" Collection, select the "..." button</h4>
 @snapend
 
 @snap[midpoint]
@@ -132,7 +132,18 @@ Before we start, we need to set up our REST Client [Postman](https://www.getpost
 +++
 @title[Add Auth to Request Header]
 @snap[north-west]
-<h4>Go to the "Authorization" tab, select "Basic Authentication" from the TYPE menu, and fill in your ActivityInfo username and password</h4>
+<h4>Go to the "Authorization" tab</h4>
+@snapend
+
+@snap[midpoint]
+![](activityinfo/api/data-model/img/auth.png)
+@snapend
+
++++
+
+@title[Add Auth to Request Header]
+@snap[north-west]
+<h4>Select "Basic Authentication" from the TYPE menu, and fill in your ActivityInfo username and password</h4>
 @snapend
 
 @snap[midpoint]
