@@ -9,7 +9,8 @@ This is not a general talk on APIs. It will go technical detail on the _Activity
 
 However, anyone with some technical background should be able to follow along.
 
-___
+---
+
 @title[Who is this talk for? - 2/2]
 ## Who is this talk for?
 
