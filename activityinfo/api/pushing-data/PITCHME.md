@@ -1,4 +1,4 @@
-# Pushing Data to ActivityInfo with the API
+# Pushing Data to ActivityInfo
 
 ---
 
