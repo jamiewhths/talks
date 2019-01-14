@@ -1,0 +1,10 @@
+# Layout
+layout: center-left
+
+# Theme
+theme: white
+logo: activityinfo/img/activityinfo-logo.png
+footnote: "Pushing Data to ActivityInfo"
+
+# Behaviour
+transition: none
