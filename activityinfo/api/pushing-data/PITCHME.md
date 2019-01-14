@@ -14,17 +14,17 @@ However, anyone with some technical background should be able to follow along.
 ## Who is this talk for?
 
 This talk is intended for:
-- Developers in organisations using ActivityInfo on applications which need to interoperate with ActivityInfo
+- Developers in organisations using ActivityInfo on applications which need to inter-operate with ActivityInfo
 - Members of organisations with developers capable of utilising REST APIs
 
 ---
 
 @title[Who is this talk for? - 3/3]
-## Who is this talk for?
+## Not for you?
 
-Not for you?
+You can still use our new Importer!
 
-You can still use our new importer! Beta available here:
+Beta available here:
 \\\ INSERT BETA LINK ///
 
 ---
@@ -33,7 +33,7 @@ You can still use our new importer! Beta available here:
 ## What is the aim of this talk?
 
 - Use the ActivityInfo API to create, update and delete data in ActivityInfo
-- Demonstrate how to push external data from multiple sources to ActivityInfo using the API
+- Demonstrate how to push external data from multiple sources
 - Understand how you can use the ActivityInfo API to extend your applications
 
 ---
@@ -57,8 +57,8 @@ From this presentation, you should understand:
 
 ---
 
-@title[Review of Data Model]
-# Review of Data Model
+@title[Data Model Review]
+## Data Model Review
 
 To prepare, let's review:
 - Forms and Sub-Forms
