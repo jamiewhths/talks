@@ -1,63 +1,78 @@
 library("activityinfo")
 
 # EXTRACT
-## Schools are kept in two files of different formats and with different schema
-schoolsCsv <- read.csv("schools.csv")
-schoolsXls <- readxl::read_xls("primary-schools.xls")
+## Our "Disaggregated Indicator Form" reports on individuals reached, disaggregated by Gender (Male/Female) and Age (Under 18, Over 18)
+## Our Form details are:
+## - FORM ID: a2145511771
+## -> Partner: a21455117710000000007 ("Default" Partner is "P0000009909:p0000019616")
+## -> "# Females under 18": i0932595027
+## -> "# Females over 18": i0842756159
+## -> "# Males under 18": i0717135643
+## -> "# Males over 18": i0785236198
+## -> "Reported On": i0773032325
+
+columns <- list(
+  femalesUnder18 = "i0932595027",
+  femalesOver18 = "i0842756159",
+  malesUnder18 = "i0717135643",
+  malesOver18 = "i0785236198",
+  reportedOn = "i0773032325"
+)
+data <- queryTable("a2145511771", columns)
 
 # TRANSFORM
-## Need to transform our data into a list of school name, address and population
-schools <- list(
-  name = list(),
-  address = list(),
-  population = list()
+## We are required to report on the: 
+## - Total # Individuals Reached,
+## - Estimated # Households Reached (determined by Total # Individuals Reached / 4)
+## - Date Reported
+## - Reporting Organisation. We are reporting under "Reporting Partner" ("P0000009909:p0000021297")
+
+## Need to transform our data into the total number of individuals reached and the estimated households reached,a nd keep the reported on date
+dataToPush <- list(
+  totalIndividuals = list(),
+  estimatedHouseholds = list(),
+  reportedOn = list(),
+  reportedBy = list()
 )
 
-## School CSV file has School Name, Address and Population - but we do not need the Principal's name
-for (i in 1:length(schoolsCsv$School.Name)) {
-  schools$name[[i]] <- as.character(schoolsCsv$School.Name[[i]])
-  schools$address[[i]] <- as.character(schoolsCsv$Address[[i]])
-  schools$population[[i]] <- as.numeric(schoolsCsv$Student.Population[[i]])
-}
+reportingPartner <- "P0000009909:p0000021297"
 
-## Primary School XLS file has School Name and Address - but it splits the population into male and female students
-## Therefore we need to add these together to find totla population
-numSchools <- length(schools$name)
-for (i in 1:length(schoolsXls$SchoolName)) {
-  schools$name[[numSchools+i]] <- as.character(schoolsXls$SchoolName[[i]])
-  schools$address[[numSchools+i]] <- as.character(schoolsXls$Address[[i]])
+for (i in 1:length(data$reportedOn)) {
+  totalIndividuals <- data$femalesUnder18[[i]] + data$femalesOver18[[i]] + data$malesUnder18[[i]] + data$malesOver18[[i]]
+  estimatedHouseholds <- totalIndividuals / 4
   
-  numMales <- as.numeric(schoolsXls$NumMaleStudents[[i]]) 
-  numFemales <- as.numeric(schoolsXls$NumFemaleStudents[[i]])
-  schools$population[[numSchools+i]] <- numMales + numFemales
+  dataToPush$totalIndividuals[[i]] <- totalIndividuals
+  dataToPush$estimatedHouseholds[[i]] <- estimatedHouseholds
+  dataToPush$reportedOn[[i]] <- data$reportedOn[[i]]
+  dataToPush$reportedBy[[i]] <- reportingPartner
 }
 
 # PUSH
 ## Now we need to push our data to ActivityInfo
 ## Our Form details are:
-## - FORM ID: a2145511770
-## -> PARTNER FIELD ID: a21455117700000000007 ("Default" Partner is "P0000009909:p0000019616")
-## -> SCHOOL NAME FIELD ID: i0580111138
-## -> SCHOOL ADDRESS FIELD ID: i0512511085
-## -> SCHOOL POPULATION FIELD ID: i1915513273
-
-defaultPartner <- "P0000009909:p0000019616"
+## - FORM ID: a2145511772
+## -> "# Individuals Reached": i1207228298
+## -> "Estimated # Households Reached": i1261093144
+## -> "Reported By": a21455117720000000007
+## -> "Reported On": i0568437033
+## -> "Comments from Reporter": i0274473549
 
 changes <- list()
-for (i in 1:length(schools$name)) {
+for (i in 1:length(dataToPush$reportedOn)) {
   # Generate a random number for record id
   recordId <- sprintf("s%010d", generateId())
 
-  # Generate a Form Record for each school on the list
+  # Generate a Form Record for report
   changes[[i]] <- list(
     deleted = FALSE,
     recordId = recordId,
-    formId = "a2145511770",
+    formId = "a2145511772",
     fields = list(
-      a21455117700000000007 = defaultPartner,
-      i0580111138 = schools$name[[i]],
-      i0512511085 = schools$address[[i]],
-      i1915513273 = schools$population[[i]]
+      i1207228298 = dataToPush$totalIndividuals[[i]],
+      i1261093144 = dataToPush$estimatedHouseholds[[i]],
+      a21455117720000000007 = dataToPush$reportedBy[[i]],
+      i0568437033 = dataToPush$reportedOn[[i]],
+      i0274473549 = "Automatic Push from Form a2145511771"
     )
   )
 }

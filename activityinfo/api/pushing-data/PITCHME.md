@@ -1056,22 +1056,31 @@ With the following Request Body:
 
 ---
 
+## Pushing Data: Basic Flow
+
+1. **Extract** data from the source system
+2. **Transform** data into required format
+3. **Push** data to destination system (i.e. using API)
+
+---
+
 ## ActivityInfo R Package
 
 Make sure to install ActivityInfo-R Package in RStudio:
-["R File for installation"](activityinfo/api/data-model/resources/install-ai-library.R)
+"install-ai-library.R"
 
 ---
 
 ## Example 1: Import Legacy Data (using R)
 
 Files needed:
-- ["example-1-schools.R"](activityinfo/api/data-model/resources/example-1-schools.R)
-- ["schools.csv"](activityinfo/api/data-model/resources/schools.csv)
-- ["schools.csv"](activityinfo/api/data-model/resources/schools.csv)
+- "example-1-schools.R"
+- "schools.csv"
+- "schools.xls"
 
 ---
 
 ## Example 2: Integrating Different Databases (using R)
 
-example-2-indicators.R
+Files needed:
+"example-2-indicators.R"
