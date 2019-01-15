@@ -854,7 +854,7 @@ Request Body for Updating a Form's Records:
       "recordId": String,
       "formId": String,
       "fields": {
-        "fieldId": String / Number,
+        "fieldId": {String; Number}
         ...
       }
     },
