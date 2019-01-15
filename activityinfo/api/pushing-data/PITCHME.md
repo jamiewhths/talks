@@ -194,6 +194,7 @@ Request Body for Updating a Form's Records:
       "deleted": boolean,
       "recordId": String,
       "formId": String,
+		"parentRecordId": String,
       "fields": {
         "fieldId": {String; Number},
         ...
@@ -204,12 +205,13 @@ Request Body for Updating a Form's Records:
 }
 ```
 
-@[2-13](Array of changes included in this update (1 or more))
-@[3-11](A single change to a Form Record - Create/Update/Delete)
+@[2-14](Array of changes included in this update (1 or more))
+@[3-12](A single change to a Form Record - Create/Update/Delete)
 @[4](Are we deleting this record?)
 @[5](Id of the Form Record we are Creating/Updating/Deleting)
 @[6](Id of the Form)
-@[7-10](Key-value of pairs of the Field Id and Field Values we are changing)
+@[7](Id of the Parent Form Record (ONLY FOR SUB-FORM RECORDS))
+@[8-11](Key-value of pairs of the Field Id and Field Values we are changing)
 
 +++
 
