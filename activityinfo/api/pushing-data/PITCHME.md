@@ -54,7 +54,7 @@ From this presentation, you should understand:
 - Delete a Form Record
 - Batched Updates to Form Records
 - Example 1: Import Legacy Data (using R)
-- Example 2: Integrating Systems (using R)
+- Example 2: Integrating Different Databases (using R)
 
 ---
 
@@ -1055,3 +1055,23 @@ With the following Request Body:
 - Can batch any set of operations together - Create, Update and/or Delete
 
 ---
+
+## ActivityInfo R Package
+
+Make sure to install ActivityInfo-R Package in RStudio:
+["R File for installation"](activityinfo/api/data-model/resources/install-ai-library.R)
+
+---
+
+## Example 1: Import Legacy Data (using R)
+
+Files needed:
+- ["example-1-schools.R"](activityinfo/api/data-model/resources/example-1-schools.R)
+- ["schools.csv"](activityinfo/api/data-model/resources/schools.csv)
+- ["schools.csv"](activityinfo/api/data-model/resources/schools.csv)
+
+---
+
+## Example 2: Integrating Different Databases (using R)
+
+example-2-indicators.R
