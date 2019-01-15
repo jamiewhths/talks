@@ -22,8 +22,9 @@ This talk is intended for:
 @title[Who is this talk for? - 3/3]
 ## Not for you?
 
-You can still use our new **Importer**! Beta available here:
-v4alpha-dot-activityinfoeu.appspot.com
+You can still use our new **Importer**!
+
+[Try the Beta here](https://v4alpha-dot-activityinfoeu.appspot.com)
 
 (Login with your normal details)
 
