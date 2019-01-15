@@ -831,13 +831,18 @@ GET https://activityinfo.org/resources/form/cjmhib4oy1/query/rows
 - Create, update and/or delete records via a single POST request
 
 +++
-@title[Form Record Update Request]
+
+@title[Form Record Update Request (HTTP Request)]
 ## Update Request for Form Records
 HTTP Method and URL for Updating a Form's Records:
 
 ```http
 POST https://activityinfo.org/resources/update
 ```
++++
+
+@title[Form Record Update Request (Request Body)]
+## Update Request for Form Records
 
 Request Body for Updating a Form's Records:
 
@@ -872,8 +877,18 @@ https://www.activityinfo.org/apidocs/index.html#field-types
 
 ---
 
+@title[Creating a Form Record]
+# Creating a
+# Form Record
+
+@snap[south]
+@fa[arrow-down]
+@snapend
+
++++
+
 @title[Creating a Form Record (HTTP Request)]
-## Creating a Form Record
+## @color[#00CF79](Creating a Form Record)
 
 We will send the following request to **create** a Form Record:
 
@@ -882,9 +897,7 @@ POST https://activityinfo.org/resources/update
 ```
 
 +++
-
 @title[Creating a Form Record (Request Body)]
-## Creating a Form Record
 
 With the following Request Body:
 
@@ -917,8 +930,18 @@ With the following Request Body:
 
 ---
 
+@title[Updating a Form Record]
+# Updating a
+# Form Record
+
+@snap[south]
+@fa[arrow-down]
+@snapend
+
++++
+
 @title[Updating a Form Record (HTTP Request)]
-## Updating a Form Record
+## @color[#00CF79](Updating a Form Record)
 
 We will send the following request to **update** a Form Record:
 
@@ -927,9 +950,7 @@ POST https://activityinfo.org/resources/update
 ```
 
 +++
-
 @title[Updating a Form Record (Request Body)]
-## Updating a Form Record
 
 With the following Request Body:
 
@@ -964,8 +985,18 @@ With the following Request Body:
 
 ---
 
+@title[Deleting a Form Record]
+# Deleting a
+# Form Record
+
+@snap[south]
+@fa[arrow-down]
+@snapend
+
++++
+
 @title[Deleting a Form Record (HTTP Request)]
-## Deleting a Form Record
+## @color[#00CF79](Deleting a Form Record)
 
 We will send the following request to **delete** a Form Record:
 
@@ -976,7 +1007,6 @@ POST https://activityinfo.org/resources/update
 +++
 
 @title[Deleting a Form Record (Request Body)]
-## Deleting a Form Record
 
 With the following Request Body:
 
@@ -1003,8 +1033,18 @@ With the following Request Body:
 
 ---
 
+@title[Batching Updates to Form Records]
+# Batching Updates to
+# Form records
+
+@snap[south]
+@fa[arrow-down]
+@snapend
+
++++
+
 @title[Batching Updates to Form Records (HTTP Request)]
-## Batching Updates
+## @color[#00CF79](Batching Updates)
 
 We will send the following request to **create, update and delete** multiple Form Records:
 
@@ -1015,7 +1055,6 @@ POST https://activityinfo.org/resources/update
 +++
 
 @title[Batching Updates to Form Records (Request Body)]
-## Batching Updates
 
 With the following Request Body:
 
@@ -1052,11 +1091,21 @@ With the following Request Body:
 
 +++
 
-- Can batch any set of operations together - Create, Update and/or Delete
+- Can batch *any* set of operations together - Create, Update and/or Delete
 
 ---
 
-## Pushing Data: Basic Flow
+@title[Pushing Data]
+# Pushing Data
+
+@snap[south]
+@fa[arrow-down]
+@snapend
+
++++
+
+@title[Pushing Data: Basic Flow]
+## @color[#00CF79](Pushing Data: Basic Flow)
 
 1. **Extract** data from the source system
 2. **Transform** data into required format
