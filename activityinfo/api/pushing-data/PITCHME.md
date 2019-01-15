@@ -353,13 +353,13 @@ With the following Request Body:
 
 ```json
 {
-	"changes": [
-		{
+  "changes": [
+    {
       "deleted": true,
-			"recordId": "s1234567890",
-			"formId": "a2145511746"
-		}
-	]
+      "recordId": "s1234567890",
+      "formId": "a2145511746"
+    }
+  ]
 }
 ```
 
@@ -401,30 +401,30 @@ With the following Request Body:
 
 ```json
 {
-	"changes": [
-		{
-			"deleted": false,
-			"recordId": "s0000000001",
-			"formId": "a2145511746",
-			"fields": {
-				"a21455117460000000007": "P0000009909:p0000019616",
-				"i1865815593": 101,
-				"i0206378262": "Batched Update 101",
-				"i0566126146": "2019-01-15"
-			}
-		},
-		{
-			"deleted": false,
-			"recordId": "s0000000002",
-			"formId": "a2145511746",
-			"fields": {
-				"a21455117460000000007": "P0000009909:p0000019616",
-				"i1865815593": 102,
-				"i0206378262": "Batched Update 102",
-				"i0566126146": "2019-02-15"
-			}
-		}
-	]
+  "changes": [
+    {
+      "deleted": false,
+      "recordId": "s0000000001",
+      "formId": "a2145511746",
+      "fields": {
+        "a21455117460000000007": "P0000009909:p0000019616",
+        "i1865815593": 101,
+        "i0206378262": "Batched Update 101",
+        "i0566126146": "2019-01-15"
+      }
+    },
+    {
+      "deleted": false,
+      "recordId": "s0000000002",
+      "formId": "a2145511746",
+      "fields": {
+        "a21455117460000000007": "P0000009909:p0000019616",
+        "i1865815593": 102,
+        "i0206378262": "Batched Update 102",
+        "i0566126146": "2019-02-15"
+      }
+    }
+  ]
 }```
 
 @[3-13](Create Form Record: Change 1)
