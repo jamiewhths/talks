@@ -938,8 +938,8 @@ With the following Request Body:
 	"changes": [
 		{
       "deleted": false,
-			"recordId": "s1234567890",
-			"formId": "a2145511746",
+      recordId": "s1234567890",
+      formId": "a2145511746",
 			"fields": {
 				"i1865815593": 2,
 				"i0206378262": "Two",
@@ -1004,7 +1004,7 @@ With the following Request Body:
 ---
 
 @title[Batching Updates to Form Records (HTTP Request)]
-## Batching Updates to Form Records
+## Batching Updates
 
 We will send the following request to **create, update and delete** multiple Form Records:
 
@@ -1015,7 +1015,7 @@ POST https://activityinfo.org/resources/update
 +++
 
 @title[Batching Updates to Form Records (Request Body)]
-## Batching Updates to Form Records
+## Batching Updates
 
 With the following Request Body:
 
