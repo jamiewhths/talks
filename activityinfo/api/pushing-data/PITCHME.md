@@ -1034,8 +1034,8 @@ With the following Request Body:
 ---
 
 @title[Batching Updates to Form Records]
-# Batching Updates to
-# Form records
+# Batching
+# Updates
 
 @snap[south]
 @fa[arrow-down]
@@ -1043,7 +1043,7 @@ With the following Request Body:
 
 +++
 
-@title[Batching Updates to Form Records (HTTP Request)]
+@title[Batching Updates (HTTP Request)]
 ## @color[#00CF79](Batching Updates)
 
 We will send the following request to **create, update and delete** multiple Form Records:
@@ -1054,7 +1054,7 @@ POST https://activityinfo.org/resources/update
 
 +++
 
-@title[Batching Updates to Form Records (Request Body)]
+@title[Batching Updates (Request Body)]
 
 With the following Request Body:
 
