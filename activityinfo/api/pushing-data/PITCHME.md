@@ -833,7 +833,7 @@ GET https://activityinfo.org/resources/form/cjmhib4oy1/query/rows
 +++
 
 @title[Form Record Update Request (HTTP Request)]
-## Update Request for Form Records
+## Update Request
 HTTP Method and URL for Updating a Form's Records:
 
 ```http
@@ -842,7 +842,7 @@ POST https://activityinfo.org/resources/update
 +++
 
 @title[Form Record Update Request (Request Body)]
-## Update Request for Form Records
+## Update Request
 
 Request Body for Updating a Form's Records:
 
