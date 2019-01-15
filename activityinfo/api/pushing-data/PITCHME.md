@@ -22,10 +22,10 @@ This talk is intended for:
 @title[Who is this talk for? - 3/3]
 ## Not for you?
 
-You can still use our new Importer!
+You can still use our new **Importer**! Beta available here:
+v4alpha-dot-activityinfoeu.appspot.com
 
-Beta available here:
-\\\ INSERT BETA LINK ///
+(Login with your normal details)
 
 ---
 
@@ -53,32 +53,23 @@ From this presentation, you should understand:
 - Update a Form Record
 - Delete a Form Record
 - Batched Updates to Form Records
+- Basic Concepts for Pushing Data
 - Example 1: Import Legacy Data (using R)
 - Example 2: Integrating Different Databases (using R)
 
 ---
 
 @title[Data Model Review]
-## Data Model Review
+## @color[#00CF79](Data Model Review)
 
 To prepare, let's review:
 - Forms and Sub-Forms
 - Form Fields
 - Form and Sub-Form Records
-
----
-
-# Form
-
-@snap[east]
-@fa[file fa-5x]
-@snapend
-
-@snap[south]
-@fa[arrow-down]
-@snapend
+- Reference Fields
 
 +++
+
 @title[Form Definition]
 ## @color[#00CF79](Form)
 
@@ -86,89 +77,12 @@ To prepare, let's review:
 - Composed of one or more Fields which represent a type of data to be collected
 
 +++
-@title[Form in UI - Design]
-![Form in UI - Design](activityinfo/api/pushing-data/img/form.png)
+
+@title[Form in Context]
+![Form in Context](activityinfo/api/data-model/img/form-context-1.png)
 
 +++
-@title[Form in UI - Data Entry]
-![Form in UI - Data Entry](activityinfo/api/pushing-data/img/form-data-entry.png)
 
-+++
-@title[Form Schema Request]
-## Query for Form Schema
-Generic Request for Form Schema:
-
-```http
-GET https://activityinfo.org/resources/form/{formId}/schema
-```
-
-+++
-@title[Example 1]
-## Example 1
-For this example, we will send the following request:
-
-```http
-GET https://activityinfo.org/resources/form/a2145507922/schema
-```
-
-+++
-@title[Form Schema Response]
-```json
-{
-    "id": "a2145507921",
-    "schemaVersion": 1,
-    "databaseId": "d0000009909",
-    "label": "Ongoing Projects",
-    "elements": [
-        {
-            "id": "i1246439317",
-            "code": null,
-            "label": "Project Name",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": true,
-            "required": false,
-            "type": "FREE_TEXT",
-            "typeParameters": {}
-        },
-        ...
-    ]
-}
-```
-
-@[2](Form Id)
-@[3](Form Schema Version)
-@[4](Database Id)
-@[5](Form Label/Name)
-@[6-19](Form Elements i.e. Fields)
-
-+++
-@title[Form Schema Definition]
-## Form Schema Definition
-
-```
-Form: {
-	"id": string,
-	"schemaVersion": int,
-	"databaseId": string,
-	"label": string,
-	"elements": [ FormField ]
-}
-```
-
----
-
-# Sub-Form
-
-@snap[east]
-@fa[level-down fa-5x] @fa[file fa-5x]
-@snapend
-
-@snap[south]
-@fa[arrow-down]
-@snapend
-
-+++
 @title[Sub-Form Definition]
 ## @color[#00CF79](Sub-Form)
 
@@ -177,189 +91,12 @@ Form: {
 - Reference Fields connect the Parent Form and Sub-Form
 
 +++
-@title[Sub-Form in UI]
-![Sub-Form in UI](activityinfo/api/data-model/img/subform.png)
 
-+++
 @title[Sub-Form in Context]
 ![Sub-Form in Context](activityinfo/api/data-model/img/subform-context.png)
 
 +++
-@title[Query for Sub-Form Schema]
-## Query for Sub-Form Schema
-We can use the same endpoint for retrieving a Sub-Form Schema:
 
-```http
-GET https://activityinfo.org/resources/form/{subFormId}/schema
-```
-+++
-@title[Example 8.1: Parent Form Schema Request]
-## Example 8.1: Parent Form Schema
-To find our Sub-Form Id, we retrieve the Parent Form's schema first:
-
-```http
-GET https://activityinfo.org/resources/form/a2145507924/schema
-```
-
-+++
-@title[Parent Form Schema Response]
-## Parent Form
-
-```json
-{
-    "id": "a2145507924",
-    "schemaVersion": 1,
-    "databaseId": "d0000009909",
-    "label": "Project Expenses",
-    "elements": [
-        {
-            "id": "i0649125506",
-            "code": "proj",
-            "label": "Project Name",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": true,
-            "required": false,
-            "type": "FREE_TEXT",
-            "typeParameters": {}
-        },
-        {
-            "id": "i0908831014",
-            "code": "code",
-            "label": "Project Code",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": true,
-            "required": false,
-            "type": "FREE_TEXT",
-            "typeParameters": {}
-        },
-        {
-            "id": "a21455079240000000007",
-            "code": "partner",
-            "label": "Partner",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": true,
-            "required": true,
-            "type": "reference",
-            "typeParameters": {
-                "cardinality": "single",
-                "range": [
-                    {
-                        "formId": "P0000009909"
-                    }
-                ]
-            }
-        },
-        {
-            "id": "i2093438408",
-            "code": null,
-            "label": "Expenses",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": true,
-            "required": false,
-            "type": "subform",
-            "typeParameters": {
-                "formId": "cjmhib4oy1"
-            }
-        }
-    ]
-}
-```
-
-@[47-59](Our Sub-Form Reference Field)
-@[55](Has type `subform`)
-@[57](Our Expenses Sub-Form Id is `cjmhib4oy1`)
-
-+++
-@title[Example 8.2: Sub-Form Schema]
-## Example 8.2: Sub-Form Schema
-
-Using our Sub-Form Id, we will send the following request to find our Sub-Form Schema:
-
-```http
-GET https://activityinfo.org/resources/form/cjmhib4oy1/schema
-```
-
-+++
-@title[Sub-Form Schema Response]
-## Sub-Form
-
-```json
-{
-    "id": "cjmhib4oy1",
-    "schemaVersion": 0,
-    "databaseId": "d0000009909",
-    "label": "Expenses",
-    "parentFormId": "a2145507924",
-    "subFormKind": "repeating",
-    "elements": [
-        {
-            "id": "i0337573943",
-            "code": "descrip",
-            "label": "Description of Expense",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": true,
-            "required": false,
-            "type": "NARRATIVE"
-        },
-        {
-            "id": "i0701024476",
-            "code": "cost",
-            "label": "Cost",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": true,
-            "required": false,
-            "type": "quantity",
-            "typeParameters": {
-                "units": "$",
-                "aggregation": "SUM"
-            }
-        }
-    ]
-}
-```
-
-@[2-5](Sub-Forms share the same basic attributes as Forms)
-@[6](Includes an extra `parentFormId` attribute...)
-@[7](Also includes `subFormKind` giving the reporting interval of the Sub-Form entries)
-@[8](Form Fields appear as `elements` in the same way as Forms)
-
-+++
-@title[Sub-Form Schema Definition]
-## Sub-Form Schema
-
-```
-Form: {
-	"id": string,
-	"schemaVersion": int,
-	"databaseId": string,
-	"label": string,
-	"parentFormId": string,
-	"subFormKind": string,
-	"elements": [ FormField ]
-}
-```
-
-@[7](Enum choice of `{ 'repeating', 'daily', 'weekly', 'biweekly' 'monthly' }`)
-
----
-
-# Form Field
-
-@snap[east]
-@fa[th-list fa-5x]
-@snapend
-
-@snap[south]
-@fa[arrow-down]
-@snapend
-
-+++
 @title[Form Field Definition]
 ## @color[#00CF79](Field)
 
@@ -367,246 +104,19 @@ Form: {
 - Different set of properties depending on the Field Type
 
 +++
-@title[Form Field in UI - Design]
-![Form Field in UI - Design](activityinfo/api/data-model/img/field.png)
 
-+++
 @title[Form Field in Context]
 ![Form Field in Context](activityinfo/api/data-model/img/field-context.png)
 
 +++
-@title[Form Field Request]
-## Query for Form Field
-Form Field is defined within a Form Schema. Therefore we use a generic request for Form Schema:
 
-```http
-GET https://activityinfo.org/resources/form/{formId}/schema
-```
+@title[Field Types]
+## Field Types
+- Field Type is defined in Field Schema (`type`)
+- Field Type may also have a specific set of parameters (`typeParameters`)
 
 +++
-@title[Example 3]
-## Example 3
 
-For this example, we will send the following request:
-
-```http
-GET https://activityinfo.org/resources/form/a1234567890/schema
-```
-
-+++
-@title[Form Field Response]
-```json
-{
-    "id": "a2145507922",
-    "schemaVersion": 1,
-    "databaseId": "d0000009909",
-    "label": "Field Types",
-    "elements": [
-        {
-            "id": "a21455079220000000007",
-            "code": "partner",
-            "label": "Partner",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": true,
-            "required": true,
-            "type": "reference",
-            "typeParameters": {
-                "cardinality": "single",
-                "range": [
-                    {
-                        "formId": "P0000009909"
-                    }
-                ]
-            }
-        },
-        {
-            "id": "i0596827260",
-            "code": null,
-            "label": "Serial Number",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": true,
-            "required": false,
-            "type": "serial",
-            "typeParameters": {
-                "prefixFormula": "LLL000",
-                "digits": 5
-            }
-        },
-        {
-            "id": "i1628839564",
-            "code": null,
-            "label": "Quantity",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": true,
-            "required": false,
-            "type": "quantity",
-            "typeParameters": {
-                "units": "households",
-                "aggregation": "SUM"
-            }
-        },
-        {
-            "id": "i2010895222",
-            "code": null,
-            "label": "Text",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": true,
-            "required": false,
-            "type": "FREE_TEXT",
-            "typeParameters": {}
-        },
-        {
-            "id": "i2003200244",
-            "code": null,
-            "label": "Multi-line text",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": true,
-            "required": false,
-            "type": "NARRATIVE"
-        },
-        {
-            "id": "i0747756921",
-            "code": null,
-            "label": "Date",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": true,
-            "required": false,
-            "type": "date"
-        },
-        {
-            "id": "Q0290875264",
-            "code": null,
-            "label": "Which options apply?",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": true,
-            "required": false,
-            "type": "enumerated",
-            "typeParameters": {
-                "cardinality": "multiple",
-                "presentation": "automatic",
-                "values": [
-                    {
-                        "id": "t0290490515",
-                        "label": "Option 1"
-                    },
-                    {
-                        "id": "t0291067638",
-                        "label": "Option 2"
-                    }
-                ]
-            }
-        },
-        {
-            "id": "Q0225083202",
-            "code": null,
-            "label": "Which choice would you choose?",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": true,
-            "required": false,
-            "type": "enumerated",
-            "typeParameters": {
-                "cardinality": "single",
-                "presentation": "automatic",
-                "values": [
-                    {
-                        "id": "t0226237449",
-                        "label": "Option 1"
-                    },
-                    {
-                        "id": "t0225275577",
-                        "label": "Option 2"
-                    }
-                ]
-            }
-        },
-        {
-            "id": "i0583669177",
-            "code": null,
-            "label": "Geographic point",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": true,
-            "required": false,
-            "type": "geopoint"
-        },
-        {
-            "id": "i0405530436",
-            "code": null,
-            "label": "Barcode",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": true,
-            "required": false,
-            "type": "barcode"
-        },
-        {
-            "id": "i0856840896",
-            "code": null,
-            "label": "Image",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": true,
-            "required": false,
-            "type": "attachment",
-            "typeParameters": {
-                "cardinality": "single",
-                "kind": "image"
-            }
-        },
-        {
-            "id": "i0795281072",
-            "code": null,
-            "label": "Attachments",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": true,
-            "required": false,
-            "type": "attachment",
-            "typeParameters": {
-                "cardinality": "single",
-                "kind": "attachment"
-            }
-        },
-        {
-            "id": "i1380676524",
-            "code": null,
-            "label": "Calculated",
-            "description": null,
-            "relevanceCondition": null,
-            "visible": true,
-            "required": false,
-            "type": "calculated",
-            "typeParameters": {
-                "formula": "[Quantity] * 2"
-            }
-        }
-    ]
-}
-```
-@[6-15](We will focus on the `elements` property of the Form schema...)
-
----
-@title[Form Records]
-# Form
-# Records
-
-@snap[east]
-@fa[file-text fa-5x]
-@snapend
-
-@snap[south]
-@fa[arrow-down]
-@snapend
-
-+++
 @title[Form Records Definition]
 ## @color[#00CF79](Form Records)
 
@@ -614,132 +124,12 @@ GET https://activityinfo.org/resources/form/a1234567890/schema
 - Data which can be entered defined by the Form and Field Types
 
 +++
-@title[Form Record in UI]
-![Form Record in UI](activityinfo/api/data-model/img/form-data-entry.png)
 
-+++
 @title[Form Record in Context]
 ![Form Record in Context](activityinfo/api/data-model/img/form-record-context.png)
 
 +++
-@title[Form Records Request]
-## Query for Form Records
 
-Generic Request for Form Records (in column-format):
-
-```http
-GET https://activityinfo.org/resources/form/{formId}/query/columns
-```
-
-+++
-@title[Example 5 - Column Format]
-## Example 5: Column-Format Query
-
-For this example, we will send the following request:
-
-```http
-GET https://activityinfo.org/resources/form/a1234567890/query/columns
-```
-
-+++
-@title[Column Format Response]
-```json
-{
-    "rows": 3,
-    "columns": {
-        "Project Name": {
-            "type": "STRING",
-            "storage": "array",
-            "values": [
-                "Documentation",
-                "New Field Development",
-                "User Conference"
-            ]
-        },
-        "Funding": {
-            "type": "NUMBER",
-            "storage": "array",
-            "values": [
-                0,
-                5000,
-                1000
-            ]
-        },
-        "Project Code": {
-            "type": "STRING",
-            "storage": "array",
-            "values": [
-                "DOC001",
-                "DEV001",
-                "UC2018"
-            ]
-        },
-        "partner.label": {
-            "type": "STRING",
-            "storage": "array",
-            "values": [
-                "Default",
-                "BeDataDriven",
-                "Default"
-            ]
-        },
-        "@id": {
-            "type": "STRING",
-            "storage": "array",
-            "values": [
-                "s0044598181",
-                "s0517446917",
-                "s1625985119"
-            ]
-        },
-        "date2": {
-            "type": "STRING",
-            "storage": "array",
-            "values": [
-                "2018-09-30",
-                "2018-10-31",
-                "2018-09-27"
-            ]
-        },
-        "date1": {
-            "type": "STRING",
-            "storage": "array",
-            "values": [
-                "2018-07-01",
-                "2018-10-01",
-                "2018-09-26"
-            ]
-        },
-        "partner.Full Name": {
-            "type": "STRING",
-            "storage": "empty"
-        }
-    }
-}
-```
-
-@[2](`rows` gives the number of data rows returned)
-@[3](`columns` gives the columns returned, with each column as a separate attribute)
-@[4](Just like the `/rows` endpoint, the Query API will return fields by their code, or by their label otherwise)
-@[5](Defines the JSON data type for the given column)
-@[6](Defines the storage method: 'empty' for an empty column, 'constant' for a constant value for all rows, or 'array' for a separate value for each row)
-@[7-11](The returned values for each row)
-
----
-
-@title[Sub-Form Record]
-# Sub-Form
-# Record
-
-@snap[east]
-@fa[level-down fa-5x] @fa[file-text fa-5x]
-@snapend
-
-@snap[south]
-@fa[arrow-down]
-@snapend
-
-+++
 @title[Sub-Form Records]
 ## @color[#00CF79](Sub-Form Records)
 
@@ -747,71 +137,23 @@ GET https://activityinfo.org/resources/form/a1234567890/query/columns
 - **EXCEPT** all Sub-Form Records reference a Parent Form Record via a `parent` field
 
 +++
-@title[Sub-Form Record in UI]
-![Sub-Form Record in UI](activityinfo/api/data-model/img/subform-records.png)
 
-+++
 @title[Sub-Form Record in Context]
 ![Sub-Form Record in Context](activityinfo/api/data-model/img/subform-record-context.png)
 
 +++
-@title[Query for Sub-Form Records]
-## Query for Sub-Form Records
-Generic Request for Sub-Form Records (in row-format):
 
-```http
-GET https://activityinfo.org/resources/form/{subFormId}/query/rows
-```
+@title[Reference Field Definition]
+## @color[#00CF79](Reference Fields)
 
-Generic Request for Sub-Form Records (in column-format):
-
-```http
-GET https://activityinfo.org/resources/form/{subFormId}/query/columns
-```
+- A particular Field Type which allows one Form to reference another Form
+- Users can select a Form Record from another Form (e.g. a Location, Partner, etc.)
+- Can then construct queries to obtain data from a referenced Form
 
 +++
-@title[Example 9: Sub-Form Records]
-## Example 9: Sub-Form Records
 
-For this example, we will send the following request:
-
-```http
-GET https://activityinfo.org/resources/form/cjmhib4oy1/query/rows
-```
-
-+++
-@title[Sub-Form Records Response]
-```json
-[
-    {
-        "Parent.code": "UC2018",
-        "descrip": "Room Rental",
-        "cost": 1000,
-        "Parent.proj": "User Conference 2018",
-        "@id": "cjmj78nid8b",
-        "Parent.partner.label": "BeDataDriven"
-    },
-    {
-        "Parent.code": "UC2018",
-        "descrip": "Stationary Supplies",
-        "cost": 50,
-        "Parent.proj": "User Conference 2018",
-        "@id": "cjmk2jfu95n",
-        "Parent.partner.label": "BeDataDriven"
-    },
-    {
-        "Parent.code": "DEV001",
-        "descrip": "Initial Proposal",
-        "cost": 100,
-        "Parent.proj": "New Field Development",
-        "@id": "cjmk2kinrd7",
-        "Parent.partner.label": "BeDataDriven"
-    }
-]
-```
-
-@[4-5](We have each of the fields on the Sub-Form)
-@[6](As well as information from Parent From via `parent` reference)
+@title[Reference Field in Context]
+![Reference Field in Context](activityinfo/api/data-model/img/ref-field.png)
 
 ---
 
