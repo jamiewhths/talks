@@ -1,0 +1,163 @@
+{
+	"info": {
+		"_postman_id": "a876a082-9177-467c-8267-e1fc0932b367",
+		"name": "Pushing Data to ActivityInfo",
+		"description": "Set of HTTPS requests for pushing data to ActivityInfo using the REST API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Creating a Form Record",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"changes\": [\n\t\t{\n\t\t\t\"deleted\": false,\n\t\t\t\"recordId\": \"s0000000000\",\n\t\t\t\"formId\": \"a2145511746\",\n\t\t\t\"fields\": {\n\t\t\t\t\"a21455117460000000007\": \"P0000009909:p0000019616\",\n\t\t\t\t\"i1865815593\": 1,\n\t\t\t\t\"i0206378262\": \"One\",\n\t\t\t\t\"i0566126146\": \"2019-01-15\"\n\t\t\t}\n\t\t}\t\n\t]\n}"
+				},
+				"url": {
+					"raw": "https://activityinfo.org/resources/update",
+					"protocol": "https",
+					"host": [
+						"activityinfo",
+						"org"
+					],
+					"path": [
+						"resources",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Updating a Form Record",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"changes\": [\n\t\t{\n\t\t\t\"deleted\": false,\n\t\t\t\"recordId\": \"s0000000000\",\n\t\t\t\"formId\": \"a2145511746\",\n\t\t\t\"fields\": {\n\t\t\t\t\"i1865815593\": 2,\n\t\t\t\t\"i0206378262\": \"Two\",\n\t\t\t\t\"i0566126146\": \"2019-01-16\"\n\t\t\t}\n\t\t}\t\n\t]\n}"
+				},
+				"url": {
+					"raw": "https://activityinfo.org/resources/update",
+					"protocol": "https",
+					"host": [
+						"activityinfo",
+						"org"
+					],
+					"path": [
+						"resources",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deleting a Form Record",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"changes\": [\n\t\t{\n\t\t\t\"deleted\": true,\n\t\t\t\"recordId\": \"s0000000000\",\n\t\t\t\"formId\": \"a2145511746\"\n\t\t}\t\n\t]\n}"
+				},
+				"url": {
+					"raw": "https://activityinfo.org/resources/update",
+					"protocol": "https",
+					"host": [
+						"activityinfo",
+						"org"
+					],
+					"path": [
+						"resources",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Batch Updates to Form Records",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"changes\": [\n\t\t{\n\t\t\t\"deleted\": false,\n\t\t\t\"recordId\": \"s0000000001\",\n\t\t\t\"formId\": \"a2145511746\",\n\t\t\t\"fields\": {\n\t\t\t\t\"a21455117460000000007\": \"P0000009909:p0000019616\",\n\t\t\t\t\"i1865815593\": 101,\n\t\t\t\t\"i0206378262\": \"Batched Update 101\",\n\t\t\t\t\"i0566126146\": \"2019-01-15\"\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"deleted\": false,\n\t\t\t\"recordId\": \"s0000000002\",\n\t\t\t\"formId\": \"a2145511746\",\n\t\t\t\"fields\": {\n\t\t\t\t\"a21455117460000000007\": \"P0000009909:p0000019616\",\n\t\t\t\t\"i1865815593\": 102,\n\t\t\t\t\"i0206378262\": \"Batched Update 102\",\n\t\t\t\t\"i0566126146\": \"2019-02-15\"\n\t\t\t}\n\t\t}\n\t]\n}"
+				},
+				"url": {
+					"raw": "https://activityinfo.org/resources/update",
+					"protocol": "https",
+					"host": [
+						"activityinfo",
+						"org"
+					],
+					"path": [
+						"resources",
+						"update"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "documentation@bedatadriven.com",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "0ed8375c-994f-4eae-ab73-d076e6d6bb81",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "c98bf8bb-af04-42be-96dd-064ebda89a92",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

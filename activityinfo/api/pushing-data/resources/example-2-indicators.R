@@ -24,18 +24,14 @@ data <- queryTable("a2145511771", columns)
 ## We are required to report on the: 
 ## - Total # Individuals Reached,
 ## - Estimated # Households Reached (determined by Total # Individuals Reached / 4)
-## - Date Reported
-## - Reporting Organisation. We are reporting under "Reporting Partner" ("P0000009909:p0000021297")
+## We need to report in the Monthly Sub-Form, under the "Reporting Partner" Parent Record
 
-## Need to transform our data into the total number of individuals reached and the estimated households reached,a nd keep the reported on date
+## Need to transform our data into the total number of individuals reached and the estimated households reached, and keep the reported on date
 dataToPush <- list(
   totalIndividuals = list(),
   estimatedHouseholds = list(),
-  reportedOn = list(),
-  reportedBy = list()
+  period = list()
 )
-
-reportingPartner <- "P0000009909:p0000021297"
 
 for (i in 1:length(data$reportedOn)) {
   totalIndividuals <- data$femalesUnder18[[i]] + data$femalesOver18[[i]] + data$malesUnder18[[i]] + data$malesOver18[[i]]
@@ -43,22 +39,25 @@ for (i in 1:length(data$reportedOn)) {
   
   dataToPush$totalIndividuals[[i]] <- totalIndividuals
   dataToPush$estimatedHouseholds[[i]] <- estimatedHouseholds
-  dataToPush$reportedOn[[i]] <- data$reportedOn[[i]]
-  dataToPush$reportedBy[[i]] <- reportingPartner
+  
+  # Reported On date is 'YYYY-MM-DD", Monthly Period is "YYYY-MM" 
+  dataToPush$period[[i]] <- substr(data$reportedOn[[i]], 1, 7)
 }
 
 # PUSH
 ## Now we need to push our data to ActivityInfo
 ## Our Form details are:
-## - FORM ID: a2145511772
-## -> "# Individuals Reached": i1207228298
-## -> "Estimated # Households Reached": i1261093144
-## -> "Reported By": a21455117720000000007
-## -> "Reported On": i0568437033
-## -> "Comments from Reporter": i0274473549
+## - MONTHLY SUB-FORM ID: cjqxowoiy1
+## -> "Month": period 
+## -> "# Individuals Reached": i0154435852
+## -> "Estimated # Households Reached": i1271761982
+## -> "Comments from Reporter": i0900025586
+
+subFormId <- "cjqxowoiy1"
+parentRecordId <- "s1141246439"
 
 changes <- list()
-for (i in 1:length(dataToPush$reportedOn)) {
+for (i in 1:length(dataToPush$period)) {
   # Generate a random number for record id
   recordId <- sprintf("s%010d", generateId())
 
@@ -66,13 +65,13 @@ for (i in 1:length(dataToPush$reportedOn)) {
   changes[[i]] <- list(
     deleted = FALSE,
     recordId = recordId,
-    formId = "a2145511772",
+    formId = subFormId,
+    parentRecordId = parentRecordId,
     fields = list(
-      i1207228298 = dataToPush$totalIndividuals[[i]],
-      i1261093144 = dataToPush$estimatedHouseholds[[i]],
-      a21455117720000000007 = dataToPush$reportedBy[[i]],
-      i0568437033 = dataToPush$reportedOn[[i]],
-      i0274473549 = "Automatic Push from Form a2145511771"
+      period = dataToPush$period[[i]],
+      i0154435852 = dataToPush$totalIndividuals[[i]],
+      i1271761982 = dataToPush$estimatedHouseholds[[i]],
+      i0900025586 = "Automatic Push from Form a2145511771"
     )
   )
 }
