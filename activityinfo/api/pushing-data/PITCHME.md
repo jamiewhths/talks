@@ -14,7 +14,7 @@ However, anyone with some technical background should be able to follow along.
 ## Who is this talk for?
 
 This talk is intended for:
-- Developers in organisations using ActivityInfo on applications which need to inter-operate with ActivityInfo
+- Developers in organisations with applications which need to inter-operate with ActivityInfo
 - Members of organisations with developers capable of utilising REST APIs
 
 ---
