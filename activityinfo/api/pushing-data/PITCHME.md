@@ -872,8 +872,8 @@ https://www.activityinfo.org/apidocs/index.html#field-types
 
 ---
 
-@title[Example 8.2: Creating a Form Record (HTTP Request)]
-## Example 8.2: Creating a Form Record
+@title[Creating a Form Record (HTTP Request)]
+## Creating a Form Record
 
 We will send the following request to **create** a Form Record:
 
@@ -883,8 +883,8 @@ POST https://activityinfo.org/resources/update
 
 +++
 
-@title[Example 8.2: Creating a Form Record (Request Body)]
-## Example 8.2: Creating a Form Record
+@title[Creating a Form Record (Request Body)]
+## Creating a Form Record
 
 With the following Request Body:
 
@@ -917,8 +917,8 @@ With the following Request Body:
 
 ---
 
-@title[Example 8.2: Updating a Form Record (HTTP Request)]
-## Example 8.2: Updating a Form Record
+@title[Updating a Form Record (HTTP Request)]
+## Updating a Form Record
 
 We will send the following request to **update** a Form Record:
 
@@ -928,8 +928,8 @@ POST https://activityinfo.org/resources/update
 
 +++
 
-@title[Example 8.2: Updating a Form Record (Request Body)]
-## Example 8.2: Updating a Form Record
+@title[Updating a Form Record (Request Body)]
+## Updating a Form Record
 
 With the following Request Body:
 
@@ -964,8 +964,8 @@ With the following Request Body:
 
 ---
 
-@title[Example 8.2: Deleting a Form Record (HTTP Request)]
-## Example 8.2: Deleting a Form Record
+@title[Deleting a Form Record (HTTP Request)]
+## Deleting a Form Record
 
 We will send the following request to **delete** a Form Record:
 
@@ -975,8 +975,8 @@ POST https://activityinfo.org/resources/update
 
 +++
 
-@title[Example 8.2: Deleting a Form Record (Request Body)]
-## Example 8.2: Deleting a Form Record
+@title[Deleting a Form Record (Request Body)]
+## Deleting a Form Record
 
 With the following Request Body:
 
@@ -1003,8 +1003,8 @@ With the following Request Body:
 
 ---
 
-@title[Example 8.2: Batching Updates to Form Records (HTTP Request)]
-## Example 8.2: Batching Updates to Form Records
+@title[Batching Updates to Form Records (HTTP Request)]
+## Batching Updates to Form Records
 
 We will send the following request to **create, update and delete** multiple Form Records:
 
@@ -1014,8 +1014,8 @@ POST https://activityinfo.org/resources/update
 
 +++
 
-@title[Example 8.2:Batching Updates to Form Records (Request Body)]
-## Example 8.2: Batching Updates to Form Records
+@title[Batching Updates to Form Records (Request Body)]
+## Batching Updates to Form Records
 
 With the following Request Body:
 
