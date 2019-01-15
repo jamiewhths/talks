@@ -297,18 +297,18 @@ With the following Request Body:
 
 ```json
 {
-	"changes": [
-		{
+  "changes": [
+    {
       "deleted": false,
-      recordId": "s1234567890",
-      formId": "a2145511746",
-			"fields": {
-				"i1865815593": 2,
-				"i0206378262": "Two",
-				"i0566126146": "2019-01-16"
-			}
-		}
-	]
+      "recordId": "s1234567890",
+      "formId": "a2145511746",
+      "fields": {
+        "i1865815593": 2,
+        "i0206378262": "Two",
+        "i0566126146": "2019-01-16"
+      }
+    }
+  ]
 }
 ```
 
