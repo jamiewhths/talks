@@ -50,10 +50,8 @@ From this presentation, you should understand:
 ## Topics
 - Review of Data Model
 - Update Form Record Request
-- Create a Form Record
-- Update a Form Record
-- Delete a Form Record
-- Batched Updates to Form Records
+- Create, Update and Delete a Form Record via API
+- Batched Updates to Form Records via API
 - Basic Concepts for Pushing Data
 - Example 1: Import Legacy Data (using R)
 - Example 2: Integrating Different Databases (using R)
