@@ -1,7 +1,6 @@
 # Public Talks
-Repository of public talks given on various subjects, using [GitPitch](https://gitpitch.com/) Markdown Slide Presentations.
+Repository of public talks, presentations and webinars I have given on various subjects. These talks use [GitPitch](https://gitpitch.com/) Markdown Slide Presentations.
 
-## Viewing a Talk
-To view a presentation, navigate to `https://gitpitch.com/jamiewhths/talks/present?p={dir/of/presentation}`. 
-
-For example, if you wished to view the test presentation, you would navigate to [https://gitpitch.com/jamiewhths/talks/present?p=testing](https://gitpitch.com/jamiewhths/talks/present?p=testing).
+## List of Talks
+- [Introduction to ActivityInfo API](https://gitpitch.com/jamiewhths/talks/present?p=activityinfo/api/data-model)
+- [Pushing Data with the ActivityInfo API](https://gitpitch.com/jamiewhths/talks/present?p=activityinfo/api/pushing-data)
